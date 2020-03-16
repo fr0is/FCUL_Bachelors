@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <title>Aula TP PSI - Javascript</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+</head>
+
+<body onload="load()">
+    <h1>Exercício PSI</h1>
+    <nav role="navigation">
+        <ul role="menubar">
+            <li role="menuitem">
+                <a href="#">Menu1</a>
+                <ul role="menu">
+                    <li role="menuitem" id="option11">Opção11</li>
+                    <li role="menuitem" id="option12">Opção12</li>
+                    <li role="menuitem" id="option13">Opção13</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Menu2</a>
+                <ul role="menu">
+                    <li role="menuitem" id="option21">Opção21</li>
+                    <li role="menuitem" id="option22">Opção22</li>
+                    <li role="menuitem" id="option23">Opção23</li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Menu3</a>
+                <ul role="menu">
+                    <li role="menuitem" id="option31">Opção31</li>
+                    <li role="menuitem" id="option32">Opção32</li>
+                    <li role="menuitem" id="option33">Opção33</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <p>A opção do menu selecionada foi: <span id="selectedOption"></span></p>
+        <form id="form1">
+            <h2>Encomenda</h2>
+            <fieldset id="orderDetails">
+                <legend>Detalhes da encomenda - Peso (obrigatório)</legend>
+                <input type="radio" name="weight" id="w1" />
+                <label for="w1">Leve</label>
+                <input type="radio" name="weight" id="w2" />
+                <label for="w2">Pesada</label>
+            </fieldset>
+            <fieldset id="orderLight">
+                <legend>Detalhes da encomenda - Envio</legend>
+                <input type="checkbox" name="shipping" id="s1" />
+                <label for="s1">Registada</label>
+                <input type="checkbox" name="shipping" id="s2" />
+                <label for="s1">Expresso</label>
+            </fieldset>
+            <fieldset>
+                <legend>Endereço envio (obrigatório)</legend>
+                <label for="shippingName">Nome</label>
+                <input type="text" id="shippingName" />
+                <label for="shippingAddress">Morada</label>
+                <input type="text" id="shippingAddress" />
+            </fieldset>
+            <fieldset>
+                <legend>Endereço cobrança</legend>
+                <label for="billingName">Nome</label>
+                <input type="text" id="billingName" />
+                <label for="billingAddress">Morada</label>
+                <input type="text" id="billingAddress" />
+            </fieldset>
+            <button type="button" id="calculate">
+          Calcular preço da encomenda
+        </button>
+        </form>
+        <p>
+            O custo de envio da encomenda é <span id="shippingCost"></span> euros.
+        </p>
+    </main>
+</body>
+
+</html>
