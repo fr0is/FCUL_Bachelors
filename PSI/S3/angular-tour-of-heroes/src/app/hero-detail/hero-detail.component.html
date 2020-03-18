@@ -2,10 +2,20 @@
     <h2>{{hero.name | uppercase}} Details</h2>
     <div><span>id: </span>{{hero.id}}</div>
     <div>
-      <label>name:
+        <label>name:
         <input [(ngModel)]="hero.name" placeholder="name"/>
       </label>
+        <br>
+        <br>
+        <label>pet:
+          <select [(ngModel)]="hero.pet" id="hero-pet">
+            <div *ngIf="hero.pet !== null"><option disabled selected value="hero.pet.name">{{hero.pet.name}}</option></div>
+            <option  *ngFor="let pet of pets;let x = i"
+            [ngValue]="pet.name"
+            class="dropdown-item">{{pet.name}}</option>
+          </select>
+        </label>
     </div>
     <button (click)="goBack()">go back</button>
     <button (click)="save()">save</button>
-  </div>
+</div>

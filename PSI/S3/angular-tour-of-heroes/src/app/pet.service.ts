@@ -46,6 +46,19 @@ export class PetService {
     );
   }
 
+  
+  searchPets(term: string): Observable<Pet[]> {
+    if (!term.trim()) {
+      // if not search term, return empty hero array.
+      return of([]);
+    }
+    return this.http.get<Pet[]>(`${this.petsUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+         this.log(`found pets matching "${term}"`) :
+         this.log(`no heroes matching "${term}"`)),
+      catchError(this.handleError<Pet[]>('searchHeroes', []))
+    );
+  }
 
   /**
    * Handle Http operation that failed.
