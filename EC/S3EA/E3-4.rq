@@ -3,7 +3,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT DISTINCT ?personName
 WHERE {
-        ?person1 rdfs:label ?personName
-    FILTER(?person1 a ?)
+        ?person1 rdfs:label ?personName .
+        ?person1 rdf:type :Man .
 }
 ORDER BY ASC(?personName)
