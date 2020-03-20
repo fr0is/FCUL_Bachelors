@@ -1,0 +1,11 @@
+PREFIX : <http://jms.ws-examples/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?kingName
+WHERE {
+    ?person1 :isChildOf ?person2 .
+    ?person2 a :King .
+    ?person2 rdfs:label ?kingName .
+    FILTER regex(?kingName, "Afonso") .
+}
+
