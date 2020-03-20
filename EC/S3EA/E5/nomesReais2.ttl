@@ -1,0 +1,173 @@
+@prefix : <http://jms.ws-examples/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@base <http://jms.ws-examples/> .
+
+
+#################################################################
+#    Dataset
+#################################################################
+
+### Um objecto que não é pessoa
+:caoAfonso1	rdfs:label "O filho do cachorrinho BauBau do Afonso Henriques".
+
+###  http://jms.ws-examples/afonso1
+:afonso1 rdf:type :Man ,
+                  :King ;
+         :isChildOf :henrique1 , :teresaLeao ;
+         rdfs:label "Afonso Henriques, o Conquistador";
+		 :wasBornIn 1109;
+		 :diedIn	1110.
+
+###  http://jms.ws-examples/teresaLeao
+:teresaLeao rdf:type :Woman;
+			rdfs:label "Teresa de Leao".
+			
+###  http://jms.ws-examples/afonso2
+:afonso2 rdf:type :Man ,
+                  :King ;
+         :isChildOf :sancho1, :dulceBarcelona ;
+         rdfs:label "Afonso II, o Gordo" ;
+		 :wasBornIn	1195;
+		 :diedIn	1233.
+
+###  http://jms.ws-examples/dulceBarcelona
+:dulceBarcelona rdf:type :Woman;
+			rdfs:label "Dulce de Barcelona".
+
+
+###  http://jms.ws-examples/afonso3
+:afonso3 rdf:type :Man ,
+                  :King ;
+         :isChildOf :afonso2, :urraca2 ;
+         rdfs:label "Afonso III, o Bolonhes";
+		 :wasBornIn	1210;
+		 :diedIn	1279.
+
+
+###  http://jms.ws-examples/afonso4
+:afonso4 rdf:type :Man ;
+         :isChildOf :afonso3, :beatriz .
+
+###  http://jms.ws-examples/beatriz
+:beatriz rdf:type :Woman;
+			rdfs:label "Beatriz de Castela".
+
+###  http://jms.ws-examples/afonso5
+:afonso5 rdf:type :Man ,
+                  :King ;
+         :isChildOf :dinis1, :isabel ;
+         rdfs:label "Afonso IV, o Bravo" ;
+		 :wasBornIn	1291;
+		 :diedIn	1357.
+
+###  http://jms.ws-examples/isabel
+:isabel rdf:type :Woman;
+			rdfs:label "Isabel de Aragao". 
+
+
+###  http://jms.ws-examples/branca1
+:branca1 rdf:type :Woman ;
+         :isChildOf :afonso3, :beatriz .
+
+
+###  http://jms.ws-examples/dinis1
+:dinis1 rdf:type :Man ,
+                 :King ;
+        :isChildOf :afonso3, :beatriz ;
+        rdfs:label "Dinis I, o Lavrador";
+		:wasBornIn	1261;
+		:diedIn		1325.
+
+###  http://jms.ws-examples/fernando1
+:fernando1 rdf:type :Man ;
+           :isChildOf :afonso2, :urraca2 .
+
+
+###  http://jms.ws-examples/fernando2
+:fernando2 rdf:type :Man ,
+                    :King ;
+           :isChildOf :pedro1 ;
+           rdfs:label "Fernando I, o Belo";
+			:wasBornIn	1345;
+			:diedIn		1383.
+
+
+###  http://jms.ws-examples/henrique1
+:henrique1 rdf:type :Man;
+			rdfs:label "Henrique de Borgonha".
+
+
+###  http://jms.ws-examples/joao1
+:joao1 rdf:type :Man ,
+                :King ;
+       :isChildOf :pedro1 ;
+       rdfs:label "Joao I, o Grande" ;
+	   :wasBornIn	1356;
+	   :diedIn		1433.
+
+
+###  http://jms.ws-examples/leonor1
+:leonor1 rdf:type :Woman ;
+         :isChildOf :afonso5, :beatriz .
+
+
+###  http://jms.ws-examples/maria1
+:maria1 rdf:type :Woman ;
+        :isChildOf :afonso5, :beatriz .
+
+
+###  http://jms.ws-examples/maria2
+:maria2 rdf:type :Man ;
+        :isChildOf :pedro1, :contanca .
+
+###  http://jms.ws-examples/constanca
+:constanca rdf:type :Woman;
+			rdfs:label "Constanca de Castela". 
+
+###  http://jms.ws-examples/pedro1
+:pedro1 rdf:type :Man ,
+                 :King ;
+        :isChildOf :afonso5, :beatriz ;
+        rdfs:label "Pedro I, o Cruel" ;
+		:wasBornIn	1320;
+		:diedIn	1367.
+
+###  http://jms.ws-examples/sancha1
+:sancha1 rdf:type :Woman ;
+         :isChildOf :afonso3 .
+
+
+###  http://jms.ws-examples/sancho1
+:sancho1 rdf:type :Man ,
+                  :King ;
+         :isChildOf :afonso1 ;
+         rdfs:label "Sancho I, o Povoador";
+		:wasBornIn	1154;
+		:diedIn		1212.
+
+
+###  http://jms.ws-examples/sancho2
+:sancho2 rdf:type :Man ,
+                  :King ;
+         :isChildOf :afonso2 ;
+         rdfs:label "Sancho II" ;
+		 :wasBornIn	1207;
+		 :diedIn	1248.
+
+
+###  http://jms.ws-examples/teresa1
+:teresa1 rdf:type :Woman ;
+         :isChildOf :sancho1, :dulceBarcelona ;
+		 rdfs:label "Teresa".
+
+
+###  http://jms.ws-examples/urraca1
+:urraca1 rdf:type :Woman ;
+         :isChildOf :afonso1 .
+
+###  http://jms.ws-examples/urraca2
+:urraca2 rdf:type :Woman ;
+         rdfs:label	"Urraca de Castela" .
+

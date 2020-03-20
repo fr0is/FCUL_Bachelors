@@ -1,11 +1,13 @@
 PREFIX : <http://jms.ws-examples/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-#Pessoas com pelo menos um filho ou filha
+#Pessoas com um filho e uma filha
 SELECT DISTINCT ?nome ?name
 WHERE {
     ?person2 :isChildOf ?nome .
+    ?person3 :isChildOf ?nome .
     ?person2 a ?type1.
+    ?person3 a ?type2.
     ?nome rdfs:label ?name
-    FILTER(?type1 = :Man || ?type2 = :Woman)
+    FILTER(?type1 = :Man && ?type2 = :Woman)
 }

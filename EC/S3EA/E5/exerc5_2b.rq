@@ -1,0 +1,8 @@
+PREFIX : <http://jms.ws-examples/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT DISTINCT *
+WHERE {
+?s1 a ?class1.
+?s1 a ?class2.
+}
