@@ -1,0 +1,14 @@
+UC1:
+    Número do aluno:51060
+    Nome do aluno:Bernardo Cabrita
+    Horas gastas:7
+    
+UC2:
+    Número do aluno:51050
+    Nome do aluno:António Fróis
+    Horas gastas:7
+    
+UC4:
+    Número do aluno:51058
+    Nome do aluno:Diogo Lopes
+    Horas gastas:7

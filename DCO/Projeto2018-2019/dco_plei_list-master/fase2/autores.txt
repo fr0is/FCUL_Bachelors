@@ -1,0 +1,14 @@
+UC1:
+    Número do aluno:fc51058
+    Nome do aluno: Diogo Lopes
+    Horas gastas: 15
+    
+UC2:
+    Número do aluno:fc51060
+    Nome do aluno: Bernardo Cabrita
+    Horas gastas: 13
+    
+UC4:
+    Número do aluno:fc51050
+    Nome do aluno: António Fróis
+    Horas gastas: 12
