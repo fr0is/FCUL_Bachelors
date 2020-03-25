@@ -8,18 +8,5 @@ var ReaderSchema = new Schema({
     books: [{ type: Schema.Types.ObjectId, ref: 'Book', required: true }],
 });
 
-// Virtual for reader's URL
-ReaderSchema
-    .virtual('url')
-    .get(function() {
-        return '/catalog/reader/' + this._id;
-    });
-
-ReaderSchema
-    .virtual('book')
-    .get(function() {
-        return '/catalog/book/readers/';
-    });
-
 //Export model
 module.exports = mongoose.model('Reader', ReaderSchema);

@@ -117,20 +117,17 @@ router.get('/bookinstances', book_instance_controller.bookinstance_list);
 
 /// Reader ROUTES ///
 
-// GET/POST para lista de readers
-router.get('/readers', reader_controller.reader_list_get);
-
 // GET request for one Reader.
-router.get('/reader/:id', reader_controller.reader_books_get);
+router.get('/reader_books/:id', reader_controller.reader_books_get);
 
 // POST request for one Reader.
-router.post('/reader/:id', reader_controller.reader_books_post);
+router.post('/reader_books/:id', reader_controller.reader_books_post);
 
-// GET request to get book's readers.
-router.get('/reader/book', reader_controller.books_reader_get);
+// GET request for one Reader.
+router.get('/books_readers/:id', reader_controller.reader_books_get);
 
 // POST request to get book's readers.
-router.post('/reader/book', reader_controller.books_reader_post);
+router.post('/book_readers/:id', reader_controller.books_reader_post);
 
 
 module.exports = router;
