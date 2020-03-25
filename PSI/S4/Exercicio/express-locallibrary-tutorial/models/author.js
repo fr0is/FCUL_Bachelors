@@ -31,7 +31,8 @@ AuthorSchema
 
 // Virtual for author's lifespan
 AuthorSchema
-    .virtual('lifespan').get(function() {
+    .virtual('lifespan')
+    .get(function() {
         var lifetime = this.date_of_birth ? moment(this.date_of_birth).format('MMMM Do, YYYY') : '';
         lifetime += ' - ';
         lifetime += this.date_of_death ? moment(this.date_of_death).format('MMMM Do, YYYY') : '';

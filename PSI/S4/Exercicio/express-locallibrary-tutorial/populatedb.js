@@ -15,7 +15,7 @@ var Book = require('./models/book')
 var Author = require('./models/author')
 var Genre = require('./models/genre')
 var BookInstance = require('./models/bookinstance')
-
+var Reader = require('./models/reader') //ex aula
 
 var mongoose = require('mongoose');
 var mongoDB = userArgs[0];
@@ -28,6 +28,7 @@ var authors = []
 var genres = []
 var books = []
 var bookinstances = []
+var readers = [] //ex aula
 
 function authorCreate(first_name, family_name, d_birth, d_death, cb) {
     authordetail = { first_name: first_name, family_name: family_name }
@@ -102,6 +103,28 @@ function bookInstanceCreate(book, imprint, due_back, status, cb) {
         bookinstances.push(bookinstance)
         cb(null, book)
     });
+}
+
+//Criar um Reader
+function readerCreate(name, phone, books, cb) {
+    readerDetails = {
+        name: name,
+        phone: phone,
+        books: books
+    }
+    var reader = new Reader(readerDetails);
+    reader.save(function(err) {
+        if (err) {
+            console.log('ERROR CREATING Reader: ' + reader);
+            cb(err, null)
+            return
+        }
+        console.log('New Reader: ' + reader);
+        readers.push(reader)
+        cb(null, reader)
+    });
+
+
 }
 
 
@@ -206,12 +229,25 @@ function createBookInstances(cb) {
         cb);
 }
 
+function createReaders(cb) {
+    async.parallel([
+            function(callback) {
+                readerCreate('Joao Balao', 919292392, [books[0], books[1]], callback);
+            },
+            function(callback) {
+                readerCreate('Albino Biolino', 921332123, [books[2], books[0]], callback);
+            }
+        ],
+        // optional callback
+        cb);
+}
 
 
 async.series([
         createGenreAuthors,
         createBooks,
-        createBookInstances
+        createBookInstances,
+        createReaders
     ],
     // Optional callback
     function(err, results) {

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Readers: 
+  
+  ul
+    each reader in reader_list
+      li 
+         a(href=reader.url) #{reader.name}
+
+    else
+      li There are no readers.
