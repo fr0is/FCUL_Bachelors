@@ -124,7 +124,7 @@ router.get('/reader_books/:id', reader_controller.reader_books_get);
 router.post('/reader_books/:id', reader_controller.reader_books_post);
 
 // GET request for one Reader.
-router.get('/books_readers/:id', reader_controller.reader_books_get);
+router.get('/book_readers/:id', reader_controller.reader_books_get);
 
 // POST request to get book's readers.
 router.post('/book_readers/:id', reader_controller.books_reader_post);
