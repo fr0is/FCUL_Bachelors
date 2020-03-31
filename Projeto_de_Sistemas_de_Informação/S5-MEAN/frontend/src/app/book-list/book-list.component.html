@@ -1,1 +1,9 @@
-<p>book-list works!</p>
+<h2>Books</h2>
+
+<ul class="books">
+    <li *ngFor="let book of books">
+        <a>
+            <a [routerLink]="['/book-detail',book._id]">{{book.title}}</a>
+        </a>
+    </li>
+</ul>

@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
 import { GenreListComponent } from './genre-list/genre-list.component';
 import { GenreFormComponent } from './genre-form/genre-form.component';
 import { GenreDetailComponent } from './genre-detail/genre-detail.component';
@@ -24,7 +24,6 @@ import { AuthorFormComponent } from './author-form/author-form.component';
   declarations: [
     AppComponent,
     HomePageComponent,
-    SideBarComponent,
     GenreListComponent,
     GenreFormComponent,
     GenreDetailComponent,
@@ -42,7 +41,8 @@ import { AuthorFormComponent } from './author-form/author-form.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,9 @@
-<p>genre-list works!</p>
+<h2>Genres</h2>
+
+<ul class="genre">
+    <li *ngFor="let genre of genres">
+        <a>
+            <a [routerLink]="['/genre-detail',genre._id]">{{genre.name}}</a>
+        </a>
+    </li>
+</ul>

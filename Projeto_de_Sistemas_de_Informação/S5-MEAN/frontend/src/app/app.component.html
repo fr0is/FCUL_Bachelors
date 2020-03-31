@@ -1,1 +1,39 @@
-<app-home-page></app-home-page>
+<div class="grid">
+    <div class="sidebar-nav">
+        <div class="row">
+            <div class="col-sm-2">
+                <ul class="sidebar-nav">
+                    <li>
+                        <a routerLink='/home-page'>Home</a>
+                    </li>
+                    <li>
+                        <a routerLink='/book-list'>All books</a>
+                    </li>
+                    <li>
+                        <a routerLink='/author-list'>All authors</a>
+                    </li>
+                    <li>
+                        <a routerLink='/genre-list'>All genres</a>
+                    </li>
+                    <li>
+                        <a routerLink='/book-instance-list'>All book-instances</a>
+                    </li>
+                    <br>
+                    <li>
+                        <a routerLink='/author-form'>Create new author</a>
+                    </li>
+                    <li>
+                        <a routerLink='/genre-form'>Create new genre</a>
+                    </li>
+                    <li>
+                        <a routerLink='/book-form'>Create new book</a>
+                    </li>
+                    <li>
+                        <a routerLink='/book-instance-form'>Create new book-instance (copy)</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
