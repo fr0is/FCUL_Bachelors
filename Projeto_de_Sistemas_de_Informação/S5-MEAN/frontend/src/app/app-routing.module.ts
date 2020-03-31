@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'author-list', component: AuthorListComponent },
   { path: 'author-form', component: AuthorFormComponent },
   { path: 'author-delete', component: AuthorDeleteComponent },
-  { path: 'author-detail/:id', component: AuthorDetailComponent }
+  { path: 'author/:id', component: AuthorDetailComponent }
 ];
 
 @NgModule({

@@ -3,7 +3,7 @@
 <ul class="authors">
     <li *ngFor="let author of authors">
         <a>
-            <a [routerLink]="['/author-detail',author._id]">{{author.first_name}} {{author.family_name}}</a> ({{author.date_of_birth | date: 'yyyy/mm/dd'}} - {{author.date_of_death | date: 'yyyy/mm/dd'}})
+            <a [routerLink]="['/author',author._id]">{{author.first_name}} {{author.family_name}}</a> ({{author.date_of_birth | date: 'yyyy/mm/dd'}} - {{author.date_of_death | date: 'yyyy/mm/dd'}})
         </a>
     </li>
 </ul>

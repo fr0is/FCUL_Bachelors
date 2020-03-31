@@ -31,8 +31,8 @@ export class AuthorService {
   }
 
   /** GET authorDetails from the server */
-  getAuthorDetails (): Observable<Author> {
-    return this.http.get<Author>(this.backendUrl+"detail/:id")
+  getAuthorDetails (id): Observable<Author> {
+    return this.http.get<Author>(this.backendUrl+"/"+id)
       .pipe(
         tap(_ => console.log('Teste')),
         catchError(this.handleError<Author>('getAuthorDetails', ))
