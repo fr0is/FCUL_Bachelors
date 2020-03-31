@@ -15,7 +15,7 @@ exports.author_list = function(req, res, next) {
         .exec(function(err, list_authors) {
             if (err) { return next(err); }
             //Successful, so render
-            res.render('author_list', { title: 'Author List', author_list: list_authors });
+            res.json({ title: 'Author List', author_list: list_authors });
         });
 
 };
@@ -40,14 +40,14 @@ exports.author_detail = function(req, res, next) {
             return next(err);
         }
         // Successful, so render.
-        res.render('author_detail', { title: 'Author Detail', author: results.author, author_books: results.authors_books });
+        res.json({ title: 'Author Detail', author: results.author, author_books: results.authors_books });
     });
 
 };
 
 // Display Author create form on GET.
 exports.author_create_get = function(req, res, next) {
-    res.render('author_form', { title: 'Create Author' });
+    res.json({ title: 'Create Author' });
 };
 
 // Handle Author create on POST.
@@ -75,7 +75,7 @@ exports.author_create_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/errors messages.
-            res.render('author_form', { title: 'Create Author', author: req.body, errors: errors.array() });
+            res.json({ title: 'Create Author', author: req.body, errors: errors.array() });
             return;
         } else {
             // Data from form is valid.
@@ -113,7 +113,7 @@ exports.author_delete_get = function(req, res, next) {
             res.redirect('/catalog/authors');
         }
         // Successful, so render.
-        res.render('author_delete', { title: 'Delete Author', author: results.author, author_books: results.authors_books });
+        res.json({ title: 'Delete Author', author: results.author, author_books: results.authors_books });
     });
 
 };
@@ -133,7 +133,7 @@ exports.author_delete_post = function(req, res, next) {
         // Success
         if (results.authors_books.length > 0) {
             // Author has books. Render in same way as for GET route.
-            res.render('author_delete', { title: 'Delete Author', author: results.author, author_books: results.authors_books });
+            res.json({ title: 'Delete Author', author: results.author, author_books: results.authors_books });
             return;
         } else {
             // Author has no books. Delete object and redirect to the list of authors.
@@ -148,10 +148,10 @@ exports.author_delete_post = function(req, res, next) {
 
 // Display Author update form on GET.
 exports.author_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Author update GET');
+    res.json('NOT IMPLEMENTED: Author update GET');
 };
 
 // Handle Author update on POST.
 exports.author_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Author update POST');
+    res.json('NOT IMPLEMENTED: Author update POST');
 };

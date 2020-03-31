@@ -14,7 +14,7 @@ exports.genre_list = function(req, res, next) {
         .exec(function(err, list_genre) {
             if (err) { return next(err); }
             //Successful, so render
-            res.render('genre_list', { title: 'Genre List', genre_list: list_genre });
+            res.json({ title: 'Genre List', genre_list: list_genre });
         });
 
 };
@@ -42,14 +42,14 @@ exports.genre_detail = function(req, res, next) {
             return next(err);
         }
         // Successful, so render
-        res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books });
+        res.json({ title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books });
     });
 
 };
 
 // Display Genre create form on GET.
 exports.genre_create_get = function(req, res, next) {
-    res.render('genre_form', { title: 'Create Genre' });
+    res.json({ title: 'Create Genre' });
 };
 
 // Handle Genre create on POST.
@@ -73,7 +73,7 @@ exports.genre_create_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values/error messages.
-            res.render('genre_form', { title: 'Create Genre', genre: genre, errors: errors.array() });
+            res.json({ title: 'Create Genre', genre: genre, errors: errors.array() });
             return;
         } else {
             // Data from form is valid.
@@ -102,20 +102,20 @@ exports.genre_create_post = [
 
 // Display Genre delete form on GET.
 exports.genre_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Genre delete GET');
+    res.json('NOT IMPLEMENTED: Genre delete GET');
 };
 
 // Handle Genre delete on POST.
 exports.genre_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Genre delete POST');
+    res.json('NOT IMPLEMENTED: Genre delete POST');
 };
 
 // Display Genre update form on GET.
 exports.genre_update_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: Genre update GET');
+    res.json('NOT IMPLEMENTED: Genre update GET');
 };
 
 // Handle Genre update on POST.
 exports.genre_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Genre update POST');
+    res.json('NOT IMPLEMENTED: Genre update POST');
 };
