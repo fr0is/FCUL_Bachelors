@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'book-detail/:id', component: BookDetailComponent },
   { path: 'author-list', component: AuthorListComponent },
   { path: 'author-form', component: AuthorFormComponent },
-  { path: 'author-delete', component: AuthorDeleteComponent },
+  { path: 'author-delete/:id', component: AuthorDeleteComponent },
   { path: 'author/:id', component: AuthorDetailComponent }
 ];
 

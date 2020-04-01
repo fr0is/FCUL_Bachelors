@@ -1,1 +1,25 @@
-<p>book-form works!</p>
+<h2>Create Book</h2>
+<form>
+    <label for="title"><strong>Title:</strong></label>
+    <input #title type="text" id="title" name="title" required><br><br>
+    <label for="author"><strong>Author:</strong></label>
+    <select #author id="authorS">
+        <option #author *ngFor="let author of authors;let i = index" [value]="authors[i]">{{authors[i].first_name}} {{authors[i].family_name}}</option>
+      </select><br><br>
+    <label for="summary"><strong>Summary:</strong></label>
+    <input #summary type="text" id="isbn" name="isbn"><br><br>
+    <label for="isbn"><strong>isbn:</strong></label>
+    <input #isbn type="text" id="isbn" name="isbn"><br><br>
+    <label for="genre"><strong>Genre:</strong></label>
+    <select #genre id="genreS">
+        <option #genre *ngFor="let genre of genres;let i = index" [value]="genres[i]">{{genres[i].name}}</option>
+      </select><br><br>
+    <button class="button" (click)="bookCreate(title.value,author.value._id,summary.value,isbn.value,genre.value._id)">Create<br>Author</button>
+</form>
+
+<div *ngIf="errors">
+    <h2>Errors:</h2>
+    <li *ngFor="let error of errors">
+        {{error.msg}}
+    </li>
+</div>

@@ -25,7 +25,7 @@ export class AuthorService {
   getAuthors (): Observable<Author[]> {
     return this.http.get<Author[]>(this.backendUrl+"s")
       .pipe(
-        tap(_ => console.log('Teste')),
+        tap(_ => console.log('Get Authors')),
         catchError(this.handleError<Author[]>('getAuthors', []))
       );
   }
@@ -34,8 +34,35 @@ export class AuthorService {
   getAuthorDetails (id): Observable<Author> {
     return this.http.get<Author>(this.backendUrl+"/"+id)
       .pipe(
-        tap(_ => console.log('Teste')),
+        tap(_ => console.log('Get Author Details')),
         catchError(this.handleError<Author>('getAuthorDetails', ))
+      );
+  }
+
+   /** GET authorDetails from the server */
+   authorDelete(id): Observable<Author> {
+    return this.http.get<Author>(this.backendUrl+"-delete")
+      .pipe(
+        tap(_ => console.log('Delete Author')),
+        catchError(this.handleError<Author>('getAuthorDetails', ))
+      );
+  }
+
+  authorCreateStart(): Observable<Author> {
+    const url = `${this.backendUrl}/create`;
+    return this.http.get<Author>(url)
+      .pipe(
+        tap(_ => console.log('Author Create')),
+        catchError(this.handleError<Author>('getAuthorCreate', ))
+      );
+  }
+
+  authorCreate(author): Observable<Author> {
+    const url = `${this.backendUrl}/create`;
+    return this.http.post<Author>(url,author,this.httpOptions)
+      .pipe(
+        tap(_ => console.log('Author Create')),
+        catchError(this.handleError<Author>('postAuthorCreate', ))
       );
   }
   

@@ -39,6 +39,23 @@ export class GenreService {
         );
     }
 
+    genreCreateStart(): Observable<Genre> {
+      const url = '${this.backendUrl}/create';
+      return this.http.get<Genre>(url)
+        .pipe(
+          tap(_ => console.log('Genre Create')),
+          catchError(this.handleError<Genre>('getGenreCreate', ))
+        );
+    }
+
+    genreCreate(genre): Observable<Genre> {
+      const url = `${this.backendUrl}/create`;;
+      return this.http.post<Genre>(url,genre,this.httpOptions)
+        .pipe(
+          tap(_ => console.log('Genre Create')),
+          catchError(this.handleError<Genre>('postGenreCreate', ))
+        );
+    }
 
   /**
    * Handle Http operation that failed.

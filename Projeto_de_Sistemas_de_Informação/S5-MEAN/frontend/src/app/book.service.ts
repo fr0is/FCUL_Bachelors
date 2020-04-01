@@ -39,6 +39,24 @@ export class BookService {
         );
     }
 
+    createBookStart(){
+      const url = `${this.backendUrl}/create`;
+      return this.http.get<Book>(url)
+      .pipe(
+        tap(_ => console.log('Get Genre and authors')),
+        catchError(this.handleError<Book[]>('Get Genre and authors', []))
+      );
+    }
+
+    bookCreate(book): Observable<Book> {
+      const url = `${this.backendUrl}/create`;
+      return this.http.post<Book>(url,book,this.httpOptions)
+        .pipe(
+          tap(_ => console.log('Book Create')),
+          catchError(this.handleError<Book>('postBookCreate', ))
+        );
+    }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

@@ -18,6 +18,6 @@
     <li *ngFor="let instance of bookInstances">
         <strong>Id:</strong><a [routerLink]="['/book-instance-detail',instance._id]">{{instance._id}}</a>
         <p><strong>Status:</strong> {{instance.status}}</p>
-        <p *ngIf="instance.status !== 'Available'"><strong>Due back:</strong> {{instance.due_back | date:"yyyy/mm/dd"}}</p>
+        <p *ngIf="instance.status !== 'Available'"><strong>Due back:</strong> {{instance.due_back | date:"yyyy/MM/dd"}}</p>
     </li>
 </ng-template>
