@@ -15,6 +15,8 @@ import { AuthorFormComponent } from './author-form/author-form.component';
 import { AuthorDeleteComponent } from './author-delete/author-delete.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { GenreUpdateComponent } from './genre-update/genre-update.component'
+import { AuthorUpdateComponent } from './author-update/author-update.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home-page', pathMatch: 'full' },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'genre-list', component: GenreListComponent },
   { path: 'genre-detail/:id', component: GenreDetailComponent },
   { path: 'genre-form', component: GenreFormComponent },
+  { path: 'genre-update/:id', component: GenreUpdateComponent },
+  { path: 'genre-delete/:id', component: GenreDetailComponent },
   { path: 'error', component: ErrorComponent },
   { path: 'book-list', component: BookListComponent },
   { path: 'book-instance-list', component: BookInstanceListComponent },
@@ -32,6 +36,7 @@ const routes: Routes = [
   { path: 'author-list', component: AuthorListComponent },
   { path: 'author-form', component: AuthorFormComponent },
   { path: 'author-delete/:id', component: AuthorDeleteComponent },
+  { path: 'author-update/:id', component: AuthorUpdateComponent },
   { path: 'author/:id', component: AuthorDetailComponent }
 ];
 

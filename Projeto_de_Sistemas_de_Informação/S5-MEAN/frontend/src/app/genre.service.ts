@@ -40,7 +40,7 @@ export class GenreService {
     }
 
     genreCreateStart(): Observable<Genre> {
-      const url = '${this.backendUrl}/create';
+      const url = `${this.backendUrl}/create`;
       return this.http.get<Genre>(url)
         .pipe(
           tap(_ => console.log('Genre Create')),
@@ -54,6 +54,42 @@ export class GenreService {
         .pipe(
           tap(_ => console.log('Genre Create')),
           catchError(this.handleError<Genre>('postGenreCreate', ))
+        );
+    }
+
+    updateGenreStart(id): Observable<Genre> {
+      const url = `${this.backendUrl}/`+id+`/update`;
+      return this.http.get<Genre>(url)
+        .pipe(
+          tap(_ => console.log('Genre Update')),
+          catchError(this.handleError<Genre>('getGenreUpdate', ))
+        );
+    }
+
+    updateGenre(id,genre): Observable<Genre> {
+      const url = `${this.backendUrl}/`+id+`/update`;
+      return this.http.post<Genre>(url,genre,this.httpOptions)
+        .pipe(
+          tap(_ => console.log('Genre Update')),
+          catchError(this.handleError<Genre>('postGenreUpdate', ))
+        );
+    }
+
+    deleteGenreStart(id): Observable<Genre> {
+      const url = `${this.backendUrl}/`+id+`/delete`;
+      return this.http.get<Genre>(url)
+        .pipe(
+          tap(_ => console.log('Genre Delete')),
+          catchError(this.handleError<Genre>('getGenreDelete', ))
+        );
+    }
+
+    deleteGenre(id,genre): Observable<Genre> {
+      const url = `${this.backendUrl}/`+id+`/delete`;
+      return this.http.post<Genre>(url,genre,this.httpOptions)
+        .pipe(
+          tap(_ => console.log('Genre Delete')),
+          catchError(this.handleError<Genre>('postGenreDelete', ))
         );
     }
 

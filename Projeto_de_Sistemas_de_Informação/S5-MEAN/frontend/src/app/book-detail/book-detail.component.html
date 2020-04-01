@@ -21,3 +21,6 @@
         <p *ngIf="instance.status !== 'Available'"><strong>Due back:</strong> {{instance.due_back | date:"yyyy/MM/dd"}}</p>
     </li>
 </ng-template>
+
+<button class="button" [routerLink]="['/book-delete',book._id]" type="button">Delete<br>Book</button>
+<button class="button2" [routerLink]="['/book-update',book._id]" type="button">Update<br>Book</button>

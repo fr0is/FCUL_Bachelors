@@ -5,3 +5,6 @@
     <p><strong>Status:</strong>{{bookI.status}}</p>
     <p><strong>Due back:</strong>{{bookI.due_back | date:'yyyy/MM/dd'}}</p>
 </div>
+
+<button class="button" [routerLink]="['/book-instance-delete',bookI._id]" type="button">Delete<br>Book<br>Instance</button>
+<button class="button2" [routerLink]="['/book-instance-update',bookI._id]" type="button">Update<br>Book<br>Instance</button>

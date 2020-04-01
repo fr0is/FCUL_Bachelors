@@ -66,22 +66,23 @@ export class AuthorService {
       );
   }
   
-  /**addPet (author: Author): Observable<Author> {
-    return this.http.post<Author>(this.backendUrl, author, this.httpOptions).pipe(
-      tap((newAuthor: Author) => console.log(`added author w/ name=${author.first_name}`)),
-      catchError(this.handleError<Author>('addAuthor'))
-    );
-  }*/
+  updateAuthorStart(id): Observable<Author> {
+    const url = `${this.backendUrl}/`+id+`/update`;
+    return this.http.get<Author>(url)
+      .pipe(
+        tap(_ => console.log('Author Update')),
+        catchError(this.handleError<Author>('getAuthorUpdate', ))
+      );
+  }
 
- /**  deletePet (pet: Pet | number): Observable<Pet> {
-    const id = typeof pet === 'number' ? pet : pet.id;
-    const url = `${this.petsUrl}/${id}`;
-
-    return this.http.delete<Pet>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted pet id=${id}`)),
-      catchError(this.handleError<Pet>('deletePet'))
-    );
-  }*/
+  updateAuthor(id,author): Observable<Author> {
+    const url = `${this.backendUrl}/`+id+`/update`;
+    return this.http.post<Author>(url,author,this.httpOptions)
+      .pipe(
+        tap(_ => console.log('Author Update')),
+        catchError(this.handleError<Author>('postAuthorUpdate', ))
+      );
+  }
 
   /**
    * Handle Http operation that failed.

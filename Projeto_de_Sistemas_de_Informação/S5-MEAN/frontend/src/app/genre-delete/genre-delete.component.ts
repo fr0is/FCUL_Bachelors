@@ -1,38 +1,32 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { AuthorService } from '../author.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Location } from '@angular/common';
-import { Genre } from '../genre';
+import { Component, OnInit } from '@angular/core';
 import { GenreService } from '../genre.service';
+import { Genre } from '../genre';
+import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { Book } from '../book';
 
-@Component({
-  selector: 'app-genre-detail',
-  templateUrl: './genre-detail.component.html',
-  styleUrls: ['./genre-detail.component.css']
-})
-export class GenreDetailComponent implements OnInit {
 
-  @Input() genre: Genre;
-  id: String;
-  books: Book[];
+@Component({
+  selector: 'app-genre-delete',
+  templateUrl: './genre-delete.component.html',
+  styleUrls: ['./genre-delete.component.css']
+})
+export class GenreDeleteComponent implements OnInit {
+
+  genre: Genre;
   errors: any[];
+  books: Book[];
+  generoR: Genre;
+  id: String;
 
   constructor(
-    private route: ActivatedRoute,
     private genreService: GenreService,
-    private location: Location,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.getGenreDetails(this.id);
     this.deleteGenreStart();
-  }
-  getGenreDetails(id: String) {
-    this.genreService.getGenreDetails(id)
-    .subscribe(intel => {this.genre = intel['genre'],this.books = intel['genre_books']})
   }
 
   deleteGenreStart(){
@@ -54,5 +48,4 @@ export class GenreDetailComponent implements OnInit {
       }
     }
   }
-
 }

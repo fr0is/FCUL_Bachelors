@@ -22,6 +22,15 @@ export class BookService {
     private http: HttpClient) { }
 
   /** GET authors from the server */
+  getAll(): Observable<Book> {
+    return this.http.get<Book>("/")
+      .pipe(
+        tap(_ => console.log('Get All')),
+        catchError(this.handleError<Book>('getAll', ))
+      );
+  }
+
+  /** GET authors from the server */
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.backendUrl+"s")
       .pipe(

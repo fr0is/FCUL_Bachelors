@@ -1,0 +1,19 @@
+<h2>Update Author</h2>
+<form>
+    <label for="finame"><strong>First Name:</strong></label>
+    <input #finame type="text" id="finame" name="finame"><br><br>
+    <label for="faname"><strong>Last Name:</strong></label>
+    <input #faname type="text" id="faname" name="faname"><br><br>
+    <label for="dbauthor"><strong>Author Name:</strong></label>
+    <input #dbauthor type="date" id="dbauthor" name="dbauthor"><br><br>
+    <label for="ddauthor"><strong>Author Name:</strong></label>
+    <input #ddauthor type="date" id="ddauthor" name="ddauthor"><br><br>
+    <button class="button" (click)="authorUpdate(finame.value,faname.value,dbauthor.value,ddauthor.value)">Update<br>Author</button>
+</form>
+
+<div *ngIf="errors">
+    <h2>Errors:</h2>
+    <li *ngFor="let error of errors">
+        {{error.msg}}
+    </li>
+</div>

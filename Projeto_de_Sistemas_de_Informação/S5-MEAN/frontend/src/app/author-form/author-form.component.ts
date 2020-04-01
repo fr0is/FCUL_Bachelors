@@ -16,7 +16,7 @@ export class AuthorFormComponent implements OnInit {
 
   constructor(
     private authorService: AuthorService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +32,6 @@ export class AuthorFormComponent implements OnInit {
     }
     this.authorService.authorCreate(this.author)
     .subscribe(intel =>{ this.errors = intel["errors"];this.authorR = intel["author"]})
-    console.log(this.authorR.first_name);
     if(this.errors !== null){
       alert("Author "+this.author.first_name+" created.");
       this.router.navigate(['/author-list']);

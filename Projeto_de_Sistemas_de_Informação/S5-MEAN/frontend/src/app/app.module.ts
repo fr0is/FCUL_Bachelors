@@ -19,6 +19,8 @@ import { AuthorListComponent } from './author-list/author-list.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { AuthorDeleteComponent } from './author-delete/author-delete.component';
 import { AuthorFormComponent } from './author-form/author-form.component';
+import { GenreUpdateComponent } from './genre-update/genre-update.component';
+import { AuthorUpdateComponent } from './author-update/author-update.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AuthorFormComponent } from './author-form/author-form.component';
     AuthorListComponent,
     AuthorDetailComponent,
     AuthorDeleteComponent,
-    AuthorFormComponent
+    AuthorFormComponent,
+    GenreUpdateComponent,
+    AuthorUpdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { Genre } from '../genre';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { Router } from '@angular/router';
+import { mongoose } from 'mongoose';
 
 @Component({
   selector: 'app-book-form',
@@ -36,10 +37,10 @@ export class BookFormComponent implements OnInit {
     this.book = {
       _id: null,
       title: title,
-      author: author,
+      author:  mongoose.Types.ObjectId(author),
       summary: summary,
       isbn: isbn,
-      genre: genre
+      genre: mongoose.Types.ObjectId(genre)
     }
     this.bookService.bookCreate(this.book)
     .subscribe(intel =>{ this.errors = intel["errors"];this.bookR = intel["book"]})

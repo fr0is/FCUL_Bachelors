@@ -4,6 +4,9 @@
 <ng-template #livros>
     <p><strong>Books:</strong></p>
     <li *ngFor="let book of books">
-        <a [routerLink]="['/book-detail',book._id]">{{book.title}}</a>
+        <a [routerLink]="['/book-detail',book._id]">{{book.title}}</a><br> <button class="button">Delete Book</button><br><br>
     </li>
 </ng-template>
+<br>
+<button class="button" (click)="deleteGenre();" type="button">Delete<br>Genre</button>
+<button class="button2" [routerLink]="['/genre-update',genre._id]" type="button">Update<br>Genre</button>
