@@ -1,6 +1,38 @@
+/* The sidebar menu */
+
 .sidebar-nav {
+    height: 100%;
+    /* Full-height: remove this if you want "auto" height */
+    width: 160px;
+    /* Set the width of the sidebar */
+    position: fixed;
+    /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: white;
     list-style: none;
-    width: 400px;
-    max-width: 400px;
-    margin: 0px;
+    /* Black */
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+
+/* The navigation menu links */
+
+.sidebar-nav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    display: block;
+}
+
+.content {
+    padding-left: 200px;
 }

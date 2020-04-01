@@ -1,9 +1,11 @@
-<h2>Book Instances</h2>
+<div class="BIList">
+    <h2>Book Instances</h2>
 
-<ul class="books-instances">
-    <li *ngFor="let bookI of bookInstances ">
-        <a>
-            <a [routerLink]="['/book-instance-detail',bookI._id]">{{bookI.book.title}}</a>
-        </a>
-    </li>
-</ul>
+    <ul class="books-instances">
+        <li *ngFor="let bookI of bookInstances ">
+            <a>
+                <a [routerLink]="['/book-instance-detail',bookI._id]">{{bookI.book.title}}</a>
+            </a>
+        </li>
+    </ul>
+</div>
