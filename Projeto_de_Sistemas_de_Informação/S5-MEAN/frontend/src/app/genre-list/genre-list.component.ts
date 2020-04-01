@@ -19,7 +19,7 @@ export class GenreListComponent implements OnInit {
 
   getGenres(){
     this.genreService.getGenres()
-    .subscribe(intel => this.genres = intel['genre_list']);
+    .subscribe(intel => this.genres = intel['list_genres']);
   }
 
 }

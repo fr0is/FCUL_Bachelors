@@ -1,30 +1,31 @@
 var Genre = require('../models/genre');
 var Book = require('../models/book');
 var async = require('async');
-const validator = require('express-validator');
+
+const { body, validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
 
 // Display list of all Genre.
 exports.genre_list = function(req, res, next) {
 
     Genre.find()
-        .populate('genre')
         .sort([
             ['name', 'ascending']
         ])
-        .exec(function(err, list_genre) {
+        .exec(function(err, list_genres) {
             if (err) { return next(err); }
-            //Successful, so render
-            res.json({ title: 'Genre List', genre_list: list_genre });
+            // Successful, so render.
+            res.json({ title: 'Genre List', list_genres: list_genres });
         });
 
 };
-
 
 // Display detail page for a specific Genre.
 exports.genre_detail = function(req, res, next) {
 
     async.parallel({
         genre: function(callback) {
+
             Genre.findById(req.params.id)
                 .exec(callback);
         },
@@ -41,7 +42,7 @@ exports.genre_detail = function(req, res, next) {
             err.status = 404;
             return next(err);
         }
-        // Successful, so render
+        // Successful, so render.
         res.json({ title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books });
     });
 
@@ -56,16 +57,16 @@ exports.genre_create_get = function(req, res, next) {
 exports.genre_create_post = [
 
     // Validate that the name field is not empty.
-    validator.body('name', 'Genre name required').trim().isLength({ min: 1 }),
+    body('name', 'Genre name required').isLength({ min: 1 }).trim(),
 
-    // Sanitize (escape) the name field.
-    validator.sanitizeBody('name').escape(),
+    // Sanitize (trim) the name field.
+    sanitizeBody('name').escape(),
 
     // Process request after validation and sanitization.
     (req, res, next) => {
 
         // Extract the validation errors from a request.
-        const errors = validator.validationResult(req);
+        const errors = validationResult(req);
 
         // Create a genre object with escaped and trimmed data.
         var genre = new Genre({ name: req.body.name });
@@ -100,7 +101,6 @@ exports.genre_create_post = [
     }
 ];
 
-
 // Display Genre delete form on GET.
 exports.genre_delete_get = function(req, res, next) {
 
@@ -117,7 +117,7 @@ exports.genre_delete_get = function(req, res, next) {
             res.redirect('/catalog/genres');
         }
         // Successful, so render.
-        res.json('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books });
+        res.json({ title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books });
     });
 
 };
@@ -137,7 +137,7 @@ exports.genre_delete_post = function(req, res, next) {
         // Success
         if (results.genre_books.length > 0) {
             // Genre has books. Render in same way as for GET route.
-            res.json('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books });
+            res.json({ title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books });
             return;
         } else {
             // Genre has no books. Delete object and redirect to the list of genres.
@@ -163,7 +163,7 @@ exports.genre_update_get = function(req, res, next) {
             return next(err);
         }
         // Success.
-        res.json('genre_form', { title: 'Update Genre', genre: genre });
+        res.json({ title: 'Update Genre', genre: genre });
     });
 
 };
@@ -192,7 +192,7 @@ exports.genre_update_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
-            res.json('genre_form', { title: 'Update Genre', genre: genre, errors: errors.array() });
+            res.json({ title: 'Update Genre', genre: genre, errors: errors.array() });
             return;
         } else {
             // Data from form is valid. Update the record.
