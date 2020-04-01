@@ -8,5 +8,5 @@
     </li>
 </ng-template>
 <br>
-<button class="button" (click)="deleteGenre();" type="button">Delete<br>Genre</button>
+<button class="button" [routerLink]="['/genre-delete',genre._id]" (click)="deleteGenre();" type="button">Delete<br>Genre</button>
 <button class="button2" [routerLink]="['/genre-update',genre._id]" type="button">Update<br>Genre</button>

@@ -9,11 +9,14 @@ import { BookService } from '../book.service';
 })
 export class HomePageComponent implements OnInit {
 
-  results: any[];
+  books: number;
+  copies: number;
+  copiesAv: number;
+  authors: number;
+  genres: number;
   error: any;
-  bookService: BookService;
 
-  constructor() { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -21,8 +24,9 @@ export class HomePageComponent implements OnInit {
 
   getAll(){
     this.bookService.getAll()
-    .subscribe(intel =>{this.results = intel['data'], this.error = intel['error']});
-    console.log(this.results  )
+    .subscribe(intel =>{this.books = intel['data'].book_count;
+    this.copies = intel['data'].book_instance_count;this.copiesAv = intel['data'].book_instance_available_count;
+    this.authors = intel['data'].author_count;this.genres = intel['data'].genre_count;this.error = intel['error']});
   }
 
 }

@@ -14,7 +14,7 @@
     <select #genre id="genreS">
         <option #genre *ngFor="let genre of genres;let i = index" [value]="genres[i]">{{genres[i].name}}</option>
       </select><br><br>
-    <button class="button" (click)="bookCreate(title.value,author.value._id,summary.value,isbn.value,genre.value._id)">Create<br>Author</button>
+    <button class="button" (click)="bookCreate(title.value,author.value._id,summary.value,isbn.value,genre.value._id)">Create<br>Book</button>
 </form>
 
 <div *ngIf="errors">

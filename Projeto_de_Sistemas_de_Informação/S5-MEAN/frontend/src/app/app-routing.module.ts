@@ -12,7 +12,6 @@ import { BookFormComponent } from './book-form/book-form.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { AuthorFormComponent } from './author-form/author-form.component';
-import { AuthorDeleteComponent } from './author-delete/author-delete.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { GenreUpdateComponent } from './genre-update/genre-update.component'
@@ -35,7 +34,7 @@ const routes: Routes = [
   { path: 'book-detail/:id', component: BookDetailComponent },
   { path: 'author-list', component: AuthorListComponent },
   { path: 'author-form', component: AuthorFormComponent },
-  { path: 'author-delete/:id', component: AuthorDeleteComponent },
+  { path: 'author-delete/:id', component: AuthorDetailComponent },
   { path: 'author-update/:id', component: AuthorUpdateComponent },
   { path: 'author/:id', component: AuthorDetailComponent }
 ];

@@ -23,7 +23,7 @@ export class BookService {
 
   /** GET authors from the server */
   getAll(): Observable<Book> {
-    return this.http.get<Book>("/")
+    return this.http.get<Book>("http://localhost:3000/catalog/")
       .pipe(
         tap(_ => console.log('Get All')),
         catchError(this.handleError<Book>('getAll', ))

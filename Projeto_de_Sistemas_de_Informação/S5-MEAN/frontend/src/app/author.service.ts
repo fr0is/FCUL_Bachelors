@@ -84,6 +84,24 @@ export class AuthorService {
       );
   }
 
+  deleteAuthorStart(id): Observable<Author> {
+    const url = `${this.backendUrl}/`+id+`/delete`;
+    return this.http.get<Author>(url)
+      .pipe(
+        tap(_ => console.log('Author Delete')),
+        catchError(this.handleError<Author>('getAuthorDelete', ))
+      );
+  }
+
+  deleteAuthor(id,author): Observable<Author> {
+    const url = `${this.backendUrl}/`+id+`/delete`;
+    return this.http.post<Author>(url,author,this.httpOptions)
+      .pipe(
+        tap(_ => console.log('Author Delete')),
+        catchError(this.handleError<Author>('postAuthorDelete', ))
+      );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

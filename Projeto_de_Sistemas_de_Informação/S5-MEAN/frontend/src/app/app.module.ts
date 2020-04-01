@@ -17,7 +17,6 @@ import { BookFormComponent } from './book-form/book-form.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
-import { AuthorDeleteComponent } from './author-delete/author-delete.component';
 import { AuthorFormComponent } from './author-form/author-form.component';
 import { GenreUpdateComponent } from './genre-update/genre-update.component';
 import { AuthorUpdateComponent } from './author-update/author-update.component';
@@ -38,7 +37,6 @@ import { AuthorUpdateComponent } from './author-update/author-update.component';
     BookDetailComponent,
     AuthorListComponent,
     AuthorDetailComponent,
-    AuthorDeleteComponent,
     AuthorFormComponent,
     GenreUpdateComponent,
     AuthorUpdateComponent,
