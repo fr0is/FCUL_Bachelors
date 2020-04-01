@@ -30,6 +30,16 @@ export class GenreService {
       );
   }
 
+    /** GET authors from the server */
+    getGenreDetails(id): Observable<Genre> {
+      return this.http.get<Genre>(this.backendUrl+"/"+id)
+        .pipe(
+          tap(_ => console.log('Genre Details')),
+          catchError(this.handleError<Genre>('getGenreDetails', ))
+        );
+    }
+
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

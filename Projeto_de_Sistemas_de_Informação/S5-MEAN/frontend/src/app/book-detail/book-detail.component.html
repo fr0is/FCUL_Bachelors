@@ -1,1 +1,23 @@
-<p>book-detail works!</p>
+<h2>{{this.book.title}}</h2>
+<p><strong>Author:</strong> {{book.author.first_name}} {{book.author.family_name}}</p>
+<p><strong>Summary:</strong> {{book.summary}}</p>
+<p><strong>ISBN:</strong> {{book.isbn}}</p>
+<p><strong>Genre:</strong></p>
+<ul>
+    <li *ngFor="let genre of book.genre">
+        <a [routerLink]="['/genre-detail',genre._id]">{{genre.name}}</a>
+    </li>
+</ul>
+<hr>
+<h3>Copies</h3>
+<div *ngIf="bookInstances.length === 0; else instances">
+    There are no copies.
+</div>
+
+<ng-template #instances>
+    <li *ngFor="let instance of bookInstances">
+        <strong>Id:</strong><a [routerLink]="['/book-instance-detail',instance._id]">{{instance._id}}</a>
+        <p><strong>Status:</strong> {{instance.status}}</p>
+        <p *ngIf="instance.status !== 'Available'"><strong>Due back:</strong> {{instance.due_back | date:"yyyy/mm/dd"}}</p>
+    </li>
+</ng-template>

@@ -22,13 +22,22 @@ export class BookService {
     private http: HttpClient) { }
 
   /** GET authors from the server */
-  getBooks (): Observable<Book[]> {
+  getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.backendUrl+"s")
       .pipe(
         tap(_ => console.log('Teste')),
         catchError(this.handleError<Book[]>('getBooks', []))
       );
   }
+
+    /** GET authors from the server */
+    getBookDetails(id): Observable<Book> {
+      return this.http.get<Book>(this.backendUrl+"/"+id)
+        .pipe(
+          tap(_ => console.log('Book Details')),
+          catchError(this.handleError<Book>('getBookDetails', ))
+        );
+    }
 
   /**
    * Handle Http operation that failed.

@@ -11,7 +11,7 @@ import { BookInstance } from './book-instance';
 })
 
 export class BookInstanceService {
-
+ 
   private backendUrl = 'http://localhost:3000/catalog/bookinstance';  // URL to web api
 
   httpOptions = {
@@ -22,11 +22,20 @@ export class BookInstanceService {
     private http: HttpClient) { }
 
   /** GET authors from the server */
-  getBookInstances (): Observable<BookInstance[]> {
+  getBookInstances(): Observable<BookInstance[]> {
     return this.http.get<BookInstance[]>(this.backendUrl+"s")
       .pipe(
         tap(_ => console.log('Teste')),
         catchError(this.handleError<BookInstance[]>('getBookInstances', []))
+      );
+  }
+
+  /** GET authors from the server */
+  getBookInstanceDetails(id): Observable<BookInstance> {
+    return this.http.get<BookInstance>(this.backendUrl+"/"+id)
+      .pipe(
+        tap(_ => console.log('Book Instance Details')),
+        catchError(this.handleError<BookInstance>('getBookInstanceDetails', ))
       );
   }
 

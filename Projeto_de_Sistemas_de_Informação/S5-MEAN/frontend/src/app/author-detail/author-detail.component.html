@@ -1,1 +1,12 @@
 <h2>{{author.first_name}} {{author.family_name}}</h2>
+
+<ul class="author_books">
+    <li *ngFor="let book of books">
+        <a>
+            <a [routerLink]="['/book-detail',book._id]">{{book.title}}</a>
+            <p>{{book.summary}}</p>
+        </a>
+    </li>
+</ul>
+
+<div *ngIf="books.length === 0">This author has no books.</div>

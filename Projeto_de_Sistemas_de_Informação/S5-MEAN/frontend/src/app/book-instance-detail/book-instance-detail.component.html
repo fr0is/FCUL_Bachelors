@@ -1,1 +1,7 @@
-<p>book-instance-detail works!</p>
+<div *ngIf="bookI">
+    <h2><strong>Title:</strong><a [routerLink]="['/book-detail',bookI.book._id]">{{bookI.book.title}}</a></h2>
+    <p><strong>ID:</strong>{{bookI._id}}</p>
+    <p><strong>Imprint:</strong>{{bookI.imprint}}</p>
+    <p><strong>Status:</strong>{{bookI.status}}</p>
+    <p><strong>Due back:</strong>{{bookI.due_back | date:'yyyy/mm/dd'}}</p>
+</div>

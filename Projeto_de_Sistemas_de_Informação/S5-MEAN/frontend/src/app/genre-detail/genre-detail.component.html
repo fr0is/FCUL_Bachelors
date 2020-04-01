@@ -1,1 +1,9 @@
-<p>genre-detail works!</p>
+<h2>{{genre.name}}</h2>
+<p><strong>Id:</strong>{{genre._id}}</p>
+<div *ngIf="books.length === 0, else livros"> There are no books with this genre.</div>
+<ng-template #livros>
+    <p><strong>Books:</strong></p>
+    <li *ngFor="let book of books">
+        <a [routerLink]="['/book-detail',book._id]">{{book.title}}</a>
+    </li>
+</ng-template>

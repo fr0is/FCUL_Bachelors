@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AuthorService } from '../author.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
+import { Genre } from '../genre';
+import { GenreService } from '../genre.service';
+import { Book } from '../book';
 
 @Component({
   selector: 'app-genre-detail',
@@ -7,9 +13,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenreDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() genre: Genre;
+  id: String;
+  books: Book[];
+
+  constructor(
+    private route: ActivatedRoute,
+    private genreService: GenreService,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.getGenreDetails(this.id);
+  }
+  getGenreDetails(id: String) {
+    this.genreService.getGenreDetails(id)
+    .subscribe(intel => {this.genre = intel['genre'],this.books = intel['genre_books']})
   }
 
 }
