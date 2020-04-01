@@ -157,7 +157,7 @@ exports.author_update_get = function(req, res, next) {
             return next(err);
         }
         // Success.
-        res.render('author_form', { title: 'Update Author', author: author });
+        res.json('author_form', { title: 'Update Author', author: author });
 
     });
 };
@@ -196,7 +196,7 @@ exports.author_update_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
-            res.render('author_form', { title: 'Update Author', author: author, errors: errors.array() });
+            res.json('author_form', { title: 'Update Author', author: author, errors: errors.array() });
             return;
         } else {
             // Data from form is valid. Update the record.

@@ -117,7 +117,7 @@ exports.genre_delete_get = function(req, res, next) {
             res.redirect('/catalog/genres');
         }
         // Successful, so render.
-        res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books });
+        res.json('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books });
     });
 
 };
@@ -137,7 +137,7 @@ exports.genre_delete_post = function(req, res, next) {
         // Success
         if (results.genre_books.length > 0) {
             // Genre has books. Render in same way as for GET route.
-            res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books });
+            res.json('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books });
             return;
         } else {
             // Genre has no books. Delete object and redirect to the list of genres.
@@ -163,7 +163,7 @@ exports.genre_update_get = function(req, res, next) {
             return next(err);
         }
         // Success.
-        res.render('genre_form', { title: 'Update Genre', genre: genre });
+        res.json('genre_form', { title: 'Update Genre', genre: genre });
     });
 
 };
@@ -192,7 +192,7 @@ exports.genre_update_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
-            res.render('genre_form', { title: 'Update Genre', genre: genre, errors: errors.array() });
+            res.json('genre_form', { title: 'Update Genre', genre: genre, errors: errors.array() });
             return;
         } else {
             // Data from form is valid. Update the record.

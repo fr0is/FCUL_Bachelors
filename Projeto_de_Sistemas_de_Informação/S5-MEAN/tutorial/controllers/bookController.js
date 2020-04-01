@@ -178,7 +178,7 @@ exports.book_delete_get = function(req, res, next) {
             res.redirect('/catalog/books');
         }
         // Successful, so render.
-        res.render('book_delete', { title: 'Delete Book', book: results.book, book_instances: results.book_bookinstances });
+        res.json('book_delete', { title: 'Delete Book', book: results.book, book_instances: results.book_bookinstances });
     });
 
 };
@@ -200,7 +200,7 @@ exports.book_delete_post = function(req, res, next) {
         // Success
         if (results.book_bookinstances.length > 0) {
             // Book has book_instances. Render in same way as for GET route.
-            res.render('book_delete', { title: 'Delete Book', book: results.book, book_instances: results.book_bookinstances });
+            res.json('book_delete', { title: 'Delete Book', book: results.book, book_instances: results.book_bookinstances });
             return;
         } else {
             // Book has no BookInstance objects. Delete object and redirect to the list of books.
