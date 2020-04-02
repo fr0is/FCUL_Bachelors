@@ -1,0 +1,168 @@
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/anton/ontologies/2020/3/untitled-ontology-5>
+
+
+Datatype: xsd:integer
+
+    
+ObjectProperty: <http://exemplo.aula9/driver>
+
+    Domain: 
+        <http://exemplo.aula9/MotorVehicle>
+    
+    Range: 
+        <http://exemplo.aula9/Person>
+    
+    
+ObjectProperty: <http://exemplo.aula9/primaryDriver>
+
+    SubPropertyOf: 
+        <http://exemplo.aula9/driver>
+    
+    Range: 
+        <http://exemplo.aula9/Person>
+    
+    
+ObjectProperty: <http://exemplo.aula9/registeredTo>
+
+    Domain: 
+        <http://exemplo.aula9/MotorVehicle>
+    
+    Range: 
+        <http://exemplo.aula9/Person>
+    
+    
+DataProperty: <http://exemplo.aula9/rearSeatLegRoom>
+
+    Domain: 
+        <http://exemplo.aula9/MotorVehicle>
+    
+    Range: 
+        xsd:integer
+    
+    
+Class: <http://exemplo.aula9/MiniVan>
+
+    SubClassOf: 
+        <http://exemplo.aula9/Van>
+    
+    
+Class: <http://exemplo.aula9/MotorVehicle>
+
+    
+Class: <http://exemplo.aula9/PassengerVehicle>
+
+    SubClassOf: 
+        <http://exemplo.aula9/MotorVehicle>
+    
+    
+Class: <http://exemplo.aula9/Person>
+
+    
+Class: <http://exemplo.aula9/Truck>
+
+    SubClassOf: 
+        <http://exemplo.aula9/MotorVehicle>
+    
+    
+Class: <http://exemplo.aula9/Van>
+
+    SubClassOf: 
+        <http://exemplo.aula9/PassengerVehicle>
+    
+    
+Individual: <http://exemplo.aula9/ana>
+
+    Types: 
+        <http://exemplo.aula9/Person>
+    
+    
+Individual: <http://exemplo.aula9/anaVehicle>
+
+    Types: 
+        <http://exemplo.aula9/MotorVehicle>,
+        <http://exemplo.aula9/PassengerVehicle>
+    
+    Facts:  
+     <http://exemplo.aula9/driver>  <http://exemplo.aula9/ana>,
+     <http://exemplo.aula9/driver>  <http://exemplo.aula9/filhoDaAna>,
+     <http://exemplo.aula9/driver>  <http://exemplo.aula9/maridoAna>,
+     <http://exemplo.aula9/registeredTo>  <http://exemplo.aula9/ana>
+    
+    
+Individual: <http://exemplo.aula9/antonio>
+
+    Types: 
+        <http://exemplo.aula9/Person>
+    
+    
+Individual: <http://exemplo.aula9/filhoDaAna>
+
+    Types: 
+        <http://exemplo.aula9/Person>
+    
+    
+Individual: <http://exemplo.aula9/filhoDoPedro>
+
+    Types: 
+        <http://exemplo.aula9/Person>
+    
+    
+Individual: <http://exemplo.aula9/jorge>
+
+    Types: 
+        <http://exemplo.aula9/Person>
+    
+    
+Individual: <http://exemplo.aula9/maridoAna>
+
+    Types: 
+        <http://exemplo.aula9/Person>
+    
+    
+Individual: <http://exemplo.aula9/pedro>
+
+    Types: 
+        <http://exemplo.aula9/Person>
+    
+    
+Individual: <http://exemplo.aula9/pedroVan>
+
+    Types: 
+        <http://exemplo.aula9/MotorVehicle>,
+        <http://exemplo.aula9/PassengerVehicle>,
+        <http://exemplo.aula9/Van>
+    
+    Facts:  
+     <http://exemplo.aula9/driver>  <http://exemplo.aula9/filhoDoPedro>,
+     <http://exemplo.aula9/primaryDriver>  <http://exemplo.aula9/pedro>,
+     <http://exemplo.aula9/registeredTo>  <http://exemplo.aula9/pedro>
+    
+    
+Individual: <http://exemplo.aula9/ricardo>
+
+    Types: 
+        <http://exemplo.aula9/Person>
+    
+    
+Individual: <http://exemplo.aula9/ricardoT>
+
+    Types: 
+        <http://exemplo.aula9/MotorVehicle>,
+        <http://exemplo.aula9/Truck>
+    
+    Facts:  
+     <http://exemplo.aula9/driver>  <http://exemplo.aula9/antonio>,
+     <http://exemplo.aula9/driver>  <http://exemplo.aula9/jorge>,
+     <http://exemplo.aula9/driver>  <http://exemplo.aula9/pedro>,
+     <http://exemplo.aula9/primaryDriver>  <http://exemplo.aula9/ricardo>,
+     <http://exemplo.aula9/registeredTo>  <http://exemplo.aula9/ricardo>
+    
+    

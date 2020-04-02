@@ -1,0 +1,60 @@
+
+@prefix :      <http://exemplo.aula9/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+@base  <http://exemplo.aula9/> .
+
+
+:MotorVehicle rdf:type rdfs:Class.
+:PassengerVehicle rdf:type rdfs:Class.
+:Van rdf:type rdfs:Class.
+:Truck rdf:type rdfs:Class.
+:MiniVan rdf:type rdfs:Class.
+
+:PassengerVehicle rdfs:subClassOf :MotorVehicle .
+:Van rdfs:subClassOf :PassengerVehicle .
+:Truck rdfs:subClassOf :MotorVehicle .
+:MiniVan rdfs:subClassOf :Van .
+
+:Person a rdfs:Class . 
+
+:registeredTo a rdf:Property ;  
+	rdfs:domain :MotorVehicle ;  
+	rdfs:range :Person .
+	
+:rearSeatLegRoom a rdf:Property ;  
+	rdfs:domain :MotorVehicle ; 
+	rdfs:range xsd:integer .
+
+:primaryDriver a rdf:Property ;  
+	rdfs:subPropertyOf :driver;
+	rdfs:range :Person.
+
+	
+:driver a rdf:Property ;  
+	rdfs:domain :MotorVehicle;
+	rdfs:range :Person.
+	
+
+	
+	
+:pedroVan a :Van;
+	:registeredTo :pedro;
+	:primaryDriver :pedro;
+	:driver	:filhoDoPedro.
+	
+:anaVehicle a :PassengerVehicle;
+	:registeredTo :ana;
+	:driver	:ana, :maridoAna, :filhoDaAna.
+	
+:ricardoT a :Truck;
+	:registeredTo :ricardo;
+	:primaryDriver :ricardo;
+	:driver	:pedro, :jorge, :antonio.
+
+
+
