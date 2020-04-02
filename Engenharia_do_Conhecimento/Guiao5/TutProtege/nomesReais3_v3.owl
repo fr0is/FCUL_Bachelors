@@ -1,0 +1,401 @@
+Prefix: : <http://jms.ws-examples/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: 
+
+AnnotationProperty: rdfs:label
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+Datatype: xsd:integer
+
+    
+ObjectProperty: hasFather
+
+    SubPropertyOf: 
+        isChildOf
+    
+    Domain: 
+        Person
+    
+    Range: 
+        Man
+    
+    
+ObjectProperty: hasMother
+
+    SubPropertyOf: 
+        isChildOf
+    
+    Domain: 
+        Person
+    
+    Range: 
+        Woman
+    
+    
+ObjectProperty: isChildOf
+
+    Domain: 
+        Person
+    
+    Range: 
+        Person
+    
+    
+DataProperty: diedIn
+
+    Domain: 
+        Person
+    
+    Range: 
+        xsd:integer
+    
+    
+DataProperty: wasBornIn
+
+    Domain: 
+        Person
+    
+    Range: 
+        xsd:integer
+    
+    
+Class: Animal
+
+    
+Class: King
+
+    SubClassOf: 
+        Man
+    
+    
+Class: Man
+
+    SubClassOf: 
+        Person
+    
+    
+Class: Person
+
+    
+Class: Woman
+
+    SubClassOf: 
+        Person
+    
+    
+Class: rdf:Class
+
+    
+Individual: King
+
+    Types: 
+        rdf:Class
+    
+    
+Individual: Man
+
+    Types: 
+        rdf:Class
+    
+    
+Individual: Person
+
+    Types: 
+        rdf:Class
+    
+    
+Individual: Woman
+
+    Types: 
+        rdf:Class
+    
+    
+Individual: afonso0
+
+    Facts:  
+     hasFather  henrique1,
+     hasMother  teresaLeao,
+     diedIn  1108,
+     wasBornIn  1094
+    
+    
+Individual: afonso1
+
+    Annotations: 
+        rdfs:label "Afonso Henriques, o Conquistador"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  henrique1,
+     hasMother  teresaLeao,
+     diedIn  1110,
+     wasBornIn  1109
+    
+    
+Individual: afonso2
+
+    Annotations: 
+        rdfs:label "Afonso II, o Gordo"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  sancho1,
+     hasMother  dulceBarcelona,
+     diedIn  1233,
+     wasBornIn  1195
+    
+    
+Individual: afonso3
+
+    Annotations: 
+        rdfs:label "Afonso III, o Bolonhes"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  afonso2,
+     hasMother  urraca2,
+     diedIn  1279,
+     wasBornIn  1210
+    
+    
+Individual: afonso4
+
+    Facts:  
+     hasFather  afonso3,
+     hasMother  beatriz
+    
+    
+Individual: afonso5
+
+    Annotations: 
+        rdfs:label "Afonso IV, o Bravo"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  dinis1,
+     hasMother  isabel,
+     diedIn  1357,
+     wasBornIn  1291
+    
+    
+Individual: beatriz
+
+    Annotations: 
+        rdfs:label "Beatriz de Castela"
+    
+    
+Individual: branca1
+
+    Facts:  
+     hasFather  afonso3,
+     hasMother  beatriz
+    
+    
+Individual: caoAfonso1
+
+    Annotations: 
+        rdfs:label "O filho do cachorrinho BauBau do Afonso Henriques"
+    
+    Types: 
+        Animal
+    
+    
+Individual: constanca
+
+    Annotations: 
+        rdfs:label "Constanca de Castela"
+    
+    
+Individual: dinis1
+
+    Annotations: 
+        rdfs:label "Dinis I, o Lavrador"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  afonso3,
+     hasMother  beatriz,
+     diedIn  1325,
+     wasBornIn  1261
+    
+    
+Individual: dulceBarcelona
+
+    Annotations: 
+        rdfs:label "Dulce de Barcelona"
+    
+    
+Individual: fernando1
+
+    Facts:  
+     hasFather  afonso2,
+     hasMother  urraca2
+    
+    
+Individual: fernando2
+
+    Annotations: 
+        rdfs:label "Fernando I, o Belo"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  pedro1,
+     diedIn  1383,
+     wasBornIn  1345
+    
+    
+Individual: henrique0
+
+    Facts:  
+     hasFather  henrique1,
+     hasMother  teresaLeao,
+     diedIn  1110,
+     wasBornIn  1106
+    
+    
+Individual: henrique1
+
+    Annotations: 
+        rdfs:label "Henrique de Borgonha"
+    
+    
+Individual: isabel
+
+    Annotations: 
+        rdfs:label "Isabel de Aragao"
+    
+    
+Individual: joao1
+
+    Annotations: 
+        rdfs:label "Joao I, o Grande"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  pedro1,
+     diedIn  1433,
+     wasBornIn  1356
+    
+    
+Individual: leonor1
+
+    Facts:  
+     hasFather  afonso5,
+     hasMother  beatriz
+    
+    
+Individual: maria1
+
+    Facts:  
+     hasFather  afonso5,
+     hasMother  beatriz
+    
+    
+Individual: maria2
+
+    Facts:  
+     hasFather  pedro1,
+     hasMother  constanca
+    
+    
+Individual: pedro1
+
+    Annotations: 
+        rdfs:label "Pedro I, o Cruel"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  afonso5,
+     hasMother  beatriz,
+     diedIn  1367,
+     wasBornIn  1320
+    
+    
+Individual: sancha1
+
+    Facts:  
+     hasFather  afonso3
+    
+    
+Individual: sancho1
+
+    Annotations: 
+        rdfs:label "Sancho I, o Povoador"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  afonso1,
+     diedIn  1212,
+     wasBornIn  1154
+    
+    
+Individual: sancho2
+
+    Annotations: 
+        rdfs:label "Sancho II"
+    
+    Types: 
+        King
+    
+    Facts:  
+     hasFather  afonso2,
+     diedIn  1248,
+     wasBornIn  1207
+    
+    
+Individual: teresa1
+
+    Annotations: 
+        rdfs:label "Teresa"
+    
+    Facts:  
+     hasFather  sancho1,
+     hasMother  dulceBarcelona
+    
+    
+Individual: teresaLeao
+
+    Annotations: 
+        rdfs:label "Teresa de Leao"
+    
+    
+Individual: urraca1
+
+    Facts:  
+     hasFather  afonso1
+    
+    
+Individual: urraca2
+
+    Annotations: 
+        rdfs:label "Urraca de Castela"
+    
+    
