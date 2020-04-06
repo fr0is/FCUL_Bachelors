@@ -1,46 +1,32 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { GenreFormComponent } from './genre-form/genre-form.component';
+import { RouterModule, Routes } from "@angular/router";
+import { NgModule } from "@angular/core";
+import { AuthorsComponent } from "./authors/authors.component";
+import { AuthorComponent } from "./author/author.component";
+import { GenresComponent } from './genres/genres.component';
 import { GenreDetailComponent } from './genre-detail/genre-detail.component';
-import { GenreListComponent } from './genre-list/genre-list.component';
-import { ErrorComponent } from './error/error.component';
-import { BookListComponent } from './book-list/book-list.component';
-import { BookInstanceListComponent } from './book-instance-list/book-instance-list.component';
-import { BookInstanceFormComponent } from './book-instance-form/book-instance-form.component';
-import { BookInstanceDetailComponent } from './book-instance-detail/book-instance-detail.component';
-import { BookFormComponent } from './book-form/book-form.component';
+import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
-import { AuthorListComponent } from './author-list/author-list.component';
-import { AuthorFormComponent } from './author-form/author-form.component';
-import { AuthorDetailComponent } from './author-detail/author-detail.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { GenreUpdateComponent } from './genre-update/genre-update.component'
-import { AuthorUpdateComponent } from './author-update/author-update.component'
+import { BookinstancesComponent } from './bookinstances/bookinstances.component';
+import { BookinstanceDetailComponent } from './bookinstance-detail/bookinstance-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home-page', pathMatch: 'full' },
-  { path: 'home-page', component: HomePageComponent },
-  { path: 'genre-list', component: GenreListComponent },
-  { path: 'genre-detail/:id', component: GenreDetailComponent },
-  { path: 'genre-form', component: GenreFormComponent },
-  { path: 'genre-update/:id', component: GenreUpdateComponent },
-  { path: 'genre-delete/:id', component: GenreDetailComponent },
-  { path: 'error', component: ErrorComponent },
-  { path: 'book-list', component: BookListComponent },
-  { path: 'book-instance-list', component: BookInstanceListComponent },
-  { path: 'book-instance-form', component: BookInstanceFormComponent },
-  { path: 'book-instance-detail/:id', component: BookInstanceDetailComponent },
-  { path: 'book-form', component: BookFormComponent },
-  { path: 'book-detail/:id', component: BookDetailComponent },
-  { path: 'author-list', component: AuthorListComponent },
-  { path: 'author-form', component: AuthorFormComponent },
-  { path: 'author-delete/:id', component: AuthorDetailComponent },
-  { path: 'author-update/:id', component: AuthorUpdateComponent },
-  { path: 'author/:id', component: AuthorDetailComponent }
+  { path: "authors", component: AuthorsComponent },
+  { path: "author/:id", component: AuthorComponent },
+  { path: "author", component: AuthorComponent },
+  { path: "genres", component: GenresComponent },
+  { path: "genre/:id", component: GenreDetailComponent },
+  { path: "genre", component: GenreDetailComponent },
+  { path: "books", component: BooksComponent },
+  { path: "book/:id", component: BookDetailComponent },
+  { path: "book", component: BookDetailComponent },
+  { path: "bookinstances", component: BookinstancesComponent },
+  { path: "bookinstance/:id", component: BookinstanceDetailComponent },
+  { path: "bookinstance", component: BookinstanceDetailComponent }
 ];
 
 @NgModule({
+  declarations: [],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

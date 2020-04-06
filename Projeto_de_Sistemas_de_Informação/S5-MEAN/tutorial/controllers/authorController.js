@@ -1,53 +1,58 @@
-var Author = require('../models/author');
-var async = require('async');
-var Book = require('../models/book');
+var Author = require('../models/author')
+var async = require('async')
+var Book = require('../models/book')
+
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
 // Display list of all Authors.
-exports.author_list = function(req, res, next) {
+exports.author_count = function (req, res, next) {
+
+    Author.countDocuments()
+        .exec(function (err, count) {
+            if (err) { return next(err); }
+            res.json(count);
+        })
+
+};
+
+// Count all Authors.
+exports.author_list = function (req, res, next) {
 
     Author.find()
-        .populate('author')
-        .sort([
-            ['family_name', 'ascending']
-        ])
-        .exec(function(err, list_authors) {
+        .sort([['family_name', 'ascending']])
+        .exec(function (err, list_authors) {
             if (err) { return next(err); }
-            //Successful, so render
-            res.json({ title: 'Author List', author_list: list_authors });
-        });
+            res.json(list_authors);
+        })
 
 };
 
 // Display detail page for a specific Author.
-exports.author_detail = function(req, res, next) {
+exports.author_detail = function (req, res, next) {
 
-    async.parallel({
-        author: function(callback) {
-            Author.findById(req.params.id)
-                .exec(callback)
-        },
-        authors_books: function(callback) {
-            Book.find({ 'author': req.params.id }, 'title summary')
-                .exec(callback)
-        },
-    }, function(err, results) {
-        if (err) { return next(err); } // Error in API usage.
-        if (results.author == null) { // No results.
-            var err = new Error('Author not found');
-            err.status = 404;
-            return next(err);
-        }
-        // Successful, so render.
-        res.json({ title: 'Author Detail', author: results.author, author_books: results.authors_books });
-    });
+    Author.findById(req.params.id)
+        .exec(function (err, results) {
+            if (err) { return next(err); } // Error in API usage.
+            if (results == null) { // No results.
+                var err = new Error('Author not found');
+                err.status = 404;
+                return next(err);
+            }
+            // Successful, so render.
+            res.json(results);
+        });
 
 };
 
-// Display Author create form on GET.
-exports.author_create_get = function(req, res, next) {
-    res.json({ title: 'Create Author' });
+exports.author_detail_books = function (req, res, next) {
+
+    Book.find({ 'author': req.params.id })
+        .exec(function (err, results) {
+            if (err) { return next(err); } // Error in API usage.
+            res.json(results);
+        });
+
 };
 
 // Handle Author create on POST.
@@ -55,9 +60,9 @@ exports.author_create_post = [
 
     // Validate fields.
     body('first_name').isLength({ min: 1 }).trim().withMessage('First name must be specified.')
-    .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
+        .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
     body('family_name').isLength({ min: 1 }).trim().withMessage('Family name must be specified.')
-    .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
+        .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
     body('date_of_birth', 'Invalid date of birth').optional({ checkFalsy: true }).isISO8601(),
     body('date_of_death', 'Invalid date of death').optional({ checkFalsy: true }).isISO8601(),
 
@@ -73,93 +78,56 @@ exports.author_create_post = [
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
-        if (!errors.isEmpty()) {
-            // There are errors. Render form again with sanitized values/errors messages.
-            res.json({ title: 'Create Author', author: req.body, errors: errors.array() });
-            return;
-        } else {
-            // Data from form is valid.
-
-            // Create an Author object with escaped and trimmed data.
-            var author = new Author({
+        // Create Author object with escaped and trimmed data
+        var author = new Author(
+            {
                 first_name: req.body.first_name,
                 family_name: req.body.family_name,
                 date_of_birth: req.body.date_of_birth,
-                date_of_death: req.body.date_of_death
-            });
-            author.save(function(err) {
+                date_of_death: req.body.date_of_death,
+            }
+        );
+
+        if (!errors.isEmpty()) {
+            res.json({'message': 'Validation errors'});
+        }
+        else {
+            // Save author.
+            author.save(function (err) {
                 if (err) { return next(err); }
-                // Successful - redirect to new author record.
-                res.redirect(author.url);
+                res.json({ 'message': 'success' });
             });
         }
     }
 ];
 
-
-// Display Author delete form on GET.
-exports.author_delete_get = function(req, res, next) {
-
-    async.parallel({
-        author: function(callback) {
-            Author.findById(req.params.id).exec(callback)
-        },
-        authors_books: function(callback) {
-            Book.find({ 'author': req.params.id }).exec(callback)
-        },
-    }, function(err, results) {
-        if (err) { return next(err); }
-        if (results.author == null) { // No results.
-            res.redirect('/catalog/authors');
-        }
-        // Successful, so render.
-        res.json({ title: 'Delete Author', author: results.author, author_books: results.authors_books });
-    });
-
-};
-
 // Handle Author delete on POST.
-exports.author_delete_post = function(req, res, next) {
+exports.author_delete_post = function (req, res, next) {
 
     async.parallel({
-        author: function(callback) {
-            Author.findById(req.body.authorid).exec(callback)
+        author: function (callback) {
+            Author.findById(req.body._id).exec(callback)
         },
-        authors_books: function(callback) {
-            Book.find({ 'author': req.body.authorid }).exec(callback)
+        authors_books: function (callback) {
+            Book.find({ 'author': req.body._id }).exec(callback)
         },
-    }, function(err, results) {
+    }, function (err, results) {
         if (err) { return next(err); }
-        // Success
+        // Success.
         if (results.authors_books.length > 0) {
             // Author has books. Render in same way as for GET route.
-            res.json({ title: 'Delete Author', author: results.author, author_books: results.authors_books });
-            return;
-        } else {
+            res.json({ 'message': 'Author has books. Cannot delete.'})
+        }
+        else {
             // Author has no books. Delete object and redirect to the list of authors.
-            Author.findByIdAndRemove(req.body.authorid, function deleteAuthor(err) {
+            Author.deleteOne({_id: req.body._id}, function deleteAuthor(err) {
                 if (err) { return next(err); }
-                // Success - go to author list
-                res.redirect('/catalog/authors')
+                res.json({ 'message': 'success' });
             })
+
         }
     });
-};
 
-// Display Author update form on GET.
-exports.author_update_get = function(req, res, next) {
-
-    Author.findById(req.params.id, function(err, author) {
-        if (err) { return next(err); }
-        if (author == null) { // No results.
-            var err = new Error('Author not found');
-            err.status = 404;
-            return next(err);
-        }
-        // Success.
-        res.json({ title: 'Update Author', author: author });
-
-    });
 };
 
 // Handle Author update on POST.
@@ -167,9 +135,9 @@ exports.author_update_post = [
 
     // Validate fields.
     body('first_name').isLength({ min: 1 }).trim().withMessage('First name must be specified.')
-    .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
+        .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
     body('family_name').isLength({ min: 1 }).trim().withMessage('Family name must be specified.')
-    .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
+        .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
     body('date_of_birth', 'Invalid date of birth').optional({ checkFalsy: true }).isISO8601(),
     body('date_of_death', 'Invalid date of death').optional({ checkFalsy: true }).isISO8601(),
 
@@ -186,24 +154,24 @@ exports.author_update_post = [
         const errors = validationResult(req);
 
         // Create Author object with escaped and trimmed data (and the old id!)
-        var author = new Author({
-            first_name: req.body.first_name,
-            family_name: req.body.family_name,
-            date_of_birth: req.body.date_of_birth,
-            date_of_death: req.body.date_of_death,
-            _id: req.params.id
-        });
+        var author = new Author(
+            {
+                first_name: req.body.first_name,
+                family_name: req.body.family_name,
+                date_of_birth: req.body.date_of_birth,
+                date_of_death: req.body.date_of_death,
+                _id: req.body._id
+            }
+        );
 
         if (!errors.isEmpty()) {
-            // There are errors. Render the form again with sanitized values and error messages.
-            res.json({ title: 'Update Author', author: author, errors: errors.array() });
-            return;
-        } else {
+            res.json({'message': 'Validation errors'});
+        }
+        else {
             // Data from form is valid. Update the record.
-            Author.findByIdAndUpdate(req.params.id, author, {}, function(err, theauthor) {
+            Author.replaceOne({_id: req.body._id}, author, function (err, theauthor) {
                 if (err) { return next(err); }
-                // Successful - redirect to genre detail page.
-                res.redirect(theauthor.url);
+                res.json({ 'message': 'success' });
             });
         }
     }

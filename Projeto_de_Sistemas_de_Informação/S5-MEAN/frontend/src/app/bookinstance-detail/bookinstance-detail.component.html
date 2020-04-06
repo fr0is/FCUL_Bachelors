@@ -1,0 +1,49 @@
+<div *ngIf="!updateOrCreate">
+  <h2>ID: {{ bookInstance._id }}</h2>
+  <p>
+    <strong>Title:</strong>&nbsp;<a href="/book/{{ book._id }}">{{
+      book.title
+    }}</a>
+  </p>
+  <p><strong>Imprint:</strong> {{ bookInstance.imprint }}</p>
+  <p><strong>Status:</strong> {{ bookInstance.status }}</p>
+
+  <h3>Manage</h3>
+  <button (click)="updateBookInstance()">Update copy</button>
+  <button (click)="deleteBookInstance()">Delete copy</button>
+</div>
+
+<div *ngIf="updateOrCreate">
+  <form
+    [formGroup]="bookInstanceForm"
+    (ngSubmit)="onSubmit(bookInstanceForm.value)"
+  >
+    <div>
+      <label for="book">Book: </label>
+      <select id="book" formControlName="book">
+        <option *ngFor="let b of books" [ngValue]="b._id">{{ b.title }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="imprint">Imprint: </label>
+      <input type="text" id="imprint" formControlName="imprint" />
+    </div>
+    <div>
+      <label for="due_back">Date when book available: </label>
+      <input type="date" id="due_back" formControlName="due_back" />
+    </div>
+    <div>
+      <label>Status:</label>
+      <select id="status" formControlName="status">
+        <option value="Maintenance">Maintenance</option>
+        <option value="Available">Available</option>
+        <option value="Loaned">Loaned</option>
+        <option value="Reserved">Reserved</option>
+      </select>
+    </div>
+
+    <button type="submit">{{ buttonLabel }}</button>
+  </form>
+</div>
+
+<p *ngIf="errorMessage.length !== 0">{{ errorMessage }}</p>

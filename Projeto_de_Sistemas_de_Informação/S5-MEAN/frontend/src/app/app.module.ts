@@ -1,50 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http'
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { GenreListComponent } from './genre-list/genre-list.component';
-import { GenreFormComponent } from './genre-form/genre-form.component';
+import { AuthorsComponent } from './authors/authors.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthorComponent } from './author/author.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GenresComponent } from './genres/genres.component';
 import { GenreDetailComponent } from './genre-detail/genre-detail.component';
-import { ErrorComponent } from './error/error.component';
-import { BookInstanceListComponent } from './book-instance-list/book-instance-list.component';
-import { BookInstanceFormComponent } from './book-instance-form/book-instance-form.component';
-import { BookInstanceDetailComponent } from './book-instance-detail/book-instance-detail.component';
-import { BookListComponent } from './book-list/book-list.component';
-import { BookFormComponent } from './book-form/book-form.component';
+import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
-import { AuthorListComponent } from './author-list/author-list.component';
-import { AuthorDetailComponent } from './author-detail/author-detail.component';
-import { AuthorFormComponent } from './author-form/author-form.component';
-import { GenreUpdateComponent } from './genre-update/genre-update.component';
-import { AuthorUpdateComponent } from './author-update/author-update.component';
+import { BookinstancesComponent } from './bookinstances/bookinstances.component';
+import { BookinstanceDetailComponent } from './bookinstance-detail/bookinstance-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    GenreListComponent,
-    GenreFormComponent,
+    AuthorsComponent,
+    AuthorComponent,
+    GenresComponent,
     GenreDetailComponent,
-    ErrorComponent,
-    BookInstanceListComponent,
-    BookInstanceFormComponent,
-    BookInstanceDetailComponent,
-    BookListComponent,
-    BookFormComponent,
+    BooksComponent,
     BookDetailComponent,
-    AuthorListComponent,
-    AuthorDetailComponent,
-    AuthorFormComponent,
-    GenreUpdateComponent,
-    AuthorUpdateComponent,
+    BookinstancesComponent,
+    BookinstanceDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientJsonpModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

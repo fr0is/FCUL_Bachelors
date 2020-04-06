@@ -1,0 +1,17 @@
+<h2>List of Authors</h2>
+
+<ul>
+  <li *ngFor="let author of authors">
+    <a href="/author/{{ author._id }}"
+      >{{ author.first_name }} {{ author.family_name }}</a
+    > --
+    <span *ngIf="author.date_of_birth"
+      >born: {{ author.date_of_birth | date }}</span
+    >&nbsp;
+    <span *ngIf="author.date_of_death"
+      >died: {{ author.date_of_death | date }}</span
+    >
+  </li>
+</ul>
+
+<a href="/author">Create author</a>

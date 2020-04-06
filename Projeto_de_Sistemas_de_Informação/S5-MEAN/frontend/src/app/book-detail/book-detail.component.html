@@ -1,26 +1,70 @@
-<h2>{{this.book.title}}</h2>
-<p><strong>Author:</strong> {{book.author.first_name}} {{book.author.family_name}}</p>
-<p><strong>Summary:</strong> {{book.summary}}</p>
-<p><strong>ISBN:</strong> {{book.isbn}}</p>
-<p><strong>Genre:</strong></p>
-<ul>
-    <li *ngFor="let genre of book.genre">
-        <a [routerLink]="['/genre-detail',genre._id]">{{genre.name}}</a>
-    </li>
-</ul>
-<hr>
-<h3>Copies</h3>
-<div *ngIf="bookInstances.length === 0; else instances">
-    There are no copies.
+<div *ngIf="!updateOrCreate">
+  <h2>Title: {{ book.title }}</h2>
+  <p>
+    <strong>Author:</strong>&nbsp;<a href="/author/{{ bookAuthor._id }}"
+      >{{ bookAuthor.first_name }} {{ bookAuthor.family_name }}</a
+    >
+  </p>
+  <p><strong>Summary:</strong> {{ book.summary }}</p>
+  <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+  <p>
+    <strong>Genre(s):</strong>&nbsp;<span *ngFor="let genre of bookGenres"
+      ><a href="/genre/⁄{{ genre._id }}">{{ genre.name }}</a
+      >,
+    </span>
+  </p>
+
+  <h3>Copies:</h3>
+  <div class="copies" *ngFor="let copy of copies">
+    <p>{{ copy.status }}</p>
+    <p><strong>Imprint:</strong>&nbsp;{{ copy.imprint }}</p>
+    <p><strong>Due back:</strong>&nbsp;{{ copy.due_back | date }}</p>
+    <p>
+      <strong>ID:</strong>&nbsp;<a href="/bookinstance/{{ copy._id }}">{{
+        copy._id
+      }}</a>
+    </p>
+    <hr />
+  </div>
+
+  <h3>Manage</h3>
+  <button (click)="updateBook()">Update book</button>
+  <button (click)="deleteBook()">Delete book</button>
 </div>
 
-<ng-template #instances>
-    <li *ngFor="let instance of bookInstances">
-        <strong>Id:</strong><a [routerLink]="['/book-instance-detail',instance._id]">{{instance._id}}</a>
-        <p><strong>Status:</strong> {{instance.status}}</p>
-        <p *ngIf="instance.status !== 'Available'"><strong>Due back:</strong> {{instance.due_back | date:"yyyy/MM/dd"}}</p>
-    </li>
-</ng-template>
+<div *ngIf="updateOrCreate">
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
+    <div>
+      <label for="title">Title: </label>
+      <input type="text" id="title" formControlName="title" />
+    </div>
+    <div>
+      <label for="author">Author: </label>
+      <select id="author" formControlName="author">
+        <option *ngFor="let author of authors" [ngValue]="author._id">
+          {{ author.first_name }} {{ author.family_name }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="summary">Summary: </label>
+      <textarea id="summary" formControlName="summary"></textarea>
+    </div>
+    <div>
+      <label for="isbn">ISBN: </label>
+      <input type="text" id="isbn" formControlName="isbn" />
+    </div>
+    <div>
+      <label>Genre(s): </label>
+      <span>
+        <label *ngFor="let g of genresF.controls; let i = index">
+          <input type="checkbox" [formControl]="g" /> {{ genres[i].name }}
+        </label>
+      </span>
+    </div>
 
-<button class="button" [routerLink]="['/book-delete',book._id]" type="button">Delete<br>Book</button>
-<button class="button2" [routerLink]="['/book-update',book._id]" type="button">Update<br>Book</button>
+    <button type="submit">{{ buttonLabel }}</button>
+  </form>
+</div>
+
+<p *ngIf="errorMessage.length !== 0">{{ errorMessage }}</p>

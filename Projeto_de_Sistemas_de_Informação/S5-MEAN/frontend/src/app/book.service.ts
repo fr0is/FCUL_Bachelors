@@ -1,88 +1,43 @@
-import { Injectable, Inject } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
-import { Book } from './book';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Book } from "src/book";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-
 export class BookService {
+  baseUrl = "http://localhost:3000/catalog/";
+  bookUrl = this.baseUrl + "book/";
+  booksUrl = this.baseUrl + "books/";
+  countUrl = this.booksUrl + "count/";
+  deleteUrl = this.bookUrl + "delete/";
+  updateUrl = this.bookUrl + "update/";
+  createUrl = this.bookUrl + "create/";
 
-  private backendUrl = 'http://localhost:3000/catalog/book';  // URL to web api
+  constructor(private http: HttpClient) {}
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(
-    private http: HttpClient) { }
-
-  /** GET authors from the server */
-  getAll(): Observable<Book> {
-    return this.http.get<Book>("http://localhost:3000/catalog/")
-      .pipe(
-        tap(_ => console.log('Get All')),
-        catchError(this.handleError<Book>('getAll', ))
-      );
+  getBookCount() {
+    return this.http.get(this.countUrl);
   }
 
-  /** GET authors from the server */
-  getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.backendUrl+"s")
-      .pipe(
-        tap(_ => console.log('Teste')),
-        catchError(this.handleError<Book[]>('getBooks', []))
-      );
+  getBooks() {
+    return this.http.get(this.booksUrl);
   }
 
-    /** GET authors from the server */
-    getBookDetails(id): Observable<Book> {
-      return this.http.get<Book>(this.backendUrl+"/"+id)
-        .pipe(
-          tap(_ => console.log('Book Details')),
-          catchError(this.handleError<Book>('getBookDetails', ))
-        );
-    }
+  getBook(id: string) {
+    const url = this.bookUrl + id;
+    return this.http.get<Book>(url);
+  }
 
-    createBookStart(){
-      const url = `${this.backendUrl}/create`;
-      return this.http.get<Book>(url)
-      .pipe(
-        tap(_ => console.log('Get Genre and authors')),
-        catchError(this.handleError<Book[]>('Get Genre and authors', []))
-      );
-    }
+  deleteBook(book: Book) {
+    return this.http.post<{ message: string }>(this.deleteUrl, book);
+  }
 
-    bookCreate(book): Observable<Book> {
-      const url = `${this.backendUrl}/create`;
-      return this.http.post<Book>(url,book,this.httpOptions)
-        .pipe(
-          tap(_ => console.log('Book Create')),
-          catchError(this.handleError<Book>('postBookCreate', ))
-        );
-    }
+  updateBook(book: Book) {
+    return this.http.post<{ message: string }>(this.updateUrl, book);
+  }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+  createBook(book: Book) {
+    return this.http.post<{ message: string }>(this.createUrl, book);
   }
 }

@@ -1,0 +1,46 @@
+<div *ngIf="!updateOrCreate">
+  <h2>Author: {{ author.first_name }} {{ author.family_name }}</h2>
+  <div *ngIf="author.date_of_birth">
+    Born: {{ author.date_of_birth | date }}
+  </div>
+  <div *ngIf="author.date_of_death">
+    Dead: {{ author.date_of_death | date }}
+  </div>
+
+  <h3>Books</h3>
+  <dl *ngFor="let book of books">
+    <dt>
+      <a href="/book/{{ book._id }}">{{ book.title }}</a>
+    </dt>
+    <dd>{{ book.summary }}</dd>
+  </dl>
+  <p *ngIf="books.length === 0">This author has no books</p>
+
+  <h3>Manage</h3>
+  <button (click)="updateAuthor()">Update author</button>
+  <button (click)="deleteAuthor()">Delete author</button>
+</div>
+
+<div *ngIf="updateOrCreate">
+  <form [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm.value)">
+    <div>
+      <label for="first_name">First name: </label>
+      <input type="text" id="first_name" formControlName="first_name" />
+    </div>
+    <div>
+      <label for="family_name">Family name: </label>
+      <input type="text" id="family_name" formControlName="family_name" />
+    </div>
+    <div>
+      <label for="date_of_birth">Date of birth: </label>
+      <input type="date" id="date_of_birth" formControlName="date_of_birth" />
+    </div>
+    <div>
+      <label for="date_of_death">Date of death: </label>
+      <input type="date" id="date_of_death" formControlName="date_of_death" />
+    </div>
+    <button type="submit">{{ buttonLabel }}</button>
+  </form>
+</div>
+
+<p *ngIf="errorMessage.length !== 0">{{ errorMessage }}</p>

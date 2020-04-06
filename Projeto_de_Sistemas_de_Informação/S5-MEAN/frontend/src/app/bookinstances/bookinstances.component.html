@@ -1,0 +1,12 @@
+<h2>List of Copies</h2>
+
+<ul>
+  <li *ngFor="let copy of copies">
+    <a href="/bookinstance/{{ copy.bookInstance._id }}"
+      >{{ copy.book.title }} : {{ copy.bookInstance.imprint }}</a
+    >
+    - {{ copy.bookInstance.status }}
+  </li>
+</ul>
+
+<a href="/bookinstance">Create book instance</a>
