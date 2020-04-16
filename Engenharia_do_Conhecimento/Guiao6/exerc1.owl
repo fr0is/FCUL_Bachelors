@@ -1,0 +1,159 @@
+Prefix: exerc1: <http://www.semanticweb.org/anton/ontologies/2020/3/Exerc1#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/anton/ontologies/2020/3/Exerc1>
+
+
+ObjectProperty: exerc1:Protege
+
+    
+ObjectProperty: exerc1:TemOrgão
+
+    
+ObjectProperty: exerc1:ÉComponente
+
+    
+ObjectProperty: exerc1:ÉDaResponsabilidade
+
+    
+ObjectProperty: exerc1:ÉProtegidoPor
+
+    
+Class: exerc1:Animal
+
+    DisjointWith: 
+        exerc1:Planta
+    
+    
+Class: exerc1:Carnívoro
+
+    SubClassOf: 
+        exerc1:Mamífero
+    
+    
+Class: exerc1:Chimpanzé
+
+    SubClassOf: 
+        exerc1:Omnívoro
+    
+    
+Class: exerc1:Crítico
+
+    SubClassOf: 
+        exerc1:Órgão
+    
+    
+Class: exerc1:Doméstico
+
+    SubClassOf: 
+        exerc1:Animal
+    
+    
+Class: exerc1:Dono
+
+    
+Class: exerc1:Esqueleto
+
+    SubClassOf: 
+        exerc1:Órgão
+    
+    
+Class: exerc1:Girafa
+
+    SubClassOf: 
+        exerc1:Herbívoro
+    
+    
+Class: exerc1:Herbívoro
+
+    SubClassOf: 
+        exerc1:Mamífero
+    
+    
+Class: exerc1:Mamífero
+
+    SubClassOf: 
+        exerc1:Animal
+    
+    
+Class: exerc1:Omnívoro
+
+    SubClassOf: 
+        exerc1:Mamífero
+    
+    
+Class: exerc1:Peixe
+
+    SubClassOf: 
+        exerc1:Animal
+    
+    
+Class: exerc1:Planta
+
+    DisjointWith: 
+        exerc1:Animal
+    
+    
+Class: exerc1:Pássaro
+
+    SubClassOf: 
+        exerc1:Animal
+    
+    
+Class: exerc1:Órgão
+
+    
+Individual: exerc1:Coluna_Vertebral
+
+    Types: 
+        exerc1:Esqueleto
+    
+    
+Individual: exerc1:Coração
+
+    Types: 
+        exerc1:Crítico
+    
+    
+Individual: exerc1:Costelas
+
+    Types: 
+        exerc1:Esqueleto
+    
+    
+Individual: exerc1:Crânio
+
+    Types: 
+        exerc1:Esqueleto
+    
+    
+Individual: exerc1:Cérebro
+
+    Types: 
+        exerc1:Crítico
+    
+    
+Individual: exerc1:Olhos
+
+    Types: 
+        exerc1:Órgão
+    
+    
+Individual: exerc1:Pele
+
+    Types: 
+        exerc1:Órgão
+    
+    
+Individual: exerc1:Pulmões
+
+    Types: 
+        exerc1:Crítico
+    
+    
