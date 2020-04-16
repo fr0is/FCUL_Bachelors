@@ -1,0 +1,42 @@
+package facade.exceptions;
+
+
+/**
+ * The top level application exception.
+ * 
+ * In this simple example there is only one exception used to signal different problems.
+ * In a more involving example, there should be sub-classes of this class.
+ *
+ * @author fmartins
+ * @author malopes
+ * @version 1.1 (03/03/2018)
+ */
+public class ApplicationException extends Exception {
+
+    /**
+     * The serial version id (generated automatically by Eclipse)
+     */
+    private static final long serialVersionUID = -3416001628323171383L;
+
+
+    /**
+     * Creates an exception given an error message
+     *
+     * @param message The error message
+     */
+    public ApplicationException(String message) {
+        super(message);
+    }
+
+
+    /**
+     * Creates an exception wrapping a lower level exception.
+     *
+     * @param message The error message
+     * @param e       The wrapped exception.
+     */
+    public ApplicationException(String message, Exception e) {
+        super(message, e);
+    }
+
+}

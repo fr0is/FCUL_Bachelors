@@ -1,0 +1,107 @@
+CSS - Meta 3 do projecto EspaçoGes
+
+
+Para começar:
+
+1. Fazer fork deste repositório
+2. Nas definições do projecto, na lista de membros, adicionar css000 com a categoria Reporter.
+3. Fazer push de commits
+
+Para entregar:
+
+1. Terminar commit
+2. git tag entrega3
+3. git push origin entrega3
+
+
+Some notes about the SaleSys code:
+
+***********************************************************
+	
+		SaleSys @ CSS-LEI-FCUL 
+		 
+	  Domain Model (no persistence)
+		
+***********************************************************
+
+
+***************
+	Overview
+***************
+
+This project illustrates the application of the Domain Model design pattern (see
+https://martinfowler.com/eaaCatalog/domainModel.html). It closely follows what you
+have already learned @ DCO-LEI-FCUL. 
+
+The focus of this project is just on the application of the domain model pattern
+so this version does not support concurrent clients and does not also persist 
+the data across different clients. In fact, all data is stored only in memory
+(see the catalogs). A version with domain model and persistence (implemented via JPA) 
+will be provided later (in domain-model-jpa project).
+
+***************
+	Use Cases
+***************
+
+In this version, we consider there are two use cases: create customer and
+process sale. Create customer use case has a single operation to create new customers.
+Process sale use case starts with the creation of the sale, after which it is possible to
+repeatedly add products to this sale until the sale is closed (ending the use case). 
+At any time after the creation  of the sale, it is possible to get the current discount.
+ 
+ 
+***************
+	Layers
+***************
+
+There are only two layers: the application layer, which contains the services provided 
+by the application and its role (in this version) is just to provide a facade that hides 
+from clients our decision of using the domain model pattern and the business layer,
+which contains the handlers of use cases, the catalogs and the classes representing
+the domain objects. 
+
+For illustration purpose, we provide a very simple client.
+
+
+***************
+	Packages
+***************
+
+The code of this version (in src folder) is organized in 6 packages.  
+
+The package client contains SimpleClient class that performs a simple 
+interaction with the application, in which we add a customer, start a new sale, add two 
+products to the sale, and ask for the sale discount. It is enough to illustrate the two use cases.
+
+In a "real" scenario the application will run inside an application server, but for
+now clients have to start the application and create the services. 
+So the SimpleClient creates a SaleSys object and the services. 
+
+
+The package facade has the code of the application layer and is organised in three packages: 
+services (with the application services), exceptions (with the exceptions thrown 
+by the application layer) and startup (for the startup use case). 
+
+In this simple example there is only one exception class. 
+In a more involving example, there should be sub-classes of this class for signaling different 
+problems. Note that different problems are signaled using this exception. 
+
+
+***************
+	Data
+***************
+
+In this version all data is stored in memory, in maps and lists of objects.
+This is achieved directly inside the different types of catalogs that were considered,
+where attributes for storing the data were defined. The creation of catalog objects
+encompasses the load of the data that is necessary to run the SimpleClient. 
+
+Note that catalogs only include the methods to store and access the data that were found
+relevant in this version. 
+
+***************
+	Concurrency 
+***************
+
+Note that in this version there is no concern at all with concurrency. 
+Issues related to concurrency are handled in forthcoming versions exploiting JPA and JTA. 
