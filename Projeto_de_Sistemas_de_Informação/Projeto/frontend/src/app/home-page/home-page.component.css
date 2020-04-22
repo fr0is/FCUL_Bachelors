@@ -1,0 +1,126 @@
+.hoteis {
+    display: grid;
+    grid-template-columns: 33.333% 33.333% 33.333%;
+    grid-template-rows: 7% auto;
+    background-color: black;
+}
+
+#header {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    text-align: center;
+}
+
+#textoLogo {
+    position: relative;
+    color: white;
+    font-size: 40px;
+}
+
+#logo {
+    position: absolute;
+    left: 0px;
+    margin: 2px;
+}
+
+.texto {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 35px;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+
+.hotel:hover .texto {
+    opacity: 1;
+    background-color: none;
+}
+
+.hotel {
+    transition: 0.5s;
+    color: white;
+    margin: 5px;
+}
+
+.hotel:hover {
+    -webkit-filter: grayscale(0%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    transform: scale(1.01);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    z-index: 10;
+}
+
+#hotel1 {
+    grid-column-start: 1;
+    grid-column-end: span 0;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+#hotel1:hover {
+    -webkit-filter: grayscale(0%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    opacity: 0.85;
+}
+
+#hotel1Img {
+    width: 100%;
+    height: 95%;
+    margin: 0px;
+}
+
+#hotel2 {
+    grid-column-start: 2;
+    grid-column-end: span 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+#hotel2:hover {
+    -webkit-filter: grayscale(0%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    opacity: 0.85;
+}
+
+#hotel2Img {
+    width: 100%;
+    height: 95%;
+}
+
+#hotel3 {
+    grid-column-start: 3;
+    grid-column-end: span 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+
+#hotel3:hover {
+    -webkit-filter: grayscale(0%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    opacity: 0.85;
+}
+
+#hotel3Img {
+    width: 100%;
+    height: 95%;
+}
