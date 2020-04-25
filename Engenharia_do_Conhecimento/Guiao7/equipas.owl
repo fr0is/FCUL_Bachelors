@@ -1,0 +1,121 @@
+Prefix: : <http://jms.ws-examples/clubes/>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://jms.ws-examples/clubes/>
+
+
+ObjectProperty: casadoCom
+
+    Characteristics: 
+        Symmetric
+    
+    Domain: 
+        Person
+    
+    Range: 
+        Person
+    
+    
+ObjectProperty: membroDe
+
+    InverseOf: 
+        temMembro
+    
+    
+ObjectProperty: temMembro
+
+    InverseOf: 
+        membroDe
+    
+    
+Class: EquipaIndividual
+
+    EquivalentTo: 
+        Team
+         and (temMembro exactly 1 owl:Thing)
+    
+    
+Class: EquipaMista
+
+    EquivalentTo: 
+        Team
+         and (temMembro some Feminino)
+         and (temMembro some Masculino)
+    
+    
+Class: EquipaNaoIndividual
+
+    EquivalentTo: 
+        Team
+         and (temMembro min 2 Person)
+    
+    
+Class: Feminino
+
+    SubClassOf: 
+        Person,
+        casadoCom only Masculino
+    
+    
+    
+Class: Masculino
+
+    SubClassOf: 
+        Person,
+        casadoCom only Feminino
+    
+    
+    
+Class: Person
+
+    SubClassOf: 
+        owl:Thing,
+        Feminino or Masculino
+    
+    
+Class: PessoaCasada
+
+    EquivalentTo: 
+        Person
+         and (casadoCom some owl:Thing)
+    
+    
+Class: Team
+
+    
+Class: owl:Thing
+
+    
+Individual: AvenidasFC
+
+    Types: 
+        Team
+    
+    
+Individual: Joao
+
+    Types: 
+        Person
+    
+    Facts:  
+     casadoCom  Mia,
+     membroDe  AvenidasFC
+    
+    
+Individual: Mia
+
+    Types: 
+        Person
+    
+    Facts:  
+     casadoCom  Joao,
+     membroDe  AvenidasFC
+    
+    

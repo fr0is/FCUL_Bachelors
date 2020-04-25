@@ -1,0 +1,238 @@
+Prefix: : <http://www.semanticweb.org/gg/ontologies/2020/3/animais#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/gg/ontologies/2020/3/animais>
+
+
+ObjectProperty: come
+
+    
+ObjectProperty: fazParteDe
+
+    Characteristics: 
+        Functional
+    
+    InverseOf: 
+        temComponente
+    
+    
+ObjectProperty: owl:topObjectProperty
+
+    
+ObjectProperty: protege
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        ComponenteDeOrgao
+    
+    Range: 
+        Orgao
+    
+    
+ObjectProperty: temComponente
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        Orgao
+    
+    Range: 
+        ComponenteDeOrgao
+    
+    InverseOf: 
+        fazParteDe
+    
+    
+ObjectProperty: temDono
+
+    Domain: 
+        AnimalDomestico
+    
+    Range: 
+        Pessoa
+    
+    
+ObjectProperty: temOrgao
+
+    Domain: 
+        Animal
+    
+    Range: 
+        Orgao
+    
+    
+Class: Animal
+
+    DisjointWith: 
+        Planta
+    
+    
+Class: AnimalDomestico
+
+    SubClassOf: 
+        Animal
+    
+    
+Class: Carnivoro
+
+    EquivalentTo: 
+        come only Animal
+    
+    SubClassOf: 
+        Mamifero
+    
+    
+Class: Cerebro
+
+    SubClassOf: 
+        OrgaoCritico
+    
+    
+Class: Chimpanze
+
+    SubClassOf: 
+        Omnivoro
+    
+    
+Class: ColunaVertebral
+
+    SubClassOf: 
+        ComponenteDeOrgao
+    
+    
+Class: ComponenteDeEsqueleto
+
+    SubClassOf: 
+        ComponenteDeOrgao,
+        protege some OrgaoCritico
+    
+    
+Class: ComponenteDeOrgao
+
+    
+Class: Coracao
+
+    SubClassOf: 
+        OrgaoCritico
+    
+    
+Class: Costela
+
+    SubClassOf: 
+        ComponenteDeOrgao
+    
+    
+Class: Cranio
+
+    SubClassOf: 
+        ComponenteDeOrgao
+    
+    
+Class: Esqueleto
+
+    SubClassOf: 
+        Orgao,
+        temComponente some ColunaVertebral,
+        temComponente some Costela,
+        temComponente some Cranio
+    
+    
+Class: Girafa
+
+    SubClassOf: 
+        Herbivoro,
+        come value Alface
+    
+    
+Class: Herbivoro
+
+    EquivalentTo: 
+        come only Planta
+    
+    SubClassOf: 
+        Mamifero
+    
+    
+Class: Mamifero
+
+    SubClassOf: 
+        Animal
+    
+    
+Class: Olho
+
+    SubClassOf: 
+        Orgao
+    
+    
+Class: Omnivoro
+
+    SubClassOf: 
+        Mamifero,
+        come some Animal,
+        come some Planta
+    
+    
+Class: Orgao
+
+    
+Class: OrgaoCritico
+
+    SubClassOf: 
+        Orgao
+    
+    
+Class: Passaro
+
+    SubClassOf: 
+        Animal
+    
+    
+Class: Peixe
+
+    SubClassOf: 
+        Animal
+    
+    
+Class: Pele
+
+    SubClassOf: 
+        Orgao
+    
+    
+Class: Pessoa
+
+    
+Class: Planta
+
+    DisjointWith: 
+        Animal
+    
+    
+Class: Pulmao
+
+    SubClassOf: 
+        OrgaoCritico
+    
+    
+Individual: Alface
+
+    Types: 
+        Planta
+    
+    
+Individual: Joanalta
+
+    Types: 
+        Girafa
+    
+    
