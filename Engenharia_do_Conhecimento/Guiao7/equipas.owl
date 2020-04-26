@@ -64,13 +64,11 @@ Class: Feminino
         casadoCom only Masculino
     
     
-    
 Class: Masculino
 
     SubClassOf: 
         Person,
         casadoCom only Feminino
-    
     
     
 Class: Person
