@@ -1,0 +1,16 @@
+/EncryptedKey.class
+/FileDecrypter.class
+/GroupCatalog.class
+/InvalidLoginException.class
+/Mequie.class
+/MequieClientHandler.class
+/MequieException.class
+/MequieGroup.class
+/MequieServer$ServerThread.class
+/MequieServer.class
+/MequieServerHandler.class
+/MequieUser.class
+/Message.class
+/PhotoMessage.class
+/TextMessage.class
+/UserCatalog.class

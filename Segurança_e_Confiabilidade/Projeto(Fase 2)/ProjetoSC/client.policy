@@ -1,0 +1,22 @@
+// Grupo 40 Seguranca e Confibilidade
+// 51023 - Alexandre Monteiro
+// 51050 - Antonio Frois
+// 15775 - Hugo Diogo
+
+keystore "${user.dir}${/}.client";
+
+grant codeBase "file:${java.home}/lib/ext/*" { 
+	permission java.security.AllPermission; 
+};
+
+grant codeBase "file:${user.dir}${/}-"{
+	permission java.util.PropertyPermission "user.dir", "read";
+	permission java.util.PropertyPermission "javax.net.ssl.trustStore", "write";
+	permission java.util.PropertyPermission "javax.net.ssl.trustStoreType", "write";
+	permission java.io.FilePermission "<<ALL FILES>>", "read";
+	permission java.io.FilePermission "${user.dir}${/}PubKeys${/}-" , "read";
+	permission java.io.FilePermission "${user.dir}${/}clientData" , "read, write";
+	permission java.io.FilePermission "${user.dir}${/}clientData${/}-" , "read, write";
+	permission java.io.FilePermission "${user.dir}${/}clientData${/}tempHistory" , "read, write, delete";
+	permission java.net.SocketPermission "*:1-" , "connect, resolve";
+};
