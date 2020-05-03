@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="domain-model-jpa" transaction-type="RESOURCE_LOCAL">
+		<class>dbutils.LocalDateAttributeConverter</class>
+		<class>dbutils.LocalTimeAttributeConverter</class>	
+		<class>business.Aula</class>
+		<class>business.AulaAtiva</class>
+		<class>business.Inscricao</class>
+		<class>business.InscricaoAvulsa</class>
+		<class>business.InscricaoRegular</class>
+		<class>business.Instalacao</class>
+		<class>business.Modalidade</class>
+		<class>business.Utente</class>
+		<shared-cache-mode>NONE</shared-cache-mode> <!-- para permitir fazer testes de integração usando o DBSetup -->
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://dbserver.alunos.di.fc.ul.pt:3306/css030"/>
+			<property name="javax.persistence.jdbc.user" value="css030"/>
+			<property name="javax.persistence.jdbc.password" value="css030"/>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+		</properties>
+	</persistence-unit>
+</persistence>

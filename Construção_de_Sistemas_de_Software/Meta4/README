@@ -1,0 +1,101 @@
+***********************************************************
+	
+		SaleSys @ CSS-LEI-FCUL 
+		 
+	  Domain Model + Data Mapper with JPA
+		
+***********************************************************
+
+
+***************
+	Overview
+***************
+
+This project illustrates the application of the Domain Model design pattern (see
+https://martinfowler.com/eaaCatalog/domainModel.html) and Data Mapper 
+(see https://martinfowler.com/eaaCatalog/dataMapper.html) via meta-data for JPA. 
+
+Transactions are managed at the Handler level (not at the Catalog level as in another
+version we have seen in the classes).
+
+This version does support concurrent clients.
+Version-based Concurrency Control (a form of optimistic locking) is used.
+ 
+
+***************
+	Use Cases
+***************
+
+In this version, we consider there are two use cases: create customer and
+process sale. Create customer use case has a single operation to create new customers.
+Process sale use case starts with the creation of the sale, after which it is possible to
+repeatedly add products to this sale until the sale is closed (ending the use case). 
+At any time after the creation  of the sale, it is possible to get the current discount.
+ 
+ 
+***************
+	Layers
+***************
+
+There are three layers: the application layer, which contains the services provided 
+by the application and its role (in this version) is just to provide a facade that hides 
+from clients our decision of using the domain model pattern; the business layer,
+which contains the handlers of use cases, the catalogs and the classes representing
+the domain objects; the data access layer, with code from JPA provider and other artifacts
+automatically generated from the provided meta-data. Check the diagram in folder diagrams
+to quickly see the ORM defined by the meta-data.
+
+
+For illustration purpose, we provide a very simple client. Classes that help to create
+the database and load data required are also provided (see below).
+
+
+***************
+	Persistence
+***************
+
+Support for two different sources of data were considered:
+an embedded Derby database (stored in the folder data/derby) and a MySQL database 
+in a different machine (DB server available in dbserver.alunos.di.fc.ul.pt). 
+In META-INF (src/main/resources) you can find the files persistence-derby.xml and
+persistence-mysql.xml with the persistence information for each case. 
+
+
+In order to create a derby/mysql database to run the project, do the following:
+
+1. Run dbutils.CreateDatabase that uses JPA together with annotations to create
+the database. (If something is wrong with the annotations the creation will fail.
+You need to fix the annotations and execute the class again.)
+
+Every time you run this class, the tables from the database will be removed
+and the database will be created again. The removal and creation of tables 
+is based on the current meta-data, so, if there is a change in the meta-data,
+classes can be wrongly deleted (because they were created using annotations
+that are no longer in place). In this cases remove (manually) the database
+and run the dbutils.CreateDatabase again.
+
+Required data for running the system is also load when running this class.
+JPA is given the script in META-INF/load-script.sql for insertion of the data. 
+
+2. In case you just need to reset the tables, run dbutils.ResetTables as in 
+the other projects as you did before. This class runs the script 
+in META-INF/resetTables.sql. 
+
+3. As mentioned before, the project can use MySQL or Derby. 
+There are two persistence files "persistence-derby.xml" and "persistence-mysql.xml"
+in META-INF (src/main/resources). The former is configure to access a derby database;
+the latter for accessing mysql. Just copy the contents of the file you need to  
+access the database to "persistence.xml". 
+
+For creating the database schema for derby for the first time, you have to run 
+the dbutils.CreateDatabase twice, since the first time it creates the database schema
+and from then onwards it creates the tables. This does not happen for MySQL because
+we already created all the databases for you in the server. 
+
+4. You can now run the client.SimpleClient as before
+
+5. If you want to run using the MySql database, besides copying the
+persistence-mysql.xml to persistence.xml, do not forget to connect to FCUL VPN 
+before running dbutils.CreateDatabase or client.SimpleClient.
+
+
