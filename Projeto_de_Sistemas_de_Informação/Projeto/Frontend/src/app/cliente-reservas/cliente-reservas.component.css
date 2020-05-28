@@ -1,0 +1,200 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+@media (min-width:1024px) {
+    /********* Filtro *************/
+    #filtroForm {
+        margin: 2%;
+        display: grid;
+        grid-template-columns: 30% 30% 30% 10%;
+    }
+    .filtroText {
+        margin-bottom: 2%;
+    }
+    #precoFiltro {
+        text-align: center;
+    }
+    #precoFiltro>input {
+        border: 0;
+        bottom: 0;
+        padding: 15px;
+        padding-right: 0;
+        padding-left: 0;
+        width: 75px;
+        border: none;
+        font-size: 20px;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+    }
+    #filtrarButton {
+        margin-left: 2%;
+        grid-column-start: 4;
+    }
+    #filtrarImage {
+        width: 50%;
+    }
+    /**************** Reservas ************/
+    #dropdownTopBar {
+        background-color: #fafafa;
+        display: grid;
+        grid-template-columns: 23% 23% 23% 23% 8%;
+        margin: 2%;
+        margin-bottom: 0;
+        padding: 2%;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .param {
+        text-align: center;
+    }
+    #dropdown {
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: white;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .seta {
+        width: 50%;
+    }
+    .botao {
+        border: none;
+        background-color: transparent;
+        margin: auto;
+        height: 100%;
+        cursor: pointer;
+    }
+    /************Dados Dropdown*********/
+    #dados {
+        padding: 2%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .titulo {
+        text-align: center;
+    }
+    .texto {
+        margin: auto;
+        text-align: center;
+    }
+    /***********Edit/Delete***********/
+    #botoes {
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+    #botoesContainer {
+        grid-column-start: 5;
+        margin: 10px;
+        text-align: right;
+    }
+    .icones {
+        width: 20%;
+        bottom: 0;
+        right: 0;
+        margin: 5%;
+    }
+    .iconesImagem {
+        width: 100%;
+    }
+}
+
+@media (min-width:320px) {
+    /********* Filtro *************/
+    #filtroForm {
+        margin: 2%;
+        display: grid;
+        grid-template-columns: 30% 30% 30% 10%;
+    }
+    .filtroText {
+        margin-bottom: 2%;
+        font-size: 12.5px;
+    }
+    #precoFiltro {
+        text-align: center;
+    }
+    #precoFiltro>input {
+        border: 0;
+        bottom: 0;
+        padding: 5px;
+        padding-right: 0;
+        padding-left: 0;
+        width: 50px;
+        border: none;
+        font-size: 15px;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+    }
+    #filtrarButton {
+        margin-left: 2%;
+        grid-column-start: 4;
+    }
+    #filtrarImage {
+        width: 50%;
+    }
+    /**************** Reservas ************/
+    #dropdownTopBar {
+        background-color: #fafafa;
+        display: grid;
+        grid-template-columns: 23% 23% 23% 23% 8%;
+        margin: 2%;
+        margin-bottom: 0;
+        padding: 2%;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .param {
+        text-align: center;
+        font-size: 12.5px;
+    }
+    #dropdown {
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: white;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .seta {
+        width: 50%;
+    }
+    .botao {
+        border: none;
+        background-color: transparent;
+        margin: auto;
+        height: 100%;
+        cursor: pointer;
+    }
+    /************Dados Dropdown*********/
+    #dados {
+        padding: 2%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    .titulo {
+        text-align: center;
+        font-size: 12.5px;
+    }
+    .texto {
+        margin: auto;
+        text-align: center;
+        font-size: 11px;
+    }
+    /***********Edit/Delete***********/
+    #botoes {
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+    #botoesContainer {
+        grid-column-start: 5;
+        margin: 10px;
+        text-align: right;
+    }
+    .icones {
+        width: 20%;
+        bottom: 0;
+        right: 0;
+        margin: 5%;
+    }
+    .iconesImagem {
+        width: 100%;
+    }
+}

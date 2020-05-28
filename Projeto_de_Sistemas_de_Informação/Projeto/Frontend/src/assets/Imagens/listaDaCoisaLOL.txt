@@ -1,0 +1,9 @@
+['/assets/Imagens/HotelAVerOMar/comida.jpg', '/assets/Imagens/HotelAVerOMar/lounge.jpg', '/assets/Imagens/HotelAVerOMar/massagem.jpg', '/assets/Imagens/HotelAVerOMar/piscina.jpg', '/assets/Imagens/HotelAVerOMar/quarto2.jpg', '/assets/Imagens/HotelAVerOMar/rececao.jpg', '/assets/Imagens/HotelAVerOMar/restaurante.jpg', '/assets/Imagens/HotelAVerOMar/standard.jpg', '/assets/Imagens/HotelAVerOMar/suiteJunior.jpg', '/assets/Imagens/HotelAVerOMar/suiteJuniorSuperior.jpg', '/assets/Imagens/HotelAVerOMar/vistaCimaHotel.jpg', '/assets/Imagens/HotelAVerOMar/vistaPraia.jpg',]
+
+
+
+['/assets/Imagens/HotelDV/lounge.jpg', '/assets/Imagens/HotelDV/piscina.jpg', '/assets/Imagens/HotelDV/rececao.jpg', '/assets/Imagens/HotelDV/restaurante.jpg', '/assets/Imagens/HotelDV/standard.jpg', '/assets/Imagens/HotelDV/suite.jpg', '/assets/Imagens/HotelDV/suiteDeluxe.jpg', '/assets/Imagens/HotelDV/suiteDuplex.jpg', '/assets/Imagens/HotelDV/varanda.jpg', '/assets/Imagens/HotelDV/vinha.jpg', '/assets/Imagens/HotelDV/wc.jpg',]
+
+
+
+['/assets/Imagens/HotelMediterraneo/lounge.jpg', '/assets/Imagens/HotelMediterraneo/piscina.jpg', '/assets/Imagens/HotelMediterraneo/piscinaInterior.jpg', '/assets/Imagens/HotelMediterraneo/quarto.jpg', '/assets/Imagens/HotelMediterraneo/rececao.jpg', '/assets/Imagens/HotelMediterraneo/restaurante.jpg', '/assets/Imagens/HotelMediterraneo/suiteJunior.jpg', '/assets/Imagens/HotelMediterraneo/suiteSenior.jpg', '/assets/Imagens/HotelMediterraneo/vista.jpg', '/assets/Imagens/HotelMediterraneo/vistaCima.jpg',]

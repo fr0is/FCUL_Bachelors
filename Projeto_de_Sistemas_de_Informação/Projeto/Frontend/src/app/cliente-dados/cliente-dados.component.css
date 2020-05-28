@@ -1,0 +1,25 @@
+.container {
+    width: auto;
+    position: relative;
+    margin: 25px;
+}
+
+.container1 {
+    width: auto;
+    position: relative;
+    margin: 25px;
+}
+
+label {
+    width: 100%;
+    margin-right: 2%;
+    font-size: 25px;
+}
+
+#moradas {
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}

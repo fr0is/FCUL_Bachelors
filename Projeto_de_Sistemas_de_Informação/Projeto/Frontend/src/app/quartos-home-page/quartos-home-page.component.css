@@ -1,0 +1,306 @@
+.quartos {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    margin-bottom: 2%;
+}
+
+.listaQuartos {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#imagemContainer {
+    grid-column-start: 1;
+}
+
+#imagem {
+    width: 90%;
+    margin: auto;
+    box-shadow: 20px 20px rgba(0, 0, 0, .15);
+    transition: all .4s ease;
+}
+
+#imagem:hover {
+    border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+    box-shadow: 10px 10px rgba(0, 0, 0, .25);
+}
+
+.esquerda {
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+
+
+/**********************************/
+
+
+/*********************************/
+
+.check-list {
+    margin: 0;
+    margin-top: 5%;
+    margin-left: 5%;
+    z-index: 0;
+    box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.1);
+    width: 91%;
+    padding: 2%;
+}
+
+.check-list li {
+    position: relative;
+    width: auto;
+    list-style-type: none;
+    padding-left: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.check-list li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 5px;
+    height: 11px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: #00a8a8;
+    transform-origin: bottom left;
+    transform: rotate(45deg);
+}
+
+.check-list li:hover {
+    box-shadow: none;
+    color: #00a8a8;
+    transition: 0.3s all ease-in-out;
+}
+
+
+/********************************/
+
+.select-box {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #60666d;
+    box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    padding: 2%;
+}
+
+@media (min-width: 320px) {
+    .listaQuartos {
+        grid-column-start: 2;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto;
+        grid-row-gap: 30px;
+    }
+    #imagemContainer {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 1;
+        grid-row-end: span 1;
+    }
+    #imagem {
+        width: 90%;
+        margin: auto;
+        box-shadow: 20px 20px rgba(0, 0, 0, .15);
+        transition: all .4s ease;
+    }
+    #imagem:hover {
+        border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+        box-shadow: 10px 10px rgba(0, 0, 0, .25);
+    }
+    .esquerda {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 2;
+        grid-row-end: span 1;
+    }
+}
+
+@media (min-width: 425px) {
+    .listaQuartos {
+        grid-column-start: 2;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+    }
+    #imagemContainer {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 1;
+        grid-row-end: span 1;
+    }
+    #imagem {
+        width: 90%;
+        margin: auto;
+        box-shadow: 20px 20px rgba(0, 0, 0, .15);
+        transition: all .4s ease;
+    }
+    #imagem:hover {
+        border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+        box-shadow: 10px 10px rgba(0, 0, 0, .25);
+    }
+    .esquerda {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 2;
+        grid-row-end: span 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .listaQuartos {
+        grid-column-start: 2;
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    #imagemContainer {
+        grid-column-start: 1;
+        grid-column-end: span 1;
+        grid-row-start: 1;
+        align-self: center;
+        justify-self: center;
+    }
+    #imagem {
+        width: 90%;
+        margin: auto;
+        box-shadow: 20px 20px rgba(0, 0, 0, .15);
+        transition: all .4s ease;
+    }
+    #imagem:hover {
+        border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+        box-shadow: 10px 10px rgba(0, 0, 0, .25);
+    }
+    .esquerda {
+        grid-column-start: 2;
+        grid-column-end: span 1;
+        grid-row-start: 1;
+    }
+    .select-box {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .select-box {
+        width: 70%;
+        padding: 5%;
+    }
+    .listaQuartos {
+        grid-column-start: 2;
+        display: grid;
+        grid-template-columns: 5% 45% 45% 5%;
+    }
+    #imagemContainer {
+        grid-column-start: 2;
+        grid-column-end: span 1;
+        grid-row-start: 1;
+        align-self: center;
+        justify-self: center;
+    }
+    #imagem {
+        width: 90%;
+        margin: auto;
+    }
+    .esquerda {
+        grid-column-start: 3;
+        grid-column-end: span 1;
+        grid-row-start: 1;
+        justify-self: center;
+    }
+    .check-list {
+        z-index: 0;
+        box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.1);
+        width: 70%;
+        padding: 14%;
+    }
+}
+
+.select-box__current {
+    position: relative;
+    cursor: pointer;
+    outline: none;
+}
+
+.select-box__current:focus+.select-box__list {
+    opacity: 1;
+    animation-name: none;
+}
+
+.select-box__current:focus+.select-box__list .select-box__option {
+    cursor: pointer;
+}
+
+.select-box__current:focus .select-box__icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.select-box__icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 20px;
+    opacity: 0.3;
+    transition: 0.2s ease;
+}
+
+.select-box__value {
+    display: flex;
+}
+
+.select-box__input {
+    display: none;
+}
+
+.select-box__input:checked+.select-box__input-text {
+    display: block;
+    font-size: 100%;
+}
+
+.select-box__input-text {
+    display: none;
+    width: 100%;
+    background-color: #fff;
+}
+
+.select-box__list {
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    opacity: 0;
+    animation-name: HideList;
+    animation-duration: 0.5s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-start;
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+.select-box__option {
+    display: block;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.select-box__option:hover,
+.select-box__option:focus {
+    color: #546c84;
+    background-color: #fbfbfb;
+}
+
+@keyframes HideList {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(0);
+    }
+}

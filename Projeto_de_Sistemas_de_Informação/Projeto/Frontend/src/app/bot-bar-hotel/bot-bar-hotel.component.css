@@ -1,0 +1,107 @@
+/* Mobile*/
+
+@media (min-width:320px) {
+    .telefone {
+        width: 5%;
+        height: 5%;
+    }
+    .botBar {
+        display: grid;
+        grid-template-rows: auto;
+        background-color: black;
+        bottom: 0;
+        width: 100%;
+    }
+    li {
+        color: white;
+        padding: 0.5%;
+    }
+    #iconTelefone,
+    #iconMail {
+        width: 7%;
+        bottom: -20;
+    }
+    ul {
+        margin-left: 40%;
+        width: 100%;
+        list-style-type: none;
+        font-size: 12.5px;
+    }
+    #contactos {
+        font-size: 125%;
+        padding-bottom: 5%;
+    }
+}
+
+
+/* Mobile L */
+
+@media (min-width:425px) {
+    #contactos {
+        font-size: 125%;
+    }
+}
+
+
+/* Tablet */
+
+@media (min-width:768px) {
+    #iconTelefone,
+    #iconMail {
+        width: 5%;
+    }
+    ul {
+        width: 100%;
+        list-style-type: none;
+        font-size: 90%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+}
+
+
+/* Laptop */
+
+@media (min-width:1024px) {
+    ul {
+        grid-column-start: 4;
+        grid-column-end: span 2;
+        width: 100%;
+        list-style-type: none;
+        font-size: 100%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+}
+
+
+/* Laptop L */
+
+@media (min-width:1440px) {
+    #iconTelefone,
+    #iconMail {
+        width: 4%;
+    }
+    ul {
+        width: 100%;
+        list-style-type: none;
+        font-size: 100%;
+        left: 20%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+}
+
+
+/* 4K */
+
+@media (min-width:2560px) {}

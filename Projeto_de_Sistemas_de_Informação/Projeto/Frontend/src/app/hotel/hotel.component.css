@@ -1,0 +1,12 @@
+    * {
+        cursor: default;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    
+    .hotelPage {
+        display: grid;
+        grid-template-columns: auto;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        position: relative;
+    }

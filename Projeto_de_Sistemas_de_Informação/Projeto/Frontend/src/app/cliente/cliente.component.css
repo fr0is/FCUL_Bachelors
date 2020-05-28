@@ -1,0 +1,23 @@
+@media(min-width:1024px) {
+    .esquemaPagina {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+    }
+    .conteudoPagina {
+        grid-column-start: 2;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        display: grid;
+        grid-template-columns: 25% 75%;
+    }
+}
+
+@media(min-width:320px) {
+    .esquemaPagina {}
+    .conteudoPagina {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        min-height: 500px;
+        padding-bottom: 20%;
+    }
+}

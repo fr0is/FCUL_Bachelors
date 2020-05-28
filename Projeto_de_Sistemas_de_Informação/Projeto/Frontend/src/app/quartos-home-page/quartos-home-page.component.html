@@ -1,0 +1,41 @@
+<div class="quartos">
+    <div class="listaQuartos">
+        <div id="imagemContainer">
+            <ng-container *ngFor="let quarto of quartos">
+                <ng-container *ngIf="quarto.tipo === this.selectedQuarto">
+                    <img id="imagem" src="{{quarto.foto}}">
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="esquerda">
+            <div class="select-box">
+                <div class="select-box__current" tabindex="1">
+                    <div *ngFor="let quarto of quartos, let i=index" class="select-box__value">
+                        <ng-container *ngIf="quarto.tipo==='Standard'; else outro">
+                            <input class="select-box__input" type="radio" id="{{i}}" value="{{i}}" name="Ben" checked="checked" />
+                            <p class="select-box__input-text">{{quarto.tipo}}</p>
+                        </ng-container>
+                        <ng-template #outro>
+                            <input class="select-box__input" type="radio" id="{{i}}" value="{{i}}" name="Ben" />
+                            <p class="select-box__input-text">{{quarto.tipo}}</p>
+                        </ng-template>
+                    </div>
+                    <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" /></div>
+                <ul class="select-box__list">
+                    <li *ngFor="let quarto of quartos, let i=index" value="{{quarto.tipo}}"><label (click)="mudaQuarto(quarto.tipo)" class="select-box__option" for="{{i}}" aria-hidden="aria-hidden">{{quarto.tipo}}</label></li>
+                </ul>
+            </div>
+            <div id="servicosQ" *ngFor="let quarto of quartos">
+                <ng-container *ngIf="quarto.tipo === this.selectedQuarto">
+                    <ul class="servicos check-list">
+                        <ng-container *ngFor="let servico of quarto.servicos,let i=index">
+                            <li *ngIf="servico !== '-'">
+                                {{servico}}
+                            </li>
+                        </ng-container>
+                    </ul>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

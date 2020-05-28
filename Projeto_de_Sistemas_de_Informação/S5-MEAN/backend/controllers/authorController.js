@@ -6,10 +6,10 @@ const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
 // Display list of all Authors.
-exports.author_count = function (req, res, next) {
+exports.author_count = function(req, res, next) {
 
     Author.countDocuments()
-        .exec(function (err, count) {
+        .exec(function(err, count) {
             if (err) { return next(err); }
             res.json(count);
         })
@@ -17,11 +17,13 @@ exports.author_count = function (req, res, next) {
 };
 
 // Count all Authors.
-exports.author_list = function (req, res, next) {
+exports.author_list = function(req, res, next) {
 
     Author.find()
-        .sort([['family_name', 'ascending']])
-        .exec(function (err, list_authors) {
+        .sort([
+            ['family_name', 'ascending']
+        ])
+        .exec(function(err, list_authors) {
             if (err) { return next(err); }
             res.json(list_authors);
         })
@@ -29,10 +31,10 @@ exports.author_list = function (req, res, next) {
 };
 
 // Display detail page for a specific Author.
-exports.author_detail = function (req, res, next) {
+exports.author_detail = function(req, res, next) {
 
     Author.findById(req.params.id)
-        .exec(function (err, results) {
+        .exec(function(err, results) {
             if (err) { return next(err); } // Error in API usage.
             if (results == null) { // No results.
                 var err = new Error('Author not found');
@@ -45,10 +47,10 @@ exports.author_detail = function (req, res, next) {
 
 };
 
-exports.author_detail_books = function (req, res, next) {
+exports.author_detail_books = function(req, res, next) {
 
     Book.find({ 'author': req.params.id })
-        .exec(function (err, results) {
+        .exec(function(err, results) {
             if (err) { return next(err); } // Error in API usage.
             res.json(results);
         });
@@ -60,9 +62,9 @@ exports.author_create_post = [
 
     // Validate fields.
     body('first_name').isLength({ min: 1 }).trim().withMessage('First name must be specified.')
-        .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
+    .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
     body('family_name').isLength({ min: 1 }).trim().withMessage('Family name must be specified.')
-        .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
+    .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
     body('date_of_birth', 'Invalid date of birth').optional({ checkFalsy: true }).isISO8601(),
     body('date_of_death', 'Invalid date of death').optional({ checkFalsy: true }).isISO8601(),
 
@@ -79,21 +81,18 @@ exports.author_create_post = [
         const errors = validationResult(req);
 
         // Create Author object with escaped and trimmed data
-        var author = new Author(
-            {
-                first_name: req.body.first_name,
-                family_name: req.body.family_name,
-                date_of_birth: req.body.date_of_birth,
-                date_of_death: req.body.date_of_death,
-            }
-        );
+        var author = new Author({
+            first_name: req.body.first_name,
+            family_name: req.body.family_name,
+            date_of_birth: req.body.date_of_birth,
+            date_of_death: req.body.date_of_death,
+        });
 
         if (!errors.isEmpty()) {
-            res.json({'message': 'Validation errors'});
-        }
-        else {
+            res.json({ 'message': 'Validation errors' });
+        } else {
             // Save author.
-            author.save(function (err) {
+            author.save(function(err) {
                 if (err) { return next(err); }
                 res.json({ 'message': 'success' });
             });
@@ -102,25 +101,24 @@ exports.author_create_post = [
 ];
 
 // Handle Author delete on POST.
-exports.author_delete_post = function (req, res, next) {
+exports.author_delete_post = function(req, res, next) {
 
     async.parallel({
-        author: function (callback) {
+        author: function(callback) {
             Author.findById(req.body._id).exec(callback)
         },
-        authors_books: function (callback) {
+        authors_books: function(callback) {
             Book.find({ 'author': req.body._id }).exec(callback)
         },
-    }, function (err, results) {
+    }, function(err, results) {
         if (err) { return next(err); }
         // Success.
         if (results.authors_books.length > 0) {
             // Author has books. Render in same way as for GET route.
-            res.json({ 'message': 'Author has books. Cannot delete.'})
-        }
-        else {
+            res.json({ 'message': 'Author has books. Cannot delete.' })
+        } else {
             // Author has no books. Delete object and redirect to the list of authors.
-            Author.deleteOne({_id: req.body._id}, function deleteAuthor(err) {
+            Author.deleteOne({ _id: req.body._id }, function deleteAuthor(err) {
                 if (err) { return next(err); }
                 res.json({ 'message': 'success' });
             })
@@ -135,9 +133,9 @@ exports.author_update_post = [
 
     // Validate fields.
     body('first_name').isLength({ min: 1 }).trim().withMessage('First name must be specified.')
-        .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
+    .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
     body('family_name').isLength({ min: 1 }).trim().withMessage('Family name must be specified.')
-        .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
+    .isAlphanumeric().withMessage('Family name has non-alphanumeric characters.'),
     body('date_of_birth', 'Invalid date of birth').optional({ checkFalsy: true }).isISO8601(),
     body('date_of_death', 'Invalid date of death').optional({ checkFalsy: true }).isISO8601(),
 
@@ -154,22 +152,19 @@ exports.author_update_post = [
         const errors = validationResult(req);
 
         // Create Author object with escaped and trimmed data (and the old id!)
-        var author = new Author(
-            {
-                first_name: req.body.first_name,
-                family_name: req.body.family_name,
-                date_of_birth: req.body.date_of_birth,
-                date_of_death: req.body.date_of_death,
-                _id: req.body._id
-            }
-        );
+        var author = new Author({
+            first_name: req.body.first_name,
+            family_name: req.body.family_name,
+            date_of_birth: req.body.date_of_birth,
+            date_of_death: req.body.date_of_death,
+            _id: req.body._id
+        });
 
         if (!errors.isEmpty()) {
-            res.json({'message': 'Validation errors'});
-        }
-        else {
+            res.json({ 'message': 'Validation errors' });
+        } else {
             // Data from form is valid. Update the record.
-            Author.replaceOne({_id: req.body._id}, author, function (err, theauthor) {
+            Author.replaceOne({ _id: req.body._id }, author, function(err, theauthor) {
                 if (err) { return next(err); }
                 res.json({ 'message': 'success' });
             });

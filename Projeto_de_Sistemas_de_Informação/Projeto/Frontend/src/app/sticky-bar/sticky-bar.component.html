@@ -1,0 +1,5 @@
+<div class="hotelDetails" #stickyMenu [class.sticky]="sticky">
+    <a routerLink="quartos"><strong>Quartos desde {{precoMaisBaixo}}€</strong></a>
+    <a routerLink="quartos"><strong>{{totalQuartos}} Quartos</strong></a>
+    <a routerLink="quartos/{{quarto._id}}" *ngFor="let quarto of quartos" (onCreate)="countQuarto(quarto)"><strong>{{quarto.nrQuartos}} {{quarto.tipo}}</strong></a>
+</div>

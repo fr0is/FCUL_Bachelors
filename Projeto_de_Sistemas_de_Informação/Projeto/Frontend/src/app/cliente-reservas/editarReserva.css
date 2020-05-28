@@ -1,0 +1,446 @@
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Firefox < 16 */
+
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Safari, Chrome and Opera > 12.1 */
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Internet Explorer */
+
+@-ms-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Opera < 12.1 */
+
+@-o-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    #editarReserva {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        align-content: center;
+        text-align: center;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-animation: fadein 1s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1s;
+        /* Firefox < 16 */
+        -ms-animation: fadein 1s;
+        /* Internet Explorer */
+        -o-animation: fadein 1s;
+        /* Opera < 12.1 */
+        animation: fadein 1s;
+    }
+    .tituloParametro {
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 1%;
+        margin: 2.5%;
+        font-size: 15px;
+    }
+    .draw-border {
+        box-shadow: inset 0 0 0 2px black;
+        color: black;
+        transition: color 0.25s 0.0833333333s;
+        position: relative;
+    }
+    .draw-border::before,
+    .draw-border::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+    }
+    .draw-border::after {
+        border-bottom-width: 2px;
+        border-left-width: 2px;
+    }
+    .draw-border::before {
+        border-top-width: 2px;
+        border-right-width: 2px;
+    }
+    .draw-border:hover {
+        color: green;
+    }
+    .draw-border:hover::before,
+    .draw-border:hover::after {
+        border-color: green;
+        transition: border-color 0s, width 0.25s, height 0.25s;
+        width: 100%;
+        height: 100%;
+    }
+    .draw-border:hover::before {
+        transition-delay: 0s, 0s, 0.25s;
+    }
+    .draw-border:hover::after {
+        transition-delay: 0s, 0.25s, 0s;
+    }
+    .btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1.5;
+        font: 300 0.6rem 'Roboto Slab', sans-serif;
+        padding: 0.25em 0.5em;
+        letter-spacing: 0.05rem;
+        margin-top: 2%;
+    }
+    /****Alertas****/
+    /* The alert message box */
+    .alert {
+        padding: 20px;
+        background-color: red;
+        /* Red */
+        color: white;
+        margin-bottom: 15px;
+        opacity: 1;
+        transition: opacity 0.6s;
+        text-decoration: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100000;
+        text-align: center;
+        -webkit-animation: fadein 1s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1s;
+        /* Firefox < 16 */
+        -ms-animation: fadein 1s;
+        /* Internet Explorer */
+        -o-animation: fadein 1s;
+        /* Opera < 12.1 */
+        animation: fadein 1s;
+    }
+    .alertSucesso {
+        padding: 20px;
+        background-color: green;
+        /* Red */
+        color: white;
+        margin-bottom: 15px;
+        opacity: 1;
+        transition: opacity 0.6s;
+        text-decoration: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100000;
+        text-align: center;
+        -webkit-animation: fadein 1s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1s;
+        /* Firefox < 16 */
+        -ms-animation: fadein 1s;
+        /* Internet Explorer */
+        -o-animation: fadein 1s;
+        /* Opera < 12.1 */
+        animation: fadein 1s;
+    }
+    /* The close button */
+    .closebtn {
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        margin-right: 7%;
+    }
+    /* When moving the mouse over the close button */
+    .closebtn:hover {
+        color: black;
+        text-decoration: none;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    #editarReserva {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        align-content: center;
+        text-align: center;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-animation: fadein 1s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1s;
+        /* Firefox < 16 */
+        -ms-animation: fadein 1s;
+        /* Internet Explorer */
+        -o-animation: fadein 1s;
+        /* Opera < 12.1 */
+        animation: fadein 1s;
+    }
+    .tituloParametro {
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 1%;
+        margin: 2.5%;
+        font-size: 15px;
+    }
+    .draw-border {
+        box-shadow: inset 0 0 0 2px black;
+        color: black;
+        transition: color 0.25s 0.0833333333s;
+        position: relative;
+    }
+    .draw-border::before,
+    .draw-border::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+    }
+    .draw-border::after {
+        border-bottom-width: 2px;
+        border-left-width: 2px;
+    }
+    .draw-border::before {
+        border-top-width: 2px;
+        border-right-width: 2px;
+    }
+    .draw-border:hover {
+        color: green;
+    }
+    .draw-border:hover::before,
+    .draw-border:hover::after {
+        border-color: green;
+        transition: border-color 0s, width 0.25s, height 0.25s;
+        width: 100%;
+        height: 100%;
+    }
+    .draw-border:hover::before {
+        transition-delay: 0s, 0s, 0.25s;
+    }
+    .draw-border:hover::after {
+        transition-delay: 0s, 0.25s, 0s;
+    }
+    .btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1.5;
+        font: 300 0.6rem 'Roboto Slab', sans-serif;
+        padding: 0.25em 0.5em;
+        letter-spacing: 0.05rem;
+        margin-top: 2%;
+    }
+    /****Alertas****/
+    /* The alert message box */
+    .alert {
+        padding: 20px;
+        background-color: red;
+        /* Red */
+        color: white;
+        margin-bottom: 15px;
+        opacity: 1;
+        transition: opacity 0.6s;
+        text-decoration: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100000;
+        text-align: center;
+        -webkit-animation: fadein 1s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1s;
+        /* Firefox < 16 */
+        -ms-animation: fadein 1s;
+        /* Internet Explorer */
+        -o-animation: fadein 1s;
+        /* Opera < 12.1 */
+        animation: fadein 1s;
+    }
+    .alertSucesso {
+        padding: 20px;
+        background-color: green;
+        /* Red */
+        color: white;
+        margin-bottom: 15px;
+        opacity: 1;
+        transition: opacity 0.6s;
+        text-decoration: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100000;
+        text-align: center;
+        -webkit-animation: fadein 1s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1s;
+        /* Firefox < 16 */
+        -ms-animation: fadein 1s;
+        /* Internet Explorer */
+        -o-animation: fadein 1s;
+        /* Opera < 12.1 */
+        animation: fadein 1s;
+    }
+    /* The close button */
+    .closebtn {
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        margin-right: 7%;
+    }
+    /* When moving the mouse over the close button */
+    .closebtn:hover {
+        color: black;
+        text-decoration: none;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    /*****************CREATE CARD*******************/
+    #editarReserva {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        align-content: center;
+        text-align: center;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        -webkit-animation: fadein 1s;
+        /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 1s;
+        /* Firefox < 16 */
+        -ms-animation: fadein 1s;
+        /* Internet Explorer */
+        -o-animation: fadein 1s;
+        /* Opera < 12.1 */
+        animation: fadein 1s;
+    }
+    .tituloParametro {
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 2%;
+        margin: 5%;
+    }
+    .draw-border {
+        box-shadow: inset 0 0 0 4px black;
+        color: black;
+        transition: color 0.25s 0.0833333333s;
+        position: relative;
+    }
+    .draw-border::before,
+    .draw-border::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+    }
+    .draw-border::after {
+        border-bottom-width: 4px;
+        border-left-width: 4px;
+    }
+    .draw-border::before {
+        border-top-width: 4px;
+        border-right-width: 4px;
+    }
+    .draw-border:hover {
+        color: green;
+    }
+    .draw-border:hover::before,
+    .draw-border:hover::after {
+        border-color: green;
+        transition: border-color 0s, width 0.25s, height 0.25s;
+        width: 100%;
+        height: 100%;
+    }
+    .draw-border:hover::before {
+        transition-delay: 0s, 0s, 0.25s;
+    }
+    .draw-border:hover::after {
+        transition-delay: 0s, 0.25s, 0s;
+    }
+    .btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1.5;
+        font: 500 1.2rem 'Roboto Slab', sans-serif;
+        padding: 0.5em 1em;
+        letter-spacing: 0.05rem;
+        margin-top: 2%;
+    }
+}

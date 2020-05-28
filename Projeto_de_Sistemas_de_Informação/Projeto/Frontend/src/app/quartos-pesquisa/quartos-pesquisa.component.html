@@ -1,0 +1,85 @@
+<div *ngIf="!datasValidas" class="alert">
+    <a class="closebtn" (click)="changeStateDateErro()" onclick="this.parentElement.style.display='none';">&times;</a>Data de check-in não pode ser depois ou no mesmo dia da data de check-out!
+</div>
+<div *ngIf="!datasValidasToday" class="alert">
+    <a class="closebtn" (click)="changeStateDateErroToday()" onclick="this.parentElement.style.display='none';">&times;</a>Data de check-in ou de check-out não pode ser anterior ou igual à data atual!
+</div>
+<div *ngIf="dataCheckInFalta" class="alert">
+    <a class="closebtn" (click)="changeStateDateErroCI()" onclick="this.parentElement.style.display='none';">&times;</a>Insira uma data de check-in!
+</div>
+<div *ngIf="dataCheckOutFalta" class="alert">
+    <a class="closebtn" (click)="changeStateDateErroCO()" onclick="this.parentElement.style.display='none';">&times;</a>Insira uma data de check-out!
+</div>
+<div class="quartos container">
+    <div id="procuraQ">
+        <div id="barraProcura">
+            <div id="procura" class="nav">
+                <a id="filtro">
+                    <div class="custom-slider">
+                        <h3>Preço:</h3>
+                        <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                    </div>
+                    <div id="Epoca">
+                        <h3>Época:</h3>
+                        <div class="middle">
+                            <label>
+                            <span class="infoA">1/06-29/09<br>-<br>16/12-14/01</span>
+                            <input type="radio" name="radio" checked/>
+                            <div (click)="EpAlta()" class="front-end box">
+                              <span>Alta</span>
+                            </div>
+                          </label>
+                            <label>
+                            <span class="infoB">15/01-31/05<br>-<br>30/09-15/12</span>
+                            <input type="radio" name="radio"/>
+                            <div (click)="EpBaixa()" class="back-end box">
+                              <span>Baixa</span>
+                            </div>
+                          </label>
+                        </div>
+                    </div>
+                    <div id="reservarQuarto">
+                        <form id="reservaQuartoForm" ngNativeValidate [formGroup]="reservaForm" (ngSubmit)="reservar(reservaForm.value)">
+                            <div id="dataCheckIn">
+                                <h3>Check-in:</h3>
+                                <input type="date" (change)="mudaCheckIn($event.target.value)" formControlName="checkInReserva" required>
+                            </div>
+                            <div id="dataCheckOut">
+                                <h3>Check-out:</h3>
+                                <input type="date" (change)="mudaCheckOut($event.target.value)" formControlName="checkOutReserva" required>
+                            </div>
+                            <div *ngIf="showPreco">
+                                <br>
+                                <ul>
+                                    <li id="precos" *ngFor="let quarto of quartos;let i = index">
+                                        Preço {{quarto.tipo}}: {{precoFinal[i]}}€
+                                        <button type="submit" class="btn draw-border submit" (click)="setQuarto(quarto)">Reservar</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                </a>
+                <a id="servicos">
+                    <div id="servicosT" routerLink="servicos"><strong>Serviços</strong></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <ol id="quartosVisao">
+        <ng-container *ngFor="let quarto of quartos; let i = index">
+            <li (click)="setQuarto(quarto)" class="quarto" *ngIf="((epoca === 0 && quarto.precoAlta>=minValue && quarto.precoAlta <= maxValue) 
+                        || (epoca === 1 && quarto.precoBaixa >=minValue && quarto.precoBaixa <= maxValue)) && quartosDisponiveis[i] > 0" routerLink="{{quarto._id}}">
+                <div id="nomeQ"><strong>{{quarto.tipo}}</strong></div>
+                <div id="img">
+                    <img class="imagemQuarto" src="{{quarto.foto}}">
+                </div>
+                <div id="preco">
+                    Preço:
+                    <div id="precoEpAlta" style="display: inline " *ngIf="epoca===0 ; else epocaBaixa ">{{quarto.precoAlta}}</div>
+                    <ng-template id="precoEpBaixa" #epocaBaixa>{{quarto.precoBaixa}}</ng-template>€
+                </div>
+            </li>
+        </ng-container>
+    </ol>
+</div>

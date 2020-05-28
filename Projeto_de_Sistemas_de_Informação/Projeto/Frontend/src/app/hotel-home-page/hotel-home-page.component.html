@@ -1,0 +1,87 @@
+<app-sticky-bar></app-sticky-bar>
+<div id="descTitulo" class="container">
+    <div class="descricao">
+        <p class="desc paragrafo">{{hotel.descricao[0]}}</p>
+        <img id="imgDesc" src="{{hotel.fotos[3]}}">
+    </div>
+    <div class="descricao1">
+        <img id="imgDesc1" src="{{hotel.fotos[4]}}">
+        <p class="desc1 paragrafo">{{hotel.descricao[1]}}</div>
+    <div class="descricao2">
+        <p class="desc paragrafo">{{hotel.descricao[2]}}</p>
+        <img id="imgDesc" src="{{hotel.fotos[2]}}">
+    </div>
+    <div class="descricao1" id="descricaoFinal">
+        <img id="imgDesc1" src="{{hotel.fotos[8]}}">
+        <p class="desc1 paragrafo">{{hotel.descricao[3]}}</p>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="nav"><strong>Serviços</strong></div>
+    <div id="servicos">
+        <div id="servicosLista" class="list">
+            <div class="num" *ngFor="let servico of hotel.servicos">
+                <div class="numD"> {{servico}} </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="nav"><strong>Quartos</strong></div>
+    <app-quartos-home-page></app-quartos-home-page>
+</div>
+
+<div id="localTitulo" class="container">
+    <div class="nav">
+        <strong>Localização</strong>
+    </div>
+    <div id="localizacao">
+        <div *ngIf="this.hotel.nome === 'Douro Vinhas';else hotel2" id="mapa">
+            <ng-container *ngIf="this.innerWidth > 920">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12016.598668865734!2d-7.6444033!3d41.153085399999995!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3b783ee5b06b15bc!2sVila%20Gal%C3%A9%20Douro%20Vineyards!5e0!3m2!1spt-PT!2spt!4v1587745957650!5m2!1spt-PT!2spt"
+                    width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </ng-container>
+            <ng-container *ngIf="this.innerWidth < 920">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.1260313899156!2d-7.6466896845814505!3d41.15360117928631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd3b51656fe83181%3A0x3b783ee5b06b15bc!2sVila%20Gal%C3%A9%20Douro%20Vineyards!5e0!3m2!1spt-PT!2spt!4v1589914623286!5m2!1spt-PT!2spt"
+                    width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </ng-container>
+        </div>
+        <ng-template #hotel2>
+            <div *ngIf="this.hotel.nome === 'A Ver o Mar';else hotel3" id="mapa">
+                <ng-container *ngIf="this.innerWidth > 920">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.4183952426065!2d-9.419871384647786!3d38.96011337956108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19349d85d7dab3%3A0x741b57ee2ecfbf9f!2sHotel%20Vila%20Gal%C3%A9%20Ericeira!5e0!3m2!1spt-PT!2spt!4v1590700091372!5m2!1spt-PT!2spt"
+                        width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </ng-container>
+                <ng-container *ngIf="this.innerWidth < 920">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.4183952426065!2d-9.419871384647786!3d38.96011337956108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19349d85d7dab3%3A0x741b57ee2ecfbf9f!2sHotel%20Vila%20Gal%C3%A9%20Ericeira!5e0!3m2!1spt-PT!2spt!4v1590700091372!5m2!1spt-PT!2spt"
+                        width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </ng-container>
+            </div>
+        </ng-template>
+        <ng-template #hotel3>
+            <div id="mapa">
+                <ng-container *ngIf="this.innerWidth > 920">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3182.8721844532597!2d-8.31626368470208!3d37.08435097989102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1934751b1c6fdd%3A0x301e26bf1c67fb3!2sHotel%20Vila%20Gal%C3%A9%20Atl%C3%A2ntico!5e0!3m2!1spt-PT!2spt!4v1590700207124!5m2!1spt-PT!2spt"
+                        width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </ng-container>
+                <ng-container *ngIf="this.innerWidth < 920">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3182.8721844532597!2d-8.31626368470208!3d37.08435097989102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1934751b1c6fdd%3A0x301e26bf1c67fb3!2sHotel%20Vila%20Gal%C3%A9%20Atl%C3%A2ntico!5e0!3m2!1spt-PT!2spt!4v1590700207124!5m2!1spt-PT!2spt"
+                        width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </ng-container>
+            </div>
+        </ng-template>
+        <div id="detalhesLocal">
+            <div id="moradaContainer">
+                <img id="moradaImg" src="assets/Imagens/Icones/morada.png">
+                <p id="morada"> {{hotel.local}} <br> {{hotel.zona}} <br> {{hotel.codigoPostal}} <br> {{hotel.pais}} </p>
+            </div>
+            <div id="coordsContainer">
+                <img id="coordsImg" src="assets/Imagens/Icones/gps.png">
+                <p id="coords"> {{hotel.latitude}} <br> {{hotel.longitude}} </p>
+            </div>
+        </div>
+    </div>
+</div>

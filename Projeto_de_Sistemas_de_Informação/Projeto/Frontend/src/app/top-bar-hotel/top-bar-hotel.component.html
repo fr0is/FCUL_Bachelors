@@ -1,0 +1,17 @@
+<div class="topo">
+    <div class="logo">
+        <img routerLink="/" id="logoImg" src="{{hotel.fotoPath}}logo.png">
+    </div>
+    <div class="nomeHotel" routerLink="../{{hotel.nome}}">
+        {{hotel.nome}}
+    </div>
+    <div class="topNav">
+        <a routerLink="./quartos" class="topNavA">Quartos</a>
+        <a routerLink="./galeria" class="topNavA">Fotos</a>
+        <a class="topNavA1">|</a>
+        <a *ngIf="cliente === null;else dadosCliente" href="hoteisPSI/login-registo" class="topNavA">Login</a>
+        <ng-template #dadosCliente>
+            <a class=" topNavA " routerLink="./cliente">Perfil</a>
+        </ng-template>
+    </div>
+</div>

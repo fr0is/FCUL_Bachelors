@@ -1,0 +1,137 @@
+<div class="apagarCartao" id="apagarCartao">
+    <div *ngIf="apagar" class="alert">
+        <a class="closebtn" onclick="this.parentElement.style.display='none';" href={{this.link}} (click)="apagarCartaoFechar()">&times;</a> Cartão apagado com sucesso!
+    </div>
+</div>
+
+<div class="apagarCartao" id="apagarCartao">
+    <div *ngIf="apagarM" class="alert">
+        <a class="closebtn" onclick="this.parentElement.style.display='none';" href={{this.link}} (click)="apagarMoradaFechar()">&times;</a> Morada apagada com sucesso!
+    </div>
+</div>
+
+<app-cliente-dados-update></app-cliente-dados-update>
+<div class="container1">
+    <label id="morada"><strong>Morada</strong></label>
+    <div id="moradas">
+        <div id="morada" *ngFor="let morada of moradas">
+            <div class='myButt one' id="moradaContainer">
+                <div class="insider"></div>
+                <p><strong>Rua:</strong> {{morada.rua}}</p>
+                <p><strong>Código Postal:</strong> {{morada.codigoPostal}}</p>
+                <p><strong>Cidade:</strong> {{morada.cidade}}</p>
+                <p><strong>País:</strong> {{morada.pais}}</p>
+                <a id="deleteM"><img id="deleteMorada" (click)="apagarMorada(morada)" src="assets/Imagens/Icones/delete.png"></a>
+            </div>
+        </div>
+        <a id="criar" (click)="criarMorada()" href="hoteisPSI/{{this.hotel.nome}}/cliente#criarMorada"><img id="botaoAdicionar" src="assets/Imagens/Icones/addButton.png"></a>
+    </div>
+</div>
+<div class="container">
+    <label id="cartoes"><strong>Cartões</strong></label>
+    <div>
+        <div id="listaCartoes">
+            <div id="cartoes" *ngFor="let cartao of this.cartoes">
+                <div class="card">
+                    <div class="card__front card__part">
+                        <img class="card__front-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+                        <p class="card_numer">{{cartao.numero[0]}}{{cartao.numero[1]}}{{cartao.numero[2]}}{{cartao.numero[3]}} {{cartao.numero[4]}}{{cartao.numero[5]}}{{cartao.numero[6]}}{{cartao.numero[7]}} {{cartao.numero[8]}}{{cartao.numero[9]}}{{cartao.numero[10]}}{{cartao.numero[11]}}
+                            {{cartao.numero[12]}}{{cartao.numero[13]}}{{cartao.numero[14]}}{{cartao.numero[15]}}
+                        </p>
+                        <div class="card__space-75">
+                            <span class="card__label">Card holder</span>
+                            <p class="card__info">{{cartao.nome}}</p>
+                        </div>
+                        <div class="card__space-25">
+                            <span class="card__label">VALIDO ATÉ</span>
+                            <p class="card__info">{{cartao.prazoMes}}/{{cartao.prazoAno}}</p>
+                        </div>
+                    </div>
+                    <div class="card__back card__part">
+                        <div class="card__black-line"></div>
+                        <div class="card__back-content">
+                            <div class="card__secret">
+                                <p class="card__secret--last">{{cartao.cvv}}</p>
+                            </div>
+                            <img class="card__back-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+                        </div>
+                    </div>
+                </div>
+                <a id="delete"><img id="deleteCard" (click)="apagarCartao(cartao)" src="assets/Imagens/Icones/delete.png"></a>
+            </div>
+            <a id="criar" (click)="criarCartao()" href="hoteisPSI/{{this.hotel.nome}}/cliente#criarCartao"><img id="botaoAdicionar" src="assets/Imagens/Icones/addButton.png">
+            </a>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="criar" class="criarCartao" id="criarCartao">
+    <div id="criarCartaoContainer">
+        <form ngNativeValidate [formGroup]="createCartao" (ngSubmit)="create(createCartao.value)">
+            <div id="frontCard">
+                <img class="cartaoIcone" src="https://image.ibb.co/cZeFjx/little_square.png">
+                <div id="nrCartaoContainer">
+                    <input class="nrCartao" placeholder="4330" type="text" pattern="[0-9]{4}" formControlName="numeroCartao1" required/>
+                    <input class="nrCartao" placeholder="2320" type="text" pattern="[0-9]{4}" formControlName="numeroCartao2" required/>
+                    <input class="nrCartao" placeholder="0782" type="text" pattern="[0-9]{4}" formControlName="numeroCartao3" required/>
+                    <input class="nrCartao" placeholder="1532" type="text" pattern="[0-9]{4}" formControlName="numeroCartao4" required/>
+                </div>
+                <div id="bottomCardFront">
+                    <div id="holder">
+                        <span class="card__label">Card holder</span>
+                        <input id="cardHolder" placeholder="Rui Barbo" type="text" pattern="[a-zA-Z./]{1,.}" formControlName="nomeCartao" required/>
+                    </div>
+                    <div id="dataValidade">
+                        <div>
+                            <span class="card__label">VALIDO ATÉ</span>
+                        </div>
+                        <input id="mesCartao" placeholder="MM" type="text" pattern="[0]{1}[0-9]{1}|11|12" formControlName="dataCartaoMes" required/><span id="anoCartao">/</span>
+                        <input id="anoCartao" placeholder="YY" type="text" pattern="[1-9]{2}" formControlName="dataCartaoAno" required/>
+                    </div>
+                </div>
+            </div>
+            <div id="backCard">
+                <div id="espacoSuperior"></div>
+                <div class="card__black-line"></div>
+                <div id="backCardAssinatura">
+                    <div class="card__secret"></div>
+                    <input id="cvv" type="text" placeholder="345" pattern="[0-9]{3}" formControlName="cvvCartao" required/>
+                </div>
+                <img class="backSquare" src="https://image.ibb.co/cZeFjx/little_square.png">
+            </div>
+            <div id="botoes">
+                <button id="criarButton" type="submit" class="submit"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
+                <button id="cancelarButton" type="submit" (click)="criarCartao();" class="submit"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="criarM" class="criarMorada" id="criarMorada">
+    <div id="criarMoradaContainer">
+        <form ngNativeValidate [formGroup]="createMorada" (ngSubmit)="createM(createMorada.value)">
+            <div id="form">
+                <div id="input">
+                    <strong>Rua:</strong>
+                    <input type="text" placeholder="Rua das Flores" formControlName="rua" required/>
+                </div>
+                <div id="input">
+                    <strong>Código Postal:</strong>
+                    <input type="text" placeholder="2420-650" pattern="[0-9]{4}-[0-9]{3}" formControlName="codigoPostal" required/>
+                </div>
+                <div id="input">
+                    <strong>Cidade:</strong>
+                    <input type="text" placeholder="Porto" formControlName="cidade" required/>
+                </div>
+                <div id="input">
+                    <strong>País:</strong>
+                    <input type="text" placeholder="Portugal" formControlName="pais" required/>
+                </div>
+            </div>
+            <div id="botoesM">
+                <button id="criarButton" type="submit" class="submit"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
+                <button id="cancelarButton" type="submit" (click)="criarMorada();" class="submit"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
+            </div>
+        </form>
+    </div>
+</div>

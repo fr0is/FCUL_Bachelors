@@ -1,0 +1,143 @@
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+
+/***********INFORMACAO REGISTO*************/
+
+.data {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+#iconePerfil {
+    width: 50%;
+    margin: auto;
+}
+
+label {
+    width: 100%;
+    margin-right: 2%;
+    font-size: 25px;
+}
+
+ :focus {
+    outline: none;
+}
+
+.container {
+    width: auto;
+    position: relative;
+    margin: 25px;
+}
+
+#indicativo {
+    width: 75%;
+    position: relative;
+}
+
+input {
+    width: 100%;
+    font-size: 20px;
+    border: 0;
+    bottom: 0;
+    padding: 15px;
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+input~.border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: green;
+}
+
+input:focus~.border {
+    width: 100%;
+    transition: 0.5s;
+}
+
+input:invalid {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+}
+
+input:invalid~.border {
+    background-color: red;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+}
+
+
+/*********Informacao Adicional*************/
+
+#informacaoAdicional {
+    grid-template-columns: 50% 50%;
+}
+
+@media (min-width: 1024px) {
+    #informacaoAdicional {
+        display: grid;
+        grid-template-columns: 50% 50%; 
+    }
+}
+
+
+
+/***********Telefone*************/
+
+#indicativoL {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+}
+
+#telefone {
+    display: grid;
+    grid-template-columns: 150px auto;
+}
+
+#passImg {
+    width: 10%;
+}
+
+
+/***********BOTAO UPDATE****************/
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.submit {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background: #fafafa;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,90 @@
+<div id="pagina">
+    <div *ngIf="this.screenWidth>=1024,else movel">
+        <div class="topBar">
+            <p id="titulo"><strong routerLink="../../hoteisPSI">Hotéis PSI</strong></p>
+        </div>
+        <div class="espacamentoSuperior">
+            <div class="cont">
+                <div class="form sign-in">
+                    <h2>Bem vindo de volta,</h2>
+                    <form ngNativeValidate [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+                        <label>
+                        <span>Email</span>
+                        <input type="email" formControlName="emailLogin" required/>
+                    </label>
+                        <label>
+                        <span>Password</span>
+                        <input type="password" formControlName="passwordLogin" required/>
+                    </label>
+                        <button type="submit" class="submit">Login</button>
+                    </form>
+                </div>
+                <div class="sub-cont">
+                    <div class="img">
+                        <div class="img__text m--up">
+                            <h2>Novo por aqui?</h2>
+                        </div>
+                        <div class="img__text m--in">
+                            <h2>Parte da família?</h2>
+                        </div>
+                        <div class="img__btn" (click)="changeForm()">
+                            <span class="m--up">Registo</span>
+                            <span class="m--in">Login</span>
+                        </div>
+                    </div>
+                    <div class="form sign-up">
+                        <h2>Junte-se à família,</h2>
+                        <form ngNativeValidate [formGroup]="registoForm" (ngSubmit)="create(registoForm.value)">
+                            <label>
+                            <span>Nome</span>
+                            <input type="text" formControlName="nomeRegisto" required/>
+                        </label>
+                            <label>
+                            <span>Email</span>
+                            <input type="email" oninvalid="this.setCustomValidity('Insira um email do tipo user@hoteispsi.com')" pattern="[a-z0-9._%+-]+@hoteispsi\.com" formControlName="emailRegisto" required/>
+                        </label>
+                            <label>
+                            <span>Password</span>
+                            <input type="password" formControlName="passwordRegisto" required/>
+                        </label>
+                            <button type="submit" class="submit">Registar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #movel>
+    <div class="container">
+        <div id="">
+        </div>
+        <input type="radio" name="tab" id="signin" checked="checked" /><input type="radio" name="tab" id="register" />
+        <div class="pages">
+            <div class="page">
+                <p id="tituloTel"><strong routerLink="../../hoteisPSI">Hotéis PSI</strong></p>
+                <form ngNativeValidate [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+                    <div class="input">
+                        <div class="title">Email</div><input class="text" type="text" formControlName="emailLogin" required/></div>
+                    <div class="input">
+                        <div class="title">Password</div><input class="text" type="password" formControlName="passwordLogin" required/></div>
+                    <div class="input"><input type="submit" class="submit" value="Login" /></div>
+                </form>
+            </div>
+            <div class="page signup">
+                <p id="tituloTel"><strong routerLink="../../hoteisPSI">Hotéis PSI</strong></p>
+                <form ngNativeValidate [formGroup]="registoForm" (ngSubmit)="create(registoForm.value)">
+                    <div class="input">
+                        <div class="title">Nome</div><input class="text" type="text" formControlName="nomeRegisto" required/></div>
+                    <div class="input">
+                        <div class="title">Email</div><input class="text" type="email" oninvalid="this.setCustomValidity('Insira um email do tipo user@hoteispsi.com')" pattern="[a-z0-9._%+-]{1,.}+@hoteispsi\.com" formControlName="emailRegisto" required/></div>
+                    <div class="input">
+                        <div class="title">Password</div><input class="text" type="password" formControlName="passwordRegisto" required/></div>
+                    <div class="input"><input type="submit" class="submit" value="Registar" /></div>
+                </form>
+            </div>
+        </div>
+        <div class="tabs"><label class="tab" for="signin"><div class="text">Login</div></label><label class="tab" for="register"><div class="text">Registar</div></label></div>
+    </div>
+</ng-template>

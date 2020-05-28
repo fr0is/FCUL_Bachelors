@@ -1,0 +1,256 @@
+
+
+.text-center {
+    text-align: center;
+}
+
+.quarto-servicos-container {
+    display: flex;
+    
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-column-start: 2;
+    grid-column-end: span 1;
+    cursor: pointer;
+    outline: 0;
+}
+
+.servicos-container:hover {
+    transform: scale(1.04);
+    transition: 0.35s ease-in-out;
+}
+
+.precoQ {
+    font-size: 25px;
+}
+
+.servicos-container {
+    background-color: #ffffff;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    flex: 1;
+    padding: 2%;
+    margin: 2%;
+    min-width: 15%;
+    max-width: 15%;
+}
+
+.tipoQuarto,
+.precoQ {
+    font-size: 30px;
+}
+
+.servicos {
+    padding: 0;
+    list-style-type: none;
+}
+
+.servicos li {
+    font-size: 22px;
+    padding: 5% 0;
+}
+
+.servicos li:not(:last-of-type) {
+    justify-self: center;
+    width: 90%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width:320px) {
+    .servicos li {
+        font-size: 9px;
+        padding-top: 5px;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    .tipoQuarto,
+    .precoQ {
+        vertical-align: middle;
+        font-size: 11px;
+        justify-self: center;
+        
+    }
+
+    .tipopreco{
+        border-bottom: 0.5px solid gray;
+        align-content: center;
+        height: auto;
+    }
+
+    #servicos {
+        display: grid;
+        grid-template-columns: 5% 90% 5%;
+         padding-bottom: 300px;
+         padding-top: 25px;
+    }
+
+}
+
+@media (min-width:425px) {
+    .servicos li {
+        font-size: 9px;   
+        
+    }
+
+    .tipoQuarto,
+    .precoQ { 
+        font-size: 11px;
+        white-space: nowrap;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .tipopreco{
+        border-bottom: 0.5px solid gray;
+        align-content: center; 
+    }
+
+    #servicos {
+        display: grid;
+        grid-template-columns: 6% 88% 6%;
+    }
+
+}
+
+@media (min-width:768px) {
+    .servicos li {
+        font-size: 13px;
+        
+    }
+
+    .tipoQuarto,
+    .precoQ {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .tipopreco{
+        border-bottom: 0.5px solid gray;
+        align-content: center;      
+    }
+
+    #servicos {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+    }
+}
+
+
+@media (min-width:1024px) {
+    .servicos li {
+        font-size: 13px;
+        padding-top: 0px;
+    }
+
+    .tipoQuarto,
+    .precoQ {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .tipopreco{
+        border-bottom: 0.5px solid gray;
+        align-content: center;
+    }
+
+    #servicos {
+        display: grid;
+        grid-template-columns: 20% 60% 20%;
+        padding-bottom: 300px;
+    }
+    .servicos li:not(:last-of-type) {
+        justify-self: center;
+        width: 90%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+@media (min-width:1440px) {
+
+    .servicos-container {
+        background-color: #ffffff;
+        box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        flex: 1;
+        padding: 2%;
+        margin: 2%;
+        min-width: 17%;
+        max-width: 20%; 
+        margin-top: 20px;
+        margin-bottom: 200px;
+    }
+    .servicos li {
+        font-size: 13px;
+        padding-top: 5px;
+    }
+
+    .tipoQuarto,
+    .precoQ {
+        font-size: 14px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .tipopreco{
+        border-bottom: 1px solid rgb(80,80,80);
+        align-content: center;
+        width:95%;
+    }
+
+    #servicos {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+    }
+}
+
+
+
+@media (min-width:2560px){
+
+    .servicos li:not(:last-of-type) {
+        justify-self: center;
+        width: 90%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    }
+
+    .servicos-container {
+        
+        background-color: #ffffff;
+        box-shadow: 0px 2px 30px 0px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        flex: 1;
+        padding: 2%;
+        margin: 2%;
+        min-width: 14%;
+        max-width: 16%; 
+    }
+
+    .servicos li {
+        font-size: 30px;
+        padding-top: 20px;
+    }
+
+    .tipoQuarto,
+    .precoQ {
+        font-size: 40px;
+        text-align: center;
+        padding-bottom: 5px;
+    }
+
+    .tipopreco{
+        border-bottom: 1px solid rgb(80,80,80);
+        align-content: center;
+        padding-bottom: 10px;
+        width:95%;
+    }
+
+    #servicos {
+        display: grid;
+        grid-template-columns: 20% 60% 20%;
+        margin-bottom: 800px;
+        margin-top: 40px;
+    }
+}
+

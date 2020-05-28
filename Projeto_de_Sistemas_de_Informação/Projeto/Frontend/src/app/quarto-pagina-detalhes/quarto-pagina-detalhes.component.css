@@ -1,0 +1,325 @@
+* {
+    overflow-x: hidden;
+    cursor: default;
+}
+
+.Quarto {
+    padding-bottom: 2%;
+}
+
+
+/* Mobile */
+
+@media (min-width: 320px) {
+    .Quarto {
+        padding-bottom: 2%;
+    }
+    .nav {
+        background-color: #fafafa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 -3rem 2rem;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        position: relative;
+        font-size: 20px;
+        padding: 2%;
+    }
+    .DetalhesQuartoContainer {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+    }
+    .DetalhesQuarto {
+        grid-column-start: 2;
+        grid-column-end: span 1;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        padding-bottom: 16%;
+    }
+    #imagemQuarto {
+        margin-left: 25%;
+        width: 50%;
+        grid-column-end: span 1;
+        border-radius: 2%;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .imagemPreco {
+        grid-column-start: 1;
+        grid-column-end: span 5;
+    }
+    /*********** FAZER RESERVA *************/
+    .reservar {
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+    }
+    #datasReserva {
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+    }
+    h3 {
+        font-size: 100%;
+    }
+    .draw-border {
+        box-shadow: inset 0 0 0 2px black;
+        color: black;
+        transition: color 0.25s 0.0833333333s;
+        position: relative;
+        margin-top: 2%;
+    }
+    .draw-border::before,
+    .draw-border::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+    }
+    .draw-border::after {
+        border-bottom-width: 2px;
+        border-left-width: 2px;
+    }
+    .draw-border::before {
+        border-top-width: 2px;
+        border-right-width: 2px;
+    }
+    .draw-border:hover {
+        color: green;
+    }
+    .draw-border:hover::before,
+    .draw-border:hover::after {
+        border-color: green;
+        transition: border-color 0s, width 0.25s, height 0.25s;
+        width: 100%;
+        height: 100%;
+    }
+    .draw-border:hover::before {
+        transition-delay: 0s, 0s, 0.25s;
+    }
+    .draw-border:hover::after {
+        transition-delay: 0s, 0.25s, 0s;
+    }
+    .btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1.5;
+        font: 350 0.6rem 'Roboto Slab', sans-serif;
+        padding: 0.5em 1em;
+        letter-spacing: 0.025rem;
+    }
+    /* List */
+    .servicos {
+        grid-column-start: 1;
+        grid-column-end: span 5;
+        min-height: 400px;
+    }
+    ul {
+        counter-reset: index;
+        padding: 0;
+        list-style: none;
+        width: 100%;
+        margin-top: 5%;
+    }
+    /* List element */
+    li {
+        counter-increment: index;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: inline-block;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 1% 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 12px;
+        margin-right: 1%;
+    }
+    /* Element counter */
+    li::before {
+        content: counters(index, ".", decimal-leading-zero);
+        font-size: 15px;
+        text-align: right;
+        font-weight: bold;
+        padding-right: 2px;
+        font-variant-numeric: tabular-nums;
+        -ms-flex-item-align: start;
+        align-self: flex-start;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+        background-image: -o-linear-gradient(top, white, black);
+        background-image: linear-gradient(to bottom, white, black);
+        background-attachment: fixed;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    /* Element separation */
+    li+li {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .preco {
+        text-align: center;
+        font-size: 15px;
+    }
+}
+
+
+/* Tablet e PC */
+
+@media (min-width:768px) {
+    .nav {
+        background-color: #fafafa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 -3rem 2rem;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        font-size: 35px;
+        padding: 2%;
+    }
+    .DetalhesQuartoContainer {
+        display: grid;
+        grid-template-columns: 15% 70% 15%;
+    }
+    .DetalhesQuarto {
+        grid-column-start: 2;
+        grid-column-end: span 1;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+    #imagemQuarto {
+        margin: 0;
+        width: 100%;
+        border-radius: 2%;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .imagemPreco {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    .draw-border {
+        box-shadow: inset 0 0 0 4px black;
+        color: black;
+        transition: color 0.25s 0.0833333333s;
+        position: relative;
+    }
+    .draw-border::before,
+    .draw-border::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 0;
+        left: 0;
+    }
+    .draw-border::after {
+        border-bottom-width: 4px;
+        border-left-width: 4px;
+    }
+    .draw-border::before {
+        border-top-width: 4px;
+        border-right-width: 4px;
+    }
+    .draw-border:hover {
+        color: green;
+    }
+    .draw-border:hover::before,
+    .draw-border:hover::after {
+        border-color: green;
+        transition: border-color 0s, width 0.25s, height 0.25s;
+        width: 100%;
+        height: 100%;
+    }
+    .draw-border:hover::before {
+        transition-delay: 0s, 0s, 0.25s;
+    }
+    .draw-border:hover::after {
+        transition-delay: 0s, 0.25s, 0s;
+    }
+    .btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1.5;
+        font: 700 1.2rem 'Roboto Slab', sans-serif;
+        padding: 1em 2em;
+        letter-spacing: 0.05rem;
+    }
+    /* List */
+    .servicos {
+        grid-column-start: 4;
+        grid-column-end: span 3;
+    }
+    ul {
+        counter-reset: index;
+        padding: 0;
+        list-style: none;
+    }
+    /* List element */
+    li {
+        counter-increment: index;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 2% 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        font-size: 20px;
+    }
+    /* Element counter */
+    li::before {
+        content: counters(index, ".", decimal-leading-zero);
+        font-size: 25px;
+        text-align: right;
+        font-weight: bold;
+        padding-right: 12px;
+        font-variant-numeric: tabular-nums;
+        -ms-flex-item-align: start;
+        align-self: flex-start;
+        background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+        background-image: -o-linear-gradient(top, white, black);
+        background-image: linear-gradient(to bottom, white, black);
+        background-attachment: fixed;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    /* Element separation */
+    li+li {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .preco {
+        text-align: center;
+        font-size: 20px;
+    }
+}
+
+
+/* Laptop L */
+
+@media (min-width: 1440px) {
+    h3 {
+        font-size: 25px;
+    }
+    input {
+        padding: 2%;
+    }
+    .preco {
+        font-size: 25px;
+    }
+}

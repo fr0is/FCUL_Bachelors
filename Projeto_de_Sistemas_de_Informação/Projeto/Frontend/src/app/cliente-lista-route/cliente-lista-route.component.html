@@ -1,0 +1,22 @@
+<div *ngIf="screenWidth < 1000; else pc">
+    <table>
+        <tr>
+            <td routerLink="../cliente"><strong>Dados Pessoais</strong></td>
+            <td routerLink="reservas"><strong>Reservas</strong></td>
+            <td id="logout" (click)="logout()" style="border-right: none;"><strong>Logout</strong> </td>
+        </tr>
+    </table>
+</div>
+<ng-template #pc>
+    <table>
+        <tr>
+            <td routerLink="../cliente"><strong>Dados Pessoais</strong></td>
+        </tr>
+        <tr>
+            <td routerLink="reservas"><strong>Reservas</strong></td>
+        </tr>
+        <tr>
+            <td id="logout" (click)="logout()" style="border-bottom: none;"><strong>Logout</strong> </td>
+        </tr>
+    </table>
+</ng-template>

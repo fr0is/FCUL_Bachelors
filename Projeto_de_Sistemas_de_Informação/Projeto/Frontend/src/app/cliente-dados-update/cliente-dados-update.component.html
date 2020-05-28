@@ -1,0 +1,49 @@
+<form ngNativeValidate [formGroup]="updateForm" (ngSubmit)="updateCliente(updateForm.value)">
+    <div class="data">
+        <img id="iconePerfil" src="assets/Imagens/Icones/perfil.png">
+        <div id="informacaoRegisto">
+            <div class="container">
+                <label id="nome"><strong>Nome</strong></label>
+                <input class="input" value="{{this.cliente.nome}}" pattern="[A-Za-z]{1,10}|[A-Za-z]{1,10}\s[A-Za-z]{1,10}" type="text" formControlName="nomeUpdate" required>
+                <span class="border"></span>
+            </div>
+            <div class="container">
+                <label id="mail"><strong>Email</strong></label>
+                <input class="input" value="{{this.cliente.email}}" type="email" pattern="[a-z0-9._%+-]+@hoteispsi\.com" formControlName="emailUpdate" required>
+                <span class="border"></span>
+            </div>
+        </div>
+    </div>
+    <div id="informacaoAdicional">
+        <div class="container" id="telefone">
+            <label id="indicativoL"><strong>Telefone</strong></label>
+            <div id="indicativo" class="container">
+                <label id="telefoneLabel">País</label>
+                <input class="input" pattern="[+]{1}[0-9]{1,3}" placeholder="+351" type="text" formControlName="indicativoUpdate">
+                <span class="border"></span>
+            </div>
+            <div class="container">
+                <label id="telefoneLabel">Número</label>
+                <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="999999999" type="tel" formControlName="telefoneUpdate">
+                <span class="border"></span>
+            </div>
+        </div>
+        <div id="passwordC">
+            <div class="container">
+                <label id="password"><strong>Password</strong></label>
+                <div class="container">
+                    <label *ngIf="!show" id="password"><img  id="passImg" src="assets/Imagens/Icones/showPass.png" (click)="password()"></label>
+                    <label *ngIf="show" id="password"><img id="passImg" src="assets/Imagens/Icones/hidePass.png" (click)="password()"></label>
+                    <input class="input" [type]='show ? "text" : "password"' formControlName="passwordUpdate" required>
+                    <span class="border"></span>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <label id="nif"><strong>NIF</strong></label>
+            <input class="input" placeholder="123456789" pattern="[0-9]{9}" type="text" formControlName="nifUpdate">
+            <span class="border "></span>
+        </div>
+    </div>
+    <button type="submit " class="submit ">Atualizar Dados</button>
+</form>

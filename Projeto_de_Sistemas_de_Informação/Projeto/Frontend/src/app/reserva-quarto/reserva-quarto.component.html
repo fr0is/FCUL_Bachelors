@@ -1,0 +1,316 @@
+<ng-container *ngIf="userAtual === null; else haUser">
+    <div>Para reservar um quarto tem de fazer login primeiro.</div>
+</ng-container>
+<ng-template #haUser>
+    <div *ngIf="erroDatas" class="alert">
+        <a class="closebtn" (click)="changeStateDateErro()" onclick="this.parentElement.style.display='none';">&times;</a>Data de check-in não pode ser depois da data de check-out!
+    </div>
+    <div *ngIf="erroFazerReserva" class="alert">
+        <a class="closebtn" (click)="changeErroReserva()" onclick="this.parentElement.style.display='none';">&times;</a>Data não disponível para reserva! Quarto já está ocupado!
+    </div>
+    <div *ngIf="fazerReservaSucesso" class="alertSucesso">
+        <a class="closebtn" (click)="changeSucessoReserva()" onclick="this.parentElement.style.display='none';">&times;</a>Reserva efetuada com sucesso!
+    </div>
+    <div id="bookContainer">
+        <div class="book">
+            <div class="back"></div>
+            <div class="page6">
+                <div id="paginaAtual">
+                    <div *ngIf="datasQuarto">
+                        <div [ngStyle]="{'animation': mudaPagina ? 'openBookP5 1.8s;' : ''}" class="conteudoPagina">
+                            <form ngNativeValidate [formGroup]="datasQuartoForm" (ngSubmit)="updateDataQD(datasQuartoForm.value)">
+                                <div id="datasMudanca">
+                                    <div class="checkInMudanca">
+                                        <h3 class="tituloParametro">Check-In</h3>
+                                        <div id="input">
+                                            <input type="date" (change)="mudaCheckIn($event.target.value)" formControlName="checkInInicial" required>
+                                        </div>
+                                    </div>
+                                    <div class="checkOutMudanca">
+                                        <h3 class="tituloParametro">Check-Out</h3>
+                                        <div id="input">
+                                            <input type="date" (change)="mudaCheckOut($event.target.value)" formControlName="checkOutInicial" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="quartoInicial">
+                                    <h3 class="tituloParametro">Quarto</h3>
+                                    <div id="QuartoContainer">
+                                        <div id="imagemQuartoContainer">
+                                            <img id="imagemQuarto" src="{{foto}}">
+                                        </div>
+                                        <div id="quartoDetalhes">
+                                            <select id="quartos" name="quartos" (change)="mudaQuarto($event.target.value)" formControlName="quartoInicial" required>
+                                        <option *ngFor="let quarto of quartos" value={{quarto.tipo}}>{{quarto.tipo}}</option>
+                                        </select>
+                                            <ng-container id="servicosQ" *ngFor="let quarto of quartos">
+                                                <ng-container *ngIf="quarto.tipo === this.selectedQuarto">
+                                                    <ul class="servicos check-list">
+                                                        <ng-container *ngFor="let servico of quarto.servicos,let i=index">
+                                                            <li *ngIf="servico !== '-'">
+                                                                {{servico}}
+                                                            </li>
+                                                        </ng-container>
+                                                    </ul>
+                                                </ng-container>
+                                            </ng-container>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="botaoMudaPagina">
+                                    <button type="submit" class="nextPage"><img src="assets/Imagens/Icones/turnRight.png"></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div *ngIf="dadosCliente">
+                        <div>
+                            <form ngNativeValidate [formGroup]="updateForm" (ngSubmit)="updateClienteReserva(updateForm.value)">
+                                <div id="formGrid">
+                                    <div class="container">
+                                        <h3 class="tituloParametro">Nome</h3>
+                                        <input class="input" placeholder="Rui Barbo" pattern="[A-Za-z]{1,10}|[A-Za-z]{2,10}\s[A-Za-z]{2,10}" oninvalid="this.setCustomValidity(this.willValidate?'':'ra apenas o primeiro e último nome')" type="text" formControlName="nomeUpdate" required>
+                                    </div>
+                                    <div class="container">
+                                        <h3 class="tituloParametro">Email</h3>
+                                        <input class="input" placeholder="ruiBarbo@teste.com" type="email" formControlName="emailUpdate" required>
+                                    </div>
+                                    <div class="container" id="telefone">
+                                        <h3 id="telefoneTitulo" class="tituloParametro">Telefone</h3>
+                                        <div id="indicativo" class="container">
+                                            <input class="input" pattern="[+]{1}[0-9]{1,3}" placeholder="+351" type="text" formControlName="indicativoUpdate" required>
+                                        </div>
+                                        <div id="numero" class="container">
+                                            <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="999999999" type="tel" formControlName="telefoneUpdate" required>
+                                        </div>
+                                    </div>
+                                    <div class="container">
+                                        <h3 class="tituloParametro">NIF</h3>
+                                        <input class="input" placeholder="123456789" pattern="[0-9]{9}" type="text" formControlName="nifUpdate" required>
+                                        <span class="border "></span>
+                                    </div>
+                                </div>
+                                <div class="botaoMudaPagina">
+                                    <button type="submit" class="nextPage"><img src="assets/Imagens/Icones/turnRight.png"></button>
+                                </div>
+                                <div>
+                                    <h3 class="tituloParametro">Morada</h3>
+                                    <div id="moradas">
+                                        <div id="r8-balloon-radio-group-wrapper">
+                                            <ul>
+                                                <li *ngFor="let morada of moradas; let i = index">
+                                                    <input *ngIf="moradaIdFinal !== morada._id; else checked" id="op_{{i}}" class="radio r8-radio-float" type="radio" name="demo-radio-group" value="{{morada._id}}" (change)="onItemChange($event.target.value)" required/>
+                                                    <label>
+                                                    <p><strong>Rua: </strong>{{morada.rua}}</p>
+                                                    <p><strong>Código Postal: </strong>{{morada.codigoPostal}}</p>
+                                                    <p><strong>Cidade: </strong>{{morada.cidade}}</p>
+                                                </label>
+                                                    <ng-template #checked>
+                                                        <input id="op_{{i}}" class="radio r8-radio-float" type="radio" name="demo-radio-group" value="{{morada._id}}" (change)="onItemChange($event.target.value)" checked required/>
+                                                    </ng-template>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a class="botao" id="criarMoradaButton" (click)="criarMorada()"><img id="botaoAdicionar" src="assets/Imagens/Icones/addButton.png"></a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div *ngIf="pagamento">
+                        <h3 class="tituloParametro">Método de pagamento</h3>
+                        <div class="container">
+                            <ul id="cartoesLista">
+                                <ng-container *ngFor="let card of cartoes">
+                                    <li>
+                                        <input type="radio" *ngIf="cartaoIdFinal !== card._id; else checked" value="{{card._id}}" name="card" id="f-option" (change)="onItemChangeCMB($event.target.value)" required>
+                                        <ng-template #checked>
+                                            <input type="radio" value="{{card._id}}" name="card" id="f-option" (change)="onItemChangeCMB($event.target.value)" checked required/>
+                                        </ng-template>
+                                        <label for="f-option">
+                                        <div style="margin-top:2%">
+                                            <p><strong>Número: </strong>{{format(card.numero)}}</p>
+                                            <p><strong>Validade: </strong>{{card.prazoMes}}/{{card.prazoAno}}</p>
+                                            <p><strong>CVV: </strong>{{card.cvv}}</p>
+                                        </div>
+                                    </label>
+                                        <div class="check"></div>
+                                    </li>
+                                </ng-container>
+                                <li>
+                                    <button class="botao" id="criarCartaoBotao" (click)="criarCartao()"><img id="criarCartaoImg" src="assets/Imagens/Icones/addButton.png"></button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="botaoMudaPagina">
+                            <a (click)="finalN()" class="nextPage"><img src="assets/Imagens/Icones/turnRight.png"></a>
+                        </div>
+                    </div>
+                    <div *ngIf="final">
+                        <div id="datas" *ngIf="this.screenWidth < 768px">
+                            <h2 style="text-align: center;">Dados da reserva:</h2>
+                            <div id="checkInField">
+                                <h3 class="tituloParametro"><span id="checkIn">Check-In</span></h3>
+                                <p class="textoD">{{this.checkIn}}</p>
+                            </div>
+                            <div id="checkOutField">
+                                <h3 class="tituloParametro"><span id="checkOut">Check-Out</span></h3>
+                                <p class="textoD">{{this.checkOut}}</p>
+                            </div>
+
+                            <div>
+                                <h3 class="tituloParametro">Preço Final</h3>
+                                <p class="textoD">{{precoFinal}}€</p>
+                            </div>
+                            <h3 class="tituloParametro">Quarto</h3>
+                            <p class="textoD"><strong>Tipo: </strong>{{quarto}}</p>
+                            <div id="fotoFinalContainer">
+                                <img id="fotoFinal" src="{{foto}}">
+                            </div>
+                        </div>
+                        <h3 class="tituloParametro"><span>Dados de identificação</span></h3>
+                        <div class="dadosFinais">
+                            <p><strong>Nome: </strong>{{nomeFinal}}</p>
+                            <p><strong>Email: </strong>{{emailFinal}}</p>
+                            <p><strong>Telefone: </strong>{{indicativoFinal}} {{telefoneFinal}}</p>
+                            <p><strong>NIF: </strong>{{nifFinal}}</p>
+                        </div>
+                        <h3 class="tituloParametro"><span>Morada</span></h3>
+                        <div class="dadosFinais">
+                            <p><strong>Rua: </strong>{{moradaFinal.rua}}</p>
+                            <p><strong>Código postal: </strong>{{moradaFinal.codigoPostal}}</p>
+                            <p><strong>Cidade: </strong>{{moradaFinal.cidade}}</p>
+                            <p><strong>País: </strong>{{moradaFinal.pais}}</p>
+                        </div>
+                        <h3 class="tituloParametro"><span>Método de pagamento</span></h3>
+                        <div class="dadosFinais">
+                            <p><strong>Número: </strong>{{format(cartaoFinal.numero)}}</p>
+                            <p><strong>Válido até: </strong>{{cartaoFinal.prazoMes}}/{{cartaoFinal.prazoMes}}</p>
+                            <p><strong>CVV: </strong>{{cartaoFinal.cvv}}</p>
+                        </div>
+                        <div class="botaoFazerReserva">
+                            <button (click)="createReserva()" type="submit" class="nextPage" class="btn draw-border submit">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page5">
+                <div *ngIf="!datasQuarto" class="paginaImpar botaoMudaPagina">
+                    <a (click)="goBack()"><img src="assets/Imagens/Icones/turnLeft.png"></a>
+                </div>
+                <div class="paginaImpar" *ngIf="datasQuarto">
+                    <h4 class="descricaoPagina">Confirme as datas de check-in e de check-out! <br>Confirme também o tipo de quarto.</h4>
+                </div>
+                <div class="paginaImpar" *ngIf="dadosCliente">
+                    <h4 class="descricaoPagina">Insira os dados de identificação.</h4>
+                </div>
+                <div class="paginaImpar" *ngIf="pagamento">
+                    <h4 class="descricaoPagina">Escolha um método de pagamento ou adicione um novo.</h4>
+                </div>
+                <div id="paginaAtual" class="paginaImpar">
+                    <div *ngIf="final">
+                        <h2 style="text-align: center;">Dados da reserva:</h2>
+                        <div id="datas">
+                            <div id="checkInField">
+                                <h3 class="tituloParametro"><span id="checkIn">Check-In</span></h3>
+                                <p class="textoD">{{this.checkIn}}</p>
+                            </div>
+                            <div id="checkOutField">
+                                <h3 class="tituloParametro"><span id="checkOut">Check-Out</span></h3>
+                                <p class="textoD">{{this.checkOut}}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="tituloParametro">Preço Final</h3>
+                            <p class="textoD">{{precoFinal}}€</p>
+                        </div>
+                        <h3 class="tituloParametro">Quarto</h3>
+                        <p class="textoD"><strong>Tipo: </strong>{{quarto}}</p>
+                        <div id="fotoFinalContainer">
+                            <img id="fotoFinal" src="{{foto}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page4"></div>
+            <div class="page3"></div>
+            <div class="page2"></div>
+            <div class="page1"></div>
+            <div class="front">
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="criarM" class="criarMorada" id="criarMorada">
+        <div id="criarMoradaContainer">
+            <form ngNativeValidate [formGroup]="createMorada" (ngSubmit)="createM(createMorada.value)">
+                <div id="form">
+                    <div id="input">
+                        <strong>Rua:</strong>
+                        <input type="text" placeholder="Rua das Flores" formControlName="rua" required/>
+                    </div>
+                    <div id="input">
+                        <strong>Código Postal:</strong>
+                        <input type="text" placeholder="2420-650" pattern="[0-9]{4}-[0-9]{3}" formControlName="codigoPostal" required/>
+                    </div>
+                    <div id="input">
+                        <strong>Cidade:</strong>
+                        <input type="text" placeholder="Porto" formControlName="cidade" required/>
+                    </div>
+                    <div id="input">
+                        <strong>País:</strong>
+                        <input type="text" placeholder="Portugal" formControlName="pais" required/>
+                    </div>
+                </div>
+                <div id="botoesM">
+                    <button id="criarButton" type="submit" class="submit botao"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
+                    <button id="cancelarButton" type="submit" (click)="criarMorada();" class="submit botao"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div *ngIf="criar" class="criarCartao" id="criarCartao">
+        <div id="criarCartaoContainer">
+            <form ngNativeValidate [formGroup]="createCartao" (ngSubmit)="create(createCartao.value)">
+                <div id="frontCard">
+                    <img class="cartaoIcone" src="https://image.ibb.co/cZeFjx/little_square.png">
+                    <div id="nrCartaoContainer">
+                        <input class="nrCartao" placeholder="4330" type="text" pattern="[0-9]{4}" formControlName="numeroCartao1" required/>
+                        <input class="nrCartao" placeholder="2320" type="text" pattern="[0-9]{4}" formControlName="numeroCartao2" required/>
+                        <input class="nrCartao" placeholder="0782" type="text" pattern="[0-9]{4}" formControlName="numeroCartao3" required/>
+                        <input class="nrCartao" placeholder="1532" type="text" pattern="[0-9]{4}" formControlName="numeroCartao4" required/>
+                    </div>
+                    <div id="bottomCardFront">
+                        <div id="holder">
+                            <span class="card__label">Card holder</span>
+                            <input id="cardHolder" placeholder="Rui Barbo" type="text" pattern="[a-zA-Z./]{1,.}" formControlName="nomeCartao" required/>
+                        </div>
+                        <div id="dataValidade">
+                            <div>
+                                <span class="card__label">VALIDO ATÉ</span>
+                            </div>
+                            <input id="mesCartao" placeholder="MM" type="text" pattern="[0]{1}[0-9]{1}|11|12" formControlName="dataCartaoMes" required/><span id="anoCartao">/</span>
+                            <input id="anoCartao" placeholder="YY" type="text" pattern="[1-9]{2}" formControlName="dataCartaoAno" required/>
+                        </div>
+                    </div>
+                </div>
+                <div id="backCard">
+                    <div id="espacoSuperior"></div>
+                    <div class="card__black-line"></div>
+                    <div id="backCardAssinatura">
+                        <div class="card__secret"></div>
+                        <input id="cvv" type="text" placeholder="345" pattern="[0-9]{3}" formControlName="cvvCartao" required/>
+                    </div>
+                    <img class="backSquare" src="https://image.ibb.co/cZeFjx/little_square.png">
+                </div>
+                <div id="botoes">
+                    <button id="criarButton" type="submit" class="submit botao"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
+                    <button id="cancelarButton" type="submit" (click)="criarCartao();" class="submit botao"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

@@ -1,20 +1,16 @@
-<div class="hoteis">
-    <div id="header">
-        <img id="logo" style="display:inline; width: 3%" src="assets/Imagens/logo.png">
-        <div id="textoLogo">
-            <strong>HOTÉIS PSI</strong>
+<ng-container>
+    <div class="hoteis">
+        <div id="header">
+            <img id="logo" src="assets/Imagens/logo.png">
+            <div id="textoLogo">
+                <strong>HOTÉIS PSI</strong>
+            </div>
         </div>
+        <ng-container *ngFor="let hotel of hoteis">
+            <div (click)="setHotelNomeId(hotel.nome, hotel._id)" routerLink="{{hotel.nome}}" class="hotel">
+                <div class="texto"><strong>{{hotel.nome}}</strong></div>
+                <img id="imagem" src="{{hotel.fotos[generateRandomNumber(hotel.fotos.length)]}}">
+            </div>
+        </ng-container>
     </div>
-    <div class="hotel" id="hotel1">
-        <img class="hotel" id="hotel1Img " src="assets/Imagens/hotel1.jpg ">
-        <div class="texto "><strong>Douro Vinhas</strong></div>
-    </div>
-    <div class="hotel " id="hotel2 ">
-        <img id="hotel2Img " src="assets/Imagens/hotel2.jpg ">
-        <div class="texto "><strong>A Ver o Mar</strong></div>
-    </div>
-    <div class="hotel " id="hotel3 ">
-        <img id="hotel3Img " src="assets/Imagens/hotel3.jpg ">
-        <div class="texto "><strong>Mediterrâneo</strong></div>
-    </div>
-</div>
+</ng-container>

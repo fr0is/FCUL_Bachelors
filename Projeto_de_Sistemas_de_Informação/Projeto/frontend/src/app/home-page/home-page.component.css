@@ -1,139 +1,198 @@
-* {
-    overflow: hidden;
-    margin: 0;
-    height: 100%;
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    /* Mobile*/
+    * {
+        margin: 0;
+    }
+    .hoteis {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        background-color: black;
+    }
+    #textoLogo {
+        color: white;
+        font-size: 20px;
+        overflow: hidden;
+        text-align: center;
+        margin-top: -50px;
+    }
+    #header {
+        min-height: 75px;
+    }
+    #logo {
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 50px;
+        margin: 10px;
+        z-index: 10;
+        display: inline;
+        width: 50px;
+    }
+    .texto {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 35px;
+        color: white;
+        background-color: none;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        height: auto;
+        width: auto;
+    }
+    .hotel:hover .texto {
+        opacity: 1;
+        background-color: none;
+    }
+    .hotel {
+        transition: 0.5s;
+        color: white;
+        margin: 3%;
+        cursor: pointer;
+        padding-bottom: 0;
+        background-color: black;
+    }
+    .hotel:hover {
+        -webkit-filter: grayscale(0%);
+        /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        transform: scale(1.01);
+        /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        z-index: 10;
+        cursor: pointer;
+        color: white;
+    }
+    #imagem {
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
 }
 
-.hoteis {
-    display: grid;
-    grid-template-columns: 33.333% 33.333% 33.333%;
-    grid-template-rows: 0.09fr 0.91fr;
-    background-color: black;
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    * {
+        margin: 0;
+    }
+    .hoteis {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        background-color: black;
+    }
+    #header {
+        text-align: center;
+        cursor: default;
+        width: 100%;
+        display: grid;
+    }
+    #textoLogo {
+        color: white;
+        font-size: 20px;
+        overflow: hidden;
+        text-align: center;
+        margin-top: -40px;
+    }
+    #logo {
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 50px;
+        margin: 10px;
+        z-index: 10;
+        display: inline;
+        width: 50px;
+    }
+    .texto {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        background-color: none;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        height: auto;
+        width: auto;
+    }
+    .hotel:hover .texto {
+        opacity: 1;
+        background-color: none;
+    }
+    .hotel {
+        transition: 0.5s;
+        color: white;
+        margin: 3%;
+        cursor: pointer;
+        padding-bottom: 0;
+    }
+    .hotel:hover {
+        -webkit-filter: grayscale(0%);
+        /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+        transform: scale(1.01);
+        /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        z-index: 10;
+        cursor: pointer;
+    }
+    #imagem {
+        width: 100%;
+        height: 100%;
+    }
 }
 
-#header {
-    grid-column-start: 1;
-    grid-column-end: span 3;
-    grid-row-start: 1;
-    grid-row-end: 1;
-    text-align: center;
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    #logo {
+        height: 75px;
+        width: 75px;
+    }
+    #textoLogo {
+        font-size: 30px;
+        width: 100%;
+        margin-top: 35px;
+    }
+    #header {
+        display: flex;
+    }
 }
 
-#textoLogo {
-    position: relative;
-    color: white;
-    font-size: 40px;
-    margin-top: 1%;
-}
 
-#logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 7%;
-    width: 7%;
-    margin: 0.5%;
-}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
 
-.texto {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    font-size: 35px;
-    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
-    height: auto;
-    width: auto;
-}
-
-.hotel:hover .texto {
-    opacity: 1;
-    background-color: none;
-}
-
-.hotel {
-    transition: 0.5s;
-    color: white;
-    margin: 1%;
-    padding-bottom: 5%;
-}
-
-.hotel:hover {
-    -webkit-filter: grayscale(0%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-    transform: scale(1.01);
-    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    z-index: 10;
-}
-
-#hotel1 {
-    grid-column-start: 1;
-    grid-column-end: span 0;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    -webkit-filter: grayscale(100%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-}
-
-#hotel1:hover {
-    -webkit-filter: grayscale(0%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-    opacity: 0.85;
-}
-
-#hotel1Img {
-    width: 100%;
-    height: 97%;
-    margin: 0px;
-}
-
-#hotel2 {
-    grid-column-start: 2;
-    grid-column-end: span 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    -webkit-filter: grayscale(100%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-}
-
-#hotel2:hover {
-    -webkit-filter: grayscale(0%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-    opacity: 0.85;
-}
-
-#hotel2Img {
-    width: 100%;
-    height: 97%;
-}
-
-#hotel3 {
-    grid-column-start: 3;
-    grid-column-end: span 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    -webkit-filter: grayscale(100%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-}
-
-#hotel3:hover {
-    -webkit-filter: grayscale(0%);
-    /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-    opacity: 0.85;
-}
-
-#hotel3Img {
-    width: 100%;
-    height: 97%;
+@media only screen and (min-width: 1200px) {
+    .hoteis {
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.4%;
+        grid-template-rows: 10% auto;
+        background-color: black;
+        min-height: 100%;
+    }
+    #header {
+        grid-column-start: 1;
+        grid-column-end: span 3;
+    }
+    .texto {
+        font-size: 35px;
+    }
 }

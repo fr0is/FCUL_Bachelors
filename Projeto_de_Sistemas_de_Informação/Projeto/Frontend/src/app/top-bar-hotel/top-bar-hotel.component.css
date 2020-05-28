@@ -1,0 +1,192 @@
+.topo {
+    text-align: center;
+    background-color: black;
+    background-repeat: no-repeat;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: auto;
+    min-height: 75px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 40%;
+        margin-top: 0.25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin: 10px;
+    }
+    #logoImg {
+        display: inline;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 12px;
+        z-index: 3;
+        margin: 5px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    .topNavA,
+    .topNavA1 {
+        margin: 3px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 2px solid white;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 40%;
+        margin-top: 0.25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin: 10px;
+    }
+    #logoImg {
+        display: inline;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 14px;
+        z-index: 3;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    .topNavA,
+    .topNavA1 {
+        margin: 3px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 3px solid white;
+    }
+    #logoImg {
+        display: inline;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    .topNav {
+        font-size: 20px;
+        margin: 7px;
+    }
+    .nomeHotel {
+        font-size: 25px;
+    }
+    #logoImg {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .topNav {
+        font-size: 23px;
+        margin: 8px;
+    }
+    .nomeHotel {
+        font-size: 28px;
+    }
+    #logoImg {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+    .topNav {
+        font-size: 27px;
+        margin: 8px;
+    }
+    .nomeHotel {
+        font-size: 32px;
+    }
+    #logoImg {
+        width: 70px;
+        height: 70px;
+    }
+}

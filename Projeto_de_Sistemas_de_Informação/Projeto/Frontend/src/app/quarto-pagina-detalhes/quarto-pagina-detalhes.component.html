@@ -1,0 +1,43 @@
+<div class="Quarto">
+    <div class="nav">
+        <p class="tipoQuarto"><strong>{{quarto.tipo}}</strong></p>
+    </div>
+    <div class="DetalhesQuartoContainer">
+        <div class="DetalhesQuarto">
+            <div class="imagemPreco">
+                <img id="imagemQuarto" src="{{quarto.foto}}">
+                <div class="preco">
+                    <br>
+                    <p><span class="datePreco"><strong>De 1/06 a 29/09 e de 16/12 a 14/01: </strong></span><span class="precoEA">{{quarto.precoAlta}}€</span></p>
+                    <br>
+                    <p><span class="datePreco"><strong>De 15/01 a 31/05 e de 30/09 a 15/12: </strong></span><span class="precoEB">{{quarto.precoBaixa}}€</span></p>
+                </div>
+                <div class="reservar" style="margin-top:2%;">
+                    <form id="reservaQuartoForm" ngNativeValidate [formGroup]="reservaForm" (ngSubmit)="reservar(reservaForm.value)">
+                        <div id="datasReserva">
+                            <div id="dataCheckIn">
+                                <h3>Check-in:</h3>
+                                <input type="date" (change)="mudaCheckIn($event.target.value)" formControlName="checkInReserva" required>
+                            </div>
+                            <br>
+                            <div id="dataCheckOut">
+                                <h3>Check-out:</h3>
+                                <input type="date" (change)="mudaCheckOut($event.target.value)" formControlName="checkOutReserva" required>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn draw-border submit">Reservar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <ul class="servicos">
+                <ng-container *ngFor="let servico of quarto.servicos">
+                    <li *ngIf="servico !== '-'">
+                        {{servico}}
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</div>

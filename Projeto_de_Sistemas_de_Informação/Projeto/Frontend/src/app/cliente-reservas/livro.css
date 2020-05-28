@@ -1,0 +1,246 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    .book {
+        transform-style: preserve-3d;
+        position: relative;
+        height: 50%;
+        cursor: pointer;
+        backface-visibility: visible;
+        margin: auto;
+        width: 75%;
+        margin-top: 10%;
+    }
+    .front,
+    .back,
+    .page1,
+    .page2,
+    .page3,
+    .page4,
+    .page5 {
+        display: none;
+    }
+    .page6 {
+        border-radius: 5%;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 600px) {
+    .book {
+        transform-style: preserve-3d;
+        position: relative;
+        height: 40%;
+        cursor: pointer;
+        backface-visibility: visible;
+        margin: auto;
+        width: 40%;
+        margin-left: 50%;
+        margin-top: 10%;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .book {
+        transform-style: preserve-3d;
+        position: relative;
+        height: 50%;
+        cursor: pointer;
+        backface-visibility: visible;
+        margin: auto;
+        width: 25%;
+        margin-left: 50%;
+        margin-top: 10%;
+    }
+}
+
+.front,
+.back,
+.page1,
+.page2,
+.page3,
+.page4,
+.page5,
+.page6 {
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: left center;
+    transition: transform .5s ease-in-out, box-shadow .35s ease-in-out;
+}
+
+.front,
+.back {
+    background: black;
+}
+
+.front,
+.page1,
+.page3,
+.page5 {
+    border-bottom-right-radius: 5%;
+    border-top-right-radius: 5%;
+}
+
+.back,
+.page2,
+.page4,
+.page6 {
+    border-bottom-right-radius: 5%;
+    border-top-right-radius: 5%;
+}
+
+.front {
+    animation: openBookFront 1s;
+    animation-fill-mode: forwards;
+}
+
+.back {
+    animation: openBookBack 1s;
+    animation-fill-mode: forwards;
+}
+
+.page1 {
+    background: #efefef;
+    animation: openBookP1 1.3s;
+    animation-fill-mode: forwards;
+}
+
+.page2 {
+    background: #efefef;
+    animation: openBookP2 1s;
+    animation-fill-mode: forwards;
+}
+
+.page3 {
+    background: #f5f5f5;
+    animation: openBookP3 1.5s;
+    animation-fill-mode: forwards;
+}
+
+.page4 {
+    background: #f5f5f5;
+    animation: openBookP4 1s;
+    animation-fill-mode: forwards;
+}
+
+.page5 {
+    background: #fafafa;
+    animation: openBookP5 1.8s;
+    animation-fill-mode: forwards;
+}
+
+.page6 {
+    background: #fdfdfd;
+    animation: openBookP6 1s;
+    animation-fill-mode: forwards;
+}
+
+.botao {
+    border: none;
+    background-color: transparent;
+}
+
+@keyframes openBookFront {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(-180deg) scale(1.1);
+        box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+    }
+}
+
+@keyframes openBookBack {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(0deg) scale(1.1);
+        box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+    }
+}
+
+@keyframes openBookP1 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(-175deg) scale(1.1);
+        box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+    }
+}
+
+@keyframes openBookP2 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(-5deg) scale(1.1);
+        box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+    }
+}
+
+@keyframes openBookP3 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(-172.5deg) scale(1.1);
+        box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+    }
+}
+
+@keyframes openBookP4 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(-7.5deg) scale(1.1);
+        box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+    }
+}
+
+@keyframes openBookP5 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(-170deg) scale(1.1);
+        box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+    }
+}
+
+@keyframes openBookP6 {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(-10deg) scale(1.1);
+        box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
+    }
+}
