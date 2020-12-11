@@ -207,12 +207,11 @@ function animateLight(){
  * Função que dá movimento á camera
  */
     var roTangle = 0;
-    var transValue = 0;
+        var transValue = 0;
 function animateCamera(){
     mat4.translate(camera.matrix,[0,-1,-8]);
     mat4.rotate(camera.matrix, roTangle * Math.PI / 180, [0, 1, 0]);
     mat4.translate(camera.matrix,[0,1,8]);
-
     if(Math.sin(transValue)> 0){
         mat4.translate(camera.matrix,[0,  0.02, 0]);
      }else if(Math.sin(transValue)< 0){
