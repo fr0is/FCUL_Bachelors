@@ -1,4 +1,5 @@
 OOChess
+
 O seu grupo foi contratado para desenvolver uma aplicação para gestão de torneios de Xadrez. Iremos usar uma metodologia ágil, onde iremos desenvolver as funcionalidades mais importantes e/ou complexas primeiro, e onde iremos iterar e refinar o design ao longo do projecto.
 
 Definição de Casos de Uso
