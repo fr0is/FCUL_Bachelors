@@ -1,0 +1,36 @@
+5C
+---------------------------------------------------------------
+Operação: adicionaContacto(nome)
+Pré-condições: Existe um u:Utilizador autenticado
+Pós-condições: É criada uma lista l:List<Utilizador> com os
+vários utilizadores compatíveis
+	* para cada utilizador ut:Utilizador no catálogo, se
+	  ut.nome=nome, então adiciona-se ut à lista l
+
+Operação: adicionaContacto(email)
+Pré-condições: Existe um u:Utilizador autenticado
+Pós-condições: É criada uma lista l:List<Utilizador> com os
+vários utilizadores compatíveis
+	* para cada utilizador ut:Utilizador no catálogo, se
+	  ut.email=email, então adiciona-se ut à lista l
+
+Operação: indicaUtilizador(utilizador)
+Pré-condições: Existe u:Utilizador autenticado
+	       Existe l:list<Utilizador> tal que utilizador 
+pertence a l
+Pós-condições: Existe us:Utilizador tal que us=utilizador
+
+Operação: indicaMensagem(texto)
+Pré-condições: Existem u:Utilizador e us:Utilizador
+Pós-condições: É criada m:Mensagem tal que m.texto=texto
+	       É criada uma associação "envia" entre m e u
+	       É criada uma associação "recebe" entre m e us
+	       Seja lc:ListaContactos tal que 
+existe a asssociação "possui" entre lc e u
+	       É criado c:Contacto tal que c.estado=pendente 
+	       É criada associação "contem" entre lc e c
+	       É criada associação "refere-se" entre c e us 
+
+
+
+

@@ -1,0 +1,38 @@
+6C
+---------------------------------------------------------------
+Operação: iniciaPedido(numero,turma)
+Pré-condições: n/a
+Pós-condições: Existe al:Aluno corrente tal que al.numero = numero
+	       Existe t:Turma e t.designacao = turma
+	       Existe associação do tipo "contém" entre al e t
+	       Não existe r:Requisicao tal que 
+			dataEntrega não está definida
+			r.dataFim < dataCorrente
+	       		Existe associação do tipo "faz" entre al e r
+	       Seja nr o número de r:Requisicao tal que
+			r.dataEntrega não está definida
+			existe associação do tipo "faz" entre al e r
+	       Existe a:Ano corrente tal que 
+			existe associação do tipo "contém" entre t e a
+	       a.numeroRecursos>nr
+
+Operação: indicaISBN(isbn)
+Pré-condições: n/a
+Pós-condições: Existe l:Livro tal que l.isbn = isbn
+	       Existe ex:Exemplar corrente tal que 
+	       Existe uma associação do tipo "identifica" entre ex e l
+	       Não existe r:Requisição tal que
+			existe associação do tipo "sobre" entre ex e r
+			r.dataEntrega não está definida
+
+Operação: confirma()
+Pré-condições: Existe al:Aluno corrente 
+	       Existe ex:Exemplar corrente
+	       Existe a:Ano corrente
+Pós-condições: Foi criada r:Requisicao 
+	       Foi criada associação do tipo "sobre" entre r e ex
+	       Foi criada associação do tipo "faz" entre r e al
+	       r.dataInicio = dataCorrente
+	       r.dataFim = dataCorrente + a.numeroDias 
+		
+	       
